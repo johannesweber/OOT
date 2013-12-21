@@ -1,9 +1,5 @@
 package thurntaxis.spielbrett;
 
-import thurntaxis.bonus.Laenderbonus;
-import thurntaxis.bonus.Routenlaengebonus;
-import thurntaxis.bonus.Streckenpostenbonus;
-
 import java.util.LinkedList;
 
 /**
@@ -14,17 +10,11 @@ public class Spielbrett {
     private LinkedList<Land> laender;
     private String name;
     private Auslagestapel auslagestapel;
-    private LinkedList<Laenderbonus> laenderbonus;
-    private LinkedList<Streckenpostenbonus> streckenpostenbonus;
-    private LinkedList<Routenlaengebonus> routenlaengebonus;
 
     public Spielbrett() {
         this.name = "Thurn & Taxis: Das Brettspiel";
         this.laender = new LinkedList<Land>();
         this.auslagestapel = new Auslagestapel();
-        //this.laenderbonus = new LinkedList();
-        //this.routenlaengebonus = new LinkedList<Routenlaengebonus>();
-        //this.streckenpostenbonus = new LinkedList<Streckenpostenbonus>();
         this.laenderFuellen();
     }
 

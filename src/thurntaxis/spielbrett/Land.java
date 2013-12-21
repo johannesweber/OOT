@@ -1,6 +1,7 @@
 package thurntaxis.spielbrett;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * Created by Johannes on 21.12.13.
@@ -9,11 +10,13 @@ public class Land {
 
     private String name;
     private LinkedList<Stadt> staedte;
+    private Stack<Laenderbonus> laenderboni;
 
     protected Land(LandEnum name) {
         this.name = name.toString();
         this.staedte = new LinkedList<Stadt>();
-        staedteHinzufuegen(name);
+        this.laenderboni = new Stack<Laenderbonus>();
+        this.staedteHinzufuegen(name);
     }
 
     private void staedteHinzufuegen(LandEnum name){

@@ -1,6 +1,5 @@
 package thurntaxis.spieler;
 
-import thurntaxis.bonus.Bonusmarker;
 import thurntaxis.spielbrett.Stadtkarte;
 
 import java.util.LinkedList;
@@ -15,7 +14,6 @@ public class Spieler {
     private int punkte;
     private Stack<Haus> haeuser;
     private LinkedList<Stadtkarte> route;
-    private LinkedList<Bonusmarker> bonusmarker;
     private int zaehlerKartenNehmen;
     private int zaehlerKarteLegen;
     private int zaehlerRoute;
@@ -25,7 +23,6 @@ public class Spieler {
         this.zaehlerKarteLegen = 1;
         this.route = new LinkedList<Stadtkarte>();
         this.haeuser = new Stack<Haus>();
-        this.bonusmarker = new LinkedList<Bonusmarker>();
         this.zaehlerKartenNehmen = 1;
         this.haeuserNehmen();
     }
@@ -50,9 +47,6 @@ public class Spieler {
         return this.punkte;
     }
 
-    public LinkedList<Bonusmarker> getBonusmarker() {
-        return this.bonusmarker;
-    }
 
     public LinkedList<Stadtkarte> getRoute() {
         return this.route;
@@ -70,7 +64,7 @@ public class Spieler {
 
     }
 
-    public void amptspersonAusspielen(){
+    public void amtspersonAusspielen(){
 
     }
 

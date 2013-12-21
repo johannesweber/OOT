@@ -1,18 +1,19 @@
 package thurntaxis.bonus;
 
-import thurntaxis.spielbrett.LandEnum;
-
 /**
  * Created by Johannes on 21.12.13.
  */
-public class Routenlaengebonus extends Bonusmarker{
+public class Routenlaengebonus{
 
-    public Routenlaengebonus(int bonuspunkte, LandEnum land) {
-        super(bonuspunkte, land);
+    private int punkte;
+    private int laenge;
+
+    public Routenlaengebonus(int laenge,int punkte){
+        this.punkte = punkte;
+        this.laenge = laenge;
     }
 
-    @Override
-    public void setPunkte() {
-
+    public int getPunkte() {
+        return punkte;
     }
 }
