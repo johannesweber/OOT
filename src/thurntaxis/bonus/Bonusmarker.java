@@ -5,10 +5,10 @@ package thurntaxis.bonus;
  */
 public abstract class Bonusmarker {
 
-    private static int punkte;
+    protected int punkte;
 
     public int getPunkte(){
-        return this.getPunkte();
+        return this.punkte;
     }
 
 }

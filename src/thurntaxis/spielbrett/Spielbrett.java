@@ -1,8 +1,6 @@
 package thurntaxis.spielbrett;
 
-import thurntaxis.bonus.RoutenlaengeBonus;
-import thurntaxis.bonus.alleLaenderBesetztBonus;
-import thurntaxis.bonus.vollstaendigBesetzteLaenderBonus;
+import thurntaxis.bonus.*;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -15,18 +13,22 @@ public class Spielbrett {
     private LinkedList<Land> laender;
     private String name;
     private Auslagestapel auslagestapel;
-    private Stack<alleLaenderBesetztBonus> alleLaenderBoni;
-    private Stack<vollstaendigBesetzteLaenderBonus> besetzteLaenderboni;
-    private Stack<RoutenlaengeBonus> routenlaengeboni;
+
+    private Stack<AlleLaenderBesetztBonus> alleLaenderBesetztBoni;
+    private Stack<RoutenlaengeBonus> laengeSiebenBoni;
+    private Stack<RoutenlaengeBonus> laengeSechsBoni;
+    private Stack<RoutenlaengeBonus> laengeFuenfBoni;
 
     public Spielbrett() {
         this.name = "Thurn & Taxis: Das Brettspiel";
         this.laender = new LinkedList<Land>();
         this.auslagestapel = new Auslagestapel();
-        this.alleLaenderBoni = new Stack<alleLaenderBesetztBonus>();
-        this.besetzteLaenderboni = new Stack<vollstaendigBesetzteLaenderBonus>();
-        this.routenlaengeboni = new Stack<RoutenlaengeBonus>();
+        this.alleLaenderBesetztBoni = new Stack<AlleLaenderBesetztBonus>();
+        this.laengeSiebenBoni = new Stack<RoutenlaengeBonus>();
+        this.laengeSechsBoni = new Stack<RoutenlaengeBonus>();
+        this.laengeFuenfBoni = new Stack<RoutenlaengeBonus>();
         this.laenderFuellen();
+        this.boniFuellen();
     }
 
     public LinkedList<Land> getLaender() {
@@ -44,7 +46,35 @@ public class Spielbrett {
     }
 
     private void boniFuellen(){
+        this.alleLaenderBesetztBoniFuellen();
+        this.laengeFuenfBoniFuellen();
+        this.laengeSechsBoniFuellen();
+        this.laengeSiebenBoniFuellen();
+    }
 
+    private void alleLaenderBesetztBoniFuellen(){
+        this.alleLaenderBesetztBoni.add(new AlleLaenderBesetztBonus(3));
+        this.alleLaenderBesetztBoni.add(new AlleLaenderBesetztBonus(4));
+        this.alleLaenderBesetztBoni.add(new AlleLaenderBesetztBonus(5));
+        this.alleLaenderBesetztBoni.add(new AlleLaenderBesetztBonus(6));
+    }
+
+    private void laengeSiebenBoniFuellen(){
+        this.laengeSiebenBoni.add(new RoutenlaengeBonus(7,1));
+        this.laengeSiebenBoni.add(new RoutenlaengeBonus(7,2));
+        this.laengeSiebenBoni.add(new RoutenlaengeBonus(7,3));
+        this.laengeSiebenBoni.add(new RoutenlaengeBonus(7,4));
+    }
+
+    private void laengeSechsBoniFuellen(){
+        this.laengeSechsBoni.add(new RoutenlaengeBonus(6,1));
+        this.laengeSechsBoni.add(new RoutenlaengeBonus(6,2));
+        this.laengeSechsBoni.add(new RoutenlaengeBonus(6,3));
+    }
+
+    private void laengeFuenfBoniFuellen(){
+        this.laengeFuenfBoni.add(new RoutenlaengeBonus(5,1));
+        this.laengeFuenfBoni.add(new RoutenlaengeBonus(5,2));
     }
 
     @Override

@@ -106,9 +106,9 @@ public class Spieler {
         }
     }
 
-    public void routeWerten(Wertverfahren verfahren, int kartennummer) {
+    public void routeWerten(Wertverfahren verfahren, int platznummer) {
         if (this.route.size() >= 3) {
-            verfahren.werten(this, kartennummer);
+            verfahren.werten(this, platznummer);
         } else {
             System.out.println("Deine Route muss eine Mindestlange von drei Karten aufweissen");
         }

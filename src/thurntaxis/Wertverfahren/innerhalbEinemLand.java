@@ -7,8 +7,7 @@ import thurntaxis.spieler.Spieler;
  */
 public class innerhalbEinemLand implements Wertverfahren {
 
-    //ich glaub das integriert man besser direkt in Swing
     @Override
-    public void werten(Spieler spieler, int nummer){
+    public void werten(Spieler spieler, int platznummer){
     }
 }
