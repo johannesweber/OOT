@@ -8,35 +8,29 @@ import java.util.LinkedList;
  */
 public class Auslagestapel {
 
-    private Stadtkarte auslagestapel[];
-    private LinkedList<Stadtkarte> deck;
+    private Stadt auslagestapel[];
+    private LinkedList<Stadt> deck;
 
     public Auslagestapel() {
-        this.deck = new LinkedList<Stadtkarte>();
-        this.auslagestapel = new Stadtkarte[6];
+        this.deck = new LinkedList<Stadt>();
+        this.auslagestapel = new Stadt[6];
         this.deckFuellen();
         this.kartenAustauschen();
-    }
-
-    public void getAuslagestapel() {
-        for (int i = 0; i < auslagestapel.length; i++){
-            System.out.println(auslagestapel[i]);
-        }
     }
 
     private void deckFuellen() {
         int kartenanzahl = 0;
         while (kartenanzahl < 3){
-            for (Stadtkarte it : Stadtkarte.values()){
-                this.deck.add(it);
+            for (StadtEnum it : StadtEnum.values()){
+                this.deck.add(new Stadt(it));
             }
             kartenanzahl++;
         }
         Collections.shuffle(this.deck);
     }
 
-    public Stadtkarte karteZiehen(int nummer) {
-        Stadtkarte gezogen = auslagestapel[nummer];
+    public Stadt karteZiehen(int nummer) {
+        Stadt gezogen = auslagestapel[nummer];
         auslagestapel[nummer] = null;
         return gezogen;
     }

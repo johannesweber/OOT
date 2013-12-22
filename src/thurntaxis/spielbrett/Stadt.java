@@ -9,13 +9,13 @@ import java.util.LinkedList;
  */
 public class Stadt {
 
-    private Stadtkarte name;
+    private StadtEnum name;
     private LinkedList<Haus> haeuser;
-    private LinkedList<Stadtkarte> nachbarn;
+    private LinkedList<StadtEnum> nachbarn;
 
-    protected Stadt(Stadtkarte name) {
+    protected Stadt(StadtEnum name) {
         this.haeuser = new LinkedList<Haus>();
-        this.nachbarn = new LinkedList<Stadtkarte>();
+        this.nachbarn = new LinkedList<StadtEnum>();
         this.name = name;
         this.nachbarnHinzufuegen();
     }
@@ -28,7 +28,7 @@ public class Stadt {
         return this.haeuser;
     }
 
-    public LinkedList<Stadtkarte> getNachbarn() {
+    public LinkedList<StadtEnum> getNachbarn() {
         return this.nachbarn;
     }
 
@@ -40,138 +40,138 @@ public class Stadt {
     public void nachbarnHinzufuegen(){
         switch (this.name){
             case MANNHEIM:
-                this.nachbarn.add(Stadtkarte.CARLSRUHE);
-                this.nachbarn.add(Stadtkarte.STUTTGART);
-                this.nachbarn.add(Stadtkarte.WUERZBURG);
+                this.nachbarn.add(StadtEnum.CARLSRUHE);
+                this.nachbarn.add(StadtEnum.STUTTGART);
+                this.nachbarn.add(StadtEnum.WUERZBURG);
                 break;
             case WUERZBURG:
-                this.nachbarn.add(Stadtkarte.MANNHEIM);
-                this.nachbarn.add(Stadtkarte.STUTTGART);
-                this.nachbarn.add(Stadtkarte.NUERNBERG);
+                this.nachbarn.add(StadtEnum.MANNHEIM);
+                this.nachbarn.add(StadtEnum.STUTTGART);
+                this.nachbarn.add(StadtEnum.NUERNBERG);
                 break;
             case NUERNBERG:
-                this.nachbarn.add(Stadtkarte.WUERZBURG);
-                this.nachbarn.add(Stadtkarte.PILSEN);
-                this.nachbarn.add(Stadtkarte.REGENSBURG);
-                this.nachbarn.add(Stadtkarte.INGOLSTADT);
-                this.nachbarn.add(Stadtkarte.STUTTGART);
+                this.nachbarn.add(StadtEnum.WUERZBURG);
+                this.nachbarn.add(StadtEnum.PILSEN);
+                this.nachbarn.add(StadtEnum.REGENSBURG);
+                this.nachbarn.add(StadtEnum.INGOLSTADT);
+                this.nachbarn.add(StadtEnum.STUTTGART);
                 break;
             case PILSEN:
-                this.nachbarn.add(Stadtkarte.NUERNBERG);
-                this.nachbarn.add(Stadtkarte.LODS);
-                this.nachbarn.add(Stadtkarte.REGENSBURG);
-                this.nachbarn.add(Stadtkarte.BUDWEIS);
+                this.nachbarn.add(StadtEnum.NUERNBERG);
+                this.nachbarn.add(StadtEnum.LODS);
+                this.nachbarn.add(StadtEnum.REGENSBURG);
+                this.nachbarn.add(StadtEnum.BUDWEIS);
                 break;
             case LODS:
-                this.nachbarn.add(Stadtkarte.PILSEN);
+                this.nachbarn.add(StadtEnum.PILSEN);
                 break;
             case STUTTGART:
-                this.nachbarn.add(Stadtkarte.CARLSRUHE);
-                this.nachbarn.add(Stadtkarte.MANNHEIM);
-                this.nachbarn.add(Stadtkarte.SIGMARINGEN);
-                this.nachbarn.add(Stadtkarte.WUERZBURG);
-                this.nachbarn.add(Stadtkarte.NUERNBERG);
-                this.nachbarn.add(Stadtkarte.INGOLSTADT);
-                this.nachbarn.add(Stadtkarte.ULM);
+                this.nachbarn.add(StadtEnum.CARLSRUHE);
+                this.nachbarn.add(StadtEnum.MANNHEIM);
+                this.nachbarn.add(StadtEnum.SIGMARINGEN);
+                this.nachbarn.add(StadtEnum.WUERZBURG);
+                this.nachbarn.add(StadtEnum.NUERNBERG);
+                this.nachbarn.add(StadtEnum.INGOLSTADT);
+                this.nachbarn.add(StadtEnum.ULM);
                 break;
             case INGOLSTADT:
-                this.nachbarn.add(Stadtkarte.STUTTGART);
-                this.nachbarn.add(Stadtkarte.NUERNBERG);
-                this.nachbarn.add(Stadtkarte.REGENSBURG);
-                this.nachbarn.add(Stadtkarte.MUENCHEN);
-                this.nachbarn.add(Stadtkarte.AUGSBURG);
-                this.nachbarn.add(Stadtkarte.ULM);
+                this.nachbarn.add(StadtEnum.STUTTGART);
+                this.nachbarn.add(StadtEnum.NUERNBERG);
+                this.nachbarn.add(StadtEnum.REGENSBURG);
+                this.nachbarn.add(StadtEnum.MUENCHEN);
+                this.nachbarn.add(StadtEnum.AUGSBURG);
+                this.nachbarn.add(StadtEnum.ULM);
                 break;
             case REGENSBURG:
-                this.nachbarn.add(Stadtkarte.INGOLSTADT);
-                this.nachbarn.add(Stadtkarte.NUERNBERG);
-                this.nachbarn.add(Stadtkarte.PILSEN);
-                this.nachbarn.add(Stadtkarte.PASSAU);
-                this.nachbarn.add(Stadtkarte.MUENCHEN);
+                this.nachbarn.add(StadtEnum.INGOLSTADT);
+                this.nachbarn.add(StadtEnum.NUERNBERG);
+                this.nachbarn.add(StadtEnum.PILSEN);
+                this.nachbarn.add(StadtEnum.PASSAU);
+                this.nachbarn.add(StadtEnum.MUENCHEN);
                 break;
             case BUDWEIS:
-                this.nachbarn.add(Stadtkarte.PILSEN);
-                this.nachbarn.add(Stadtkarte.LINZ);
+                this.nachbarn.add(StadtEnum.PILSEN);
+                this.nachbarn.add(StadtEnum.LINZ);
                 break;
             case CARLSRUHE:
-                this.nachbarn.add(Stadtkarte.MANNHEIM);
-                this.nachbarn.add(Stadtkarte.STUTTGART);
-                this.nachbarn.add(Stadtkarte.FREIBURG);
+                this.nachbarn.add(StadtEnum.MANNHEIM);
+                this.nachbarn.add(StadtEnum.STUTTGART);
+                this.nachbarn.add(StadtEnum.FREIBURG);
                 break;
             case FREIBURG:
-                this.nachbarn.add(Stadtkarte.BASEL);
-                this.nachbarn.add(Stadtkarte.CARLSRUHE);
-                this.nachbarn.add(Stadtkarte.SIGMARINGEN);
-                this.nachbarn.add(Stadtkarte.ZUERICH);
+                this.nachbarn.add(StadtEnum.BASEL);
+                this.nachbarn.add(StadtEnum.CARLSRUHE);
+                this.nachbarn.add(StadtEnum.SIGMARINGEN);
+                this.nachbarn.add(StadtEnum.ZUERICH);
                 break;
             case SIGMARINGEN:
-                this.nachbarn.add(Stadtkarte.FREIBURG);
-                this.nachbarn.add(Stadtkarte.STUTTGART);
-                this.nachbarn.add(Stadtkarte.ULM);
-                this.nachbarn.add(Stadtkarte.ZUERICH);
-                this.nachbarn.add(Stadtkarte.KEMPTEN);
+                this.nachbarn.add(StadtEnum.FREIBURG);
+                this.nachbarn.add(StadtEnum.STUTTGART);
+                this.nachbarn.add(StadtEnum.ULM);
+                this.nachbarn.add(StadtEnum.ZUERICH);
+                this.nachbarn.add(StadtEnum.KEMPTEN);
                 break;
             case ULM:
-                this.nachbarn.add(Stadtkarte.SIGMARINGEN);
-                this.nachbarn.add(Stadtkarte.STUTTGART);
-                this.nachbarn.add(Stadtkarte.INGOLSTADT);
-                this.nachbarn.add(Stadtkarte.AUGSBURG);
-                this.nachbarn.add(Stadtkarte.KEMPTEN);
+                this.nachbarn.add(StadtEnum.SIGMARINGEN);
+                this.nachbarn.add(StadtEnum.STUTTGART);
+                this.nachbarn.add(StadtEnum.INGOLSTADT);
+                this.nachbarn.add(StadtEnum.AUGSBURG);
+                this.nachbarn.add(StadtEnum.KEMPTEN);
                 break;
             case AUGSBURG:
-                this.nachbarn.add(Stadtkarte.KEMPTEN);
-                this.nachbarn.add(Stadtkarte.ULM);
-                this.nachbarn.add(Stadtkarte.INGOLSTADT);
-                this.nachbarn.add(Stadtkarte.MUENCHEN);
-                this.nachbarn.add(Stadtkarte.INNSBRUCK);
+                this.nachbarn.add(StadtEnum.KEMPTEN);
+                this.nachbarn.add(StadtEnum.ULM);
+                this.nachbarn.add(StadtEnum.INGOLSTADT);
+                this.nachbarn.add(StadtEnum.MUENCHEN);
+                this.nachbarn.add(StadtEnum.INNSBRUCK);
                 break;
             case MUENCHEN:
-                this.nachbarn.add(Stadtkarte.INNSBRUCK);
-                this.nachbarn.add(Stadtkarte.AUGSBURG);
-                this.nachbarn.add(Stadtkarte.INGOLSTADT);
-                this.nachbarn.add(Stadtkarte.REGENSBURG);
-                this.nachbarn.add(Stadtkarte.PASSAU);
-                this.nachbarn.add(Stadtkarte.SALZBURG);
+                this.nachbarn.add(StadtEnum.INNSBRUCK);
+                this.nachbarn.add(StadtEnum.AUGSBURG);
+                this.nachbarn.add(StadtEnum.INGOLSTADT);
+                this.nachbarn.add(StadtEnum.REGENSBURG);
+                this.nachbarn.add(StadtEnum.PASSAU);
+                this.nachbarn.add(StadtEnum.SALZBURG);
                 break;
             case PASSAU:
-                this.nachbarn.add(Stadtkarte.MUENCHEN);
-                this.nachbarn.add(Stadtkarte.REGENSBURG);
-                this.nachbarn.add(Stadtkarte.LINZ);
-                this.nachbarn.add(Stadtkarte.SALZBURG);
+                this.nachbarn.add(StadtEnum.MUENCHEN);
+                this.nachbarn.add(StadtEnum.REGENSBURG);
+                this.nachbarn.add(StadtEnum.LINZ);
+                this.nachbarn.add(StadtEnum.SALZBURG);
                 break;
             case LINZ:
-                this.nachbarn.add(Stadtkarte.SALZBURG);
-                this.nachbarn.add(Stadtkarte.PASSAU);
-                this.nachbarn.add(Stadtkarte.BUDWEIS);
+                this.nachbarn.add(StadtEnum.SALZBURG);
+                this.nachbarn.add(StadtEnum.PASSAU);
+                this.nachbarn.add(StadtEnum.BUDWEIS);
                 break;
             case SALZBURG:
-                this.nachbarn.add(Stadtkarte.LINZ);
-                this.nachbarn.add(Stadtkarte.PASSAU);
-                this.nachbarn.add(Stadtkarte.MUENCHEN);
-                this.nachbarn.add(Stadtkarte.INNSBRUCK);
+                this.nachbarn.add(StadtEnum.LINZ);
+                this.nachbarn.add(StadtEnum.PASSAU);
+                this.nachbarn.add(StadtEnum.MUENCHEN);
+                this.nachbarn.add(StadtEnum.INNSBRUCK);
                 break;
             case INNSBRUCK:
-                this.nachbarn.add(Stadtkarte.SALZBURG);
-                this.nachbarn.add(Stadtkarte.MUENCHEN);
-                this.nachbarn.add(Stadtkarte.AUGSBURG);
-                this.nachbarn.add(Stadtkarte.KEMPTEN);
+                this.nachbarn.add(StadtEnum.SALZBURG);
+                this.nachbarn.add(StadtEnum.MUENCHEN);
+                this.nachbarn.add(StadtEnum.AUGSBURG);
+                this.nachbarn.add(StadtEnum.KEMPTEN);
                 break;
             case KEMPTEN:
-                this.nachbarn.add(Stadtkarte.INNSBRUCK);
-                this.nachbarn.add(Stadtkarte.ZUERICH);
-                this.nachbarn.add(Stadtkarte.SIGMARINGEN);
-                this.nachbarn.add(Stadtkarte.ULM);
-                this.nachbarn.add(Stadtkarte.AUGSBURG);
+                this.nachbarn.add(StadtEnum.INNSBRUCK);
+                this.nachbarn.add(StadtEnum.ZUERICH);
+                this.nachbarn.add(StadtEnum.SIGMARINGEN);
+                this.nachbarn.add(StadtEnum.ULM);
+                this.nachbarn.add(StadtEnum.AUGSBURG);
                 break;
             case ZUERICH:
-                this.nachbarn.add(Stadtkarte.KEMPTEN);
-                this.nachbarn.add(Stadtkarte.SIGMARINGEN);
-                this.nachbarn.add(Stadtkarte.FREIBURG);
-                this.nachbarn.add(Stadtkarte.BASEL);
+                this.nachbarn.add(StadtEnum.KEMPTEN);
+                this.nachbarn.add(StadtEnum.SIGMARINGEN);
+                this.nachbarn.add(StadtEnum.FREIBURG);
+                this.nachbarn.add(StadtEnum.BASEL);
                 break;
             case BASEL:
-                this.nachbarn.add(Stadtkarte.ZUERICH);
-                this.nachbarn.add(Stadtkarte.FREIBURG);
+                this.nachbarn.add(StadtEnum.ZUERICH);
+                this.nachbarn.add(StadtEnum.FREIBURG);
                 break;
         }
     }

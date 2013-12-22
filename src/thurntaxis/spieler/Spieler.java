@@ -1,6 +1,10 @@
 package thurntaxis.spieler;
 
-import thurntaxis.spielbrett.Stadtkarte;
+import thurntaxis.Amtsmann.Amtsperson;
+import thurntaxis.Wertverfahren.Wertverfahren;
+import thurntaxis.bonus.Bonusmarker;
+import thurntaxis.spielbrett.Spielbrett;
+import thurntaxis.spielbrett.Stadt;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -10,78 +14,135 @@ import java.util.Stack;
  */
 public class Spieler {
 
+    private Spielbrett spielbrett;
     private Spielerfarbe farbe;
-    private int punkte;
     private Stack<Haus> haeuser;
-    private LinkedList<Stadtkarte> route;
-    private int zaehlerKartenNehmen;
-    private int zaehlerKarteLegen;
-    private int zaehlerRoute;
+    private LinkedList<Stadt> route;
+    private LinkedList<Stadt> hand;
+    private LinkedList<Bonusmarker> boni;
+    private int zaehlerKartenZiehen;
+    private int zaehlerKarteAblegen;
+    private int zaehlerAmtsperson;
 
     public Spieler(Spielerfarbe farbe) {
         this.farbe = farbe;
-        this.zaehlerKarteLegen = 1;
-        this.route = new LinkedList<Stadtkarte>();
+        this.hand = new LinkedList<Stadt>();
+        this.route = new LinkedList<Stadt>();
+        this.boni = new LinkedList<Bonusmarker>();
         this.haeuser = new Stack<Haus>();
-        this.zaehlerKartenNehmen = 1;
+        this.zaehlerKartenZiehen = 1;
+        this.zaehlerKarteAblegen = 1;
+        this.zaehlerAmtsperson = 1;
         this.haeuserNehmen();
     }
 
-    public void setZaehlerKartenNehmen(int zaehlerKartenNehmen) {
-        this.zaehlerKartenNehmen = zaehlerKartenNehmen;
+    public void setZaehlerKartenZiehen(int zaehlerKartenZiehen) {
+        this.zaehlerKartenZiehen += zaehlerKartenZiehen;
     }
 
-    public void setZaehlerKarteLegen(int zaehlerKarteLegen) {
-        this.zaehlerKarteLegen = zaehlerKarteLegen;
+    public void setZaehlerKarteAblegen(int zaehlerKarteAblegen) {
+        this.zaehlerKarteAblegen += zaehlerKarteAblegen;
     }
 
-    public void setPunkte(int punkte) {
-        this.punkte = punkte;
+    public Spielbrett getSpielbrett() {
+        return this.spielbrett;
     }
 
-    public Spielerfarbe getFarbe() {
-        return this.farbe;
-    }
-
-    public int getPunkte() {
-        return this.punkte;
-    }
-
-
-    public LinkedList<Stadtkarte> getRoute() {
-        return this.route;
+    public void setSpielbrett(Spielbrett spielbrett) {
+        this.spielbrett = spielbrett;
     }
 
     public int punkteErmitteln() {
-        return 0;
+        int punkteBoni = 0;
+        int punkteHaeuser = 0;
+        for (Bonusmarker it : this.boni) {
+            punkteBoni *= it.getPunkte();
+        }
+        for (Haus it : this.haeuser) {
+            punkteHaeuser += it.getPunkte();
+        }
+        return (punkteBoni - punkteHaeuser);
     }
 
-    public void karteAufnehmen() {
-
+    public void karteZiehen(int platzhalter) {
+        if (this.zaehlerKartenZiehen >= 1) {
+            this.hand.add(this.spielbrett.getAuslagestapel().karteZiehen((platzhalter - 1)));
+        } else {
+            System.out.println("Du darfst keine Karte mehr ziehen");
+        }
     }
 
-    public void karteAblegen(Stadtkarte karte) {
+    public void karteAblegen(Stadt karte) {
+        if (this.zaehlerKarteAblegen >= 1) {
+            if (this.route.isEmpty()) {
+                this.route.add(karte);
+            } else {
+                if (!this.route.contains(karte)) {
+                    if (this.route.getFirst().getNachbarn().contains(karte)) {
+                        this.route.addFirst(karte);
+                    } else {
+                        if (this.route.getLast().getNachbarn().contains(karte)) {
+                            this.route.addLast(karte);
+                        } else {
+                            System.out.println("Karte kann nicht gelegt werden. keine direkte Verbindung.");
+                        }
+                    }
+                } else {
+                    System.out.println("Diese Karte ist schon in deiner Route enthalten!");
+                }
 
+            }
+        } else {
+            System.out.println("Du darfst keine Karte mehr ablegen.");
+        }
     }
 
-    public void amtspersonAusspielen(){
-
+    public void amtspersonAusspielen(Amtsperson person) {
+        if (this.zaehlerAmtsperson == 1) {
+            person.ausspielen(this);
+            this.zaehlerAmtsperson = 0;
+        }else{
+            System.out.println("Du hast in dieser Runde schon eine Amtsperson ausgespielt!");
+        }
     }
 
-    public int routeWerten() {
-        return 0;
+    public void routeWerten(Wertverfahren verfahren, int kartennummer) {
+        if (this.route.size() >= 3) {
+            verfahren.werten(this, kartennummer);
+        } else {
+            System.out.println("Deine Route muss eine Mindestlange von drei Karten aufweissen");
+        }
     }
 
-    public void rundeBeenden() {
-
-    }
-
-    private void haeuserNehmen(){
+    private void haeuserNehmen() {
         int anzahl = 0;
-        while(anzahl < 20){
+        while (anzahl < 20) {
             this.haeuser.add(new Haus(this.farbe));
             anzahl++;
         }
+    }
+
+    //hmmm...ob das so geht...
+    public void rundeStarten(){
+            this.zaehlerAmtsperson = 1;
+            this.zaehlerKarteAblegen = 1;
+            this.zaehlerKartenZiehen = 1;
+    }
+
+    // ich glaub so koennte es gehen
+    public boolean rundeBeenden() {
+        boolean rundeBeenden = false;
+        if (this.zaehlerKartenZiehen == 1){
+            System.out.println("Du musst noch eine Karte ziehen");
+        }else{
+            rundeBeenden = true;
+        }
+        if(this.zaehlerKarteAblegen == 1){
+            System.out.println("Du musst noch eine Karte ablegen");
+        }else{
+            rundeBeenden = true;
+        }
+        return rundeBeenden;
     }
 
 }

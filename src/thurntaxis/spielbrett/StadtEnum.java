@@ -3,7 +3,7 @@ package thurntaxis.spielbrett;
 /**
  * Created by Johannes on 21.12.13.
  */
-public enum Stadtkarte {
+public enum StadtEnum {
 
     MANNHEIM(LandEnum.BADEN), CARLSRUHE(LandEnum.BADEN), FREIBURG(LandEnum.BADEN),
 
@@ -27,7 +27,7 @@ public enum Stadtkarte {
 
     private LandEnum land;
 
-    private Stadtkarte(LandEnum land) {
+    private StadtEnum(LandEnum land) {
         this.land = land;
     }
 
