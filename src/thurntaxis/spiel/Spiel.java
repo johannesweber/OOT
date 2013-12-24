@@ -1,6 +1,5 @@
-package thurntaxis;
+package thurntaxis.spiel;
 
-import thurntaxis.spielbrett.Spielbrett;
 import thurntaxis.spieler.Spieler;
 
 import java.util.LinkedList;

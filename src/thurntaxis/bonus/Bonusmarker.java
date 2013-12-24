@@ -1,14 +1,24 @@
 package thurntaxis.bonus;
 
 /**
- * Created by Johannes on 22.12.13.
+ * Created by Johannes on 21.12.13.
  */
-public abstract class Bonusmarker {
+public class Bonusmarker {
 
-    protected int punkte;
+    private int punkte;
 
-    public int getPunkte(){
-        return this.punkte;
+    public Bonusmarker(int punkte) {
+        this.punkte = punkte;
     }
 
+    public int getPunkte() {
+        return punkte;
+    }
+
+    @Override
+    public String toString() {
+        return "Bonusmarker{" +
+                "punkte=" + punkte +
+                '}';
+    }
 }

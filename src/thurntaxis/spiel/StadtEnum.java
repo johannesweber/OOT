@@ -1,4 +1,4 @@
-package thurntaxis.spielbrett;
+package thurntaxis.spiel;
 
 /**
  * Created by Johannes on 21.12.13.

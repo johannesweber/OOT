@@ -1,4 +1,4 @@
-package thurntaxis.spielbrett;
+package thurntaxis.spiel;
 
 import java.util.Collections;
 import java.util.LinkedList;

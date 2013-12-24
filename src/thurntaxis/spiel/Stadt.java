@@ -1,4 +1,4 @@
-package thurntaxis.spielbrett;
+package thurntaxis.spiel;
 
 import thurntaxis.spieler.Haus;
 
