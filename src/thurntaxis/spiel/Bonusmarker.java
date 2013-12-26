@@ -1,4 +1,4 @@
-package thurntaxis.bonus;
+package thurntaxis.spiel;
 
 /**
  * Created by Johannes on 21.12.13.
@@ -7,7 +7,7 @@ public class Bonusmarker {
 
     private int punkte;
 
-    public Bonusmarker(int punkte) {
+    Bonusmarker(int punkte) {
         this.punkte = punkte;
     }
 

@@ -1,7 +1,5 @@
 package thurntaxis.spiel;
 
-import thurntaxis.bonus.*;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -19,7 +17,7 @@ public class Spielbrett {
     private Map<Integer, Stack> routenlaengeBoni;
     private Map<LandEnum, Stack> vollstaendigBesetzteLaenderBoni;
 
-    protected Spielbrett() {
+    Spielbrett() {
         this.name = "Thurn & Taxis: Das Brettspiel";
         this.laender = new LinkedList<Land>();
         this.auslagestapel = new Auslagestapel();

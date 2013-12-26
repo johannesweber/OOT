@@ -13,7 +13,7 @@ public class Stadt {
     private LinkedList<Haus> haeuser;
     private LinkedList<StadtEnum> nachbarn;
 
-    protected Stadt(StadtEnum name) {
+    Stadt(StadtEnum name) {
         this.haeuser = new LinkedList<Haus>();
         this.nachbarn = new LinkedList<StadtEnum>();
         this.name = name;

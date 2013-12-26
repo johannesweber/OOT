@@ -5,7 +5,7 @@ import thurntaxis.spieler.Spieler;
 /**
  * Created by Johannes on 22.12.13.
  */
-public class Postmeister implements  Amtsperson{
+public class Postmeister implements Amtsperson {
 
     @Override
     public void ausspielen(Spieler spieler) {

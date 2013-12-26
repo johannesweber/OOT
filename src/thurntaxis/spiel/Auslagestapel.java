@@ -11,7 +11,7 @@ public class Auslagestapel {
     private Stadt auslagestapel[];
     private LinkedList<Stadt> deck;
 
-    public Auslagestapel() {
+    Auslagestapel() {
         this.deck = new LinkedList<Stadt>();
         this.auslagestapel = new Stadt[6];
         this.deckFuellen();

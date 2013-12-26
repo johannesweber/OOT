@@ -2,7 +2,7 @@ package thurntaxis.spieler;
 
 import thurntaxis.Amtsmann.Amtsperson;
 import thurntaxis.Wertverfahren.Wertverfahren;
-import thurntaxis.bonus.Bonusmarker;
+import thurntaxis.spiel.Bonusmarker;
 import thurntaxis.spiel.Spielbrett;
 import thurntaxis.spiel.Stadt;
 

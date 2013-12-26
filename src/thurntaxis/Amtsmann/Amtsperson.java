@@ -7,5 +7,5 @@ import thurntaxis.spieler.Spieler;
  */
 public interface Amtsperson {
 
-    public void ausspielen(Spieler spieler);
+    public abstract void ausspielen(Spieler spieler);
 }

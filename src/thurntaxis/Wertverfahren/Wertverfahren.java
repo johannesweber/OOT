@@ -8,5 +8,5 @@ import thurntaxis.spieler.Spieler;
 public interface Wertverfahren {
 
     //ich glaub das integriert man besser direkt in Swing
-    public void werten(Spieler spieler, int platznummer);
+    public abstract void werten(Spieler spieler, int platznummer);
 }

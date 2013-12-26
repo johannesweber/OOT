@@ -9,7 +9,7 @@ public class Haus {
     private Spielerfarbe farbe;
     private int punkte;
 
-    public Haus(Spielerfarbe farbe){
+    Haus(Spielerfarbe farbe){
         this.farbe = farbe;
         this.punkte = 1;
     }

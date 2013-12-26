@@ -3,7 +3,7 @@ package thurntaxis.spiel;
 /**
  * Created by Johannes on 21.12.13.
  */
-public enum StadtEnum {
+enum StadtEnum {
 
     MANNHEIM(LandEnum.BADEN), CARLSRUHE(LandEnum.BADEN), FREIBURG(LandEnum.BADEN),
 
@@ -27,7 +27,7 @@ public enum StadtEnum {
 
     private LandEnum land;
 
-    private StadtEnum(LandEnum land) {
+    StadtEnum(LandEnum land) {
         this.land = land;
     }
 

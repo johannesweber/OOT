@@ -5,19 +5,19 @@ import java.util.LinkedList;
 /**
  * Created by Johannes on 21.12.13.
  */
-public class Land {
+class Land {
 
     private String name;
     private LinkedList<Stadt> staedte;
 
-    protected Land(LandEnum name) {
+    Land(LandEnum name) {
         this.name = name.toString();
         this.staedte = new LinkedList<Stadt>();
         this.staedteHinzufuegen(name);
     }
 
-    private void staedteHinzufuegen(LandEnum name){
-        switch(name){
+    private void staedteHinzufuegen(LandEnum name) {
+        switch (name) {
             case BADEN:
                 this.staedte.add(new Stadt(StadtEnum.MANNHEIM));
                 this.staedte.add(new Stadt(StadtEnum.CARLSRUHE));

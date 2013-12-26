@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>thurntaxis.spiel</OriginalElement>
+  <nodes>
+    <node x="" y="">thurntaxis.spiel.Stadt</node>
+    <node x="-9.620290423861888" y="856.8353610675039">thurntaxis.spiel.Auslagestapel</node>
+    <node x="-88.50667189952901" y="-100.05102040816325">thurntaxis.spiel.StadtEnum</node>
+    <node x="621.8863814756672" y="868.3797095761382">thurntaxis.spiel.Bonusmarker</node>
+    <node x="384.0382653061225" y="860.6834772370488">thurntaxis.spiel.Land</node>
+    <node x="832.3930533751961" y="867.5959576138147">thurntaxis.spiel.Spiel</node>
+    <node x="532.3414442700155" y="377.1153846153846">thurntaxis.spiel.Spielbrett</node>
+    <node x="567.9501569858713" y="42.17503924646775">thurntaxis.spiel.LandEnum</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="thurntaxis.spiel.Spiel" target="thurntaxis.spiel.Spielbrett">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="thurntaxis.spiel.StadtEnum" target="thurntaxis.spiel.LandEnum">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="thurntaxis.spiel.Spielbrett" target="thurntaxis.spiel.Auslagestapel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="thurntaxis.spiel.Land" target="thurntaxis.spiel.Stadt">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="thurntaxis.spiel.Spielbrett" target="thurntaxis.spiel.Land">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="thurntaxis.spiel.Stadt" target="thurntaxis.spiel.StadtEnum">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="thurntaxis.spiel.Spielbrett" target="thurntaxis.spiel.Bonusmarker">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="thurntaxis.spiel.Spielbrett" target="thurntaxis.spiel.LandEnum">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="thurntaxis.spiel.Auslagestapel" target="thurntaxis.spiel.Stadt">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5197348291687914" x="540.4841051805338" y="506.1922095761381" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
