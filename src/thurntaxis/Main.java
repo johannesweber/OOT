@@ -19,5 +19,6 @@ public class Main {
         Spiel thurn = new Spiel(spielers);
         eins.amtspersonAusspielen(new Postillion());
 
+
     }
 }

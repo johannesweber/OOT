@@ -6,19 +6,18 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * Created by Johannes on 21.12.13.
+ * Eine Klasse um ein Spielbrett zu erstellen. Da spielbrett besteht aus laendern, einem auslagestapel
+ * und aus den drei verschiedenen bonusmarkern.
  */
 public class Spielbrett {
 
     private LinkedList<Land> laender;
-    private String name;
     private Auslagestapel auslagestapel;
     private Stack<Bonusmarker> alleLaenderBesetztBoni;
     private Map<Integer, Stack> routenlaengeBoni;
     private Map<LandEnum, Stack> vollstaendigBesetzteLaenderBoni;
 
     Spielbrett() {
-        this.name = "Thurn & Taxis: Das Brettspiel";
         this.laender = new LinkedList<Land>();
         this.auslagestapel = new Auslagestapel();
         this.alleLaenderBesetztBoni = new Stack<Bonusmarker>();
@@ -36,12 +35,18 @@ public class Spielbrett {
         return this.auslagestapel;
     }
 
+    /**
+     * Mit dieser privaten methoden werden die laender zu dem spielbrett hinzugefuegt.
+     */
     private void laenderFuellen() {
         for (LandEnum it : LandEnum.values()) {
             this.laender.add(new Land(it));
         }
     }
 
+    /**
+     * in dieser methode werden, mit hilfe anderer privater methode, die bonusmarker gefuellt.
+     */
     private void boniFuellen() {
         this.alleLaenderBesetztBoniFuellen();
         this.vollstaendigBesetzteLaenderBonusFuellen();

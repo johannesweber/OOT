@@ -3,10 +3,10 @@ package thurntaxis.Wertverfahren;
 import thurntaxis.spieler.Spieler;
 
 /**
- * Created by Johannes on 22.12.13.
+ * Interface fuer die zwei werteverfahren einer route.
  */
 public interface Wertverfahren {
 
     //ich glaub das integriert man besser direkt in Swing
-    public abstract void werten(Spieler spieler, int platznummer);
+    public abstract void werten(Spieler spieler);
 }

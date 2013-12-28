@@ -3,7 +3,8 @@ package thurntaxis.Amtsmann;
 import thurntaxis.spieler.Spieler;
 
 /**
- * Created by Johannes on 22.12.13.
+ * Klasse fuer den Postillion. Wenn der Postillion ausgespielt wird erhoeht sich der zaehlerKarteAblegen
+ * des Spielers um 1.
  */
 public class Postillion implements Amtsperson{
 

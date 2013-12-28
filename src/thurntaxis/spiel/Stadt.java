@@ -5,7 +5,8 @@ import thurntaxis.spieler.Haus;
 import java.util.LinkedList;
 
 /**
- * Created by Johannes on 21.12.13.
+ * Klasse zum erstellen eines stadt objekts. eine stadt besitzt einen name, sie kann beliebig viele haeuser
+ * besitzen und jede stadt hat staedte als nachbarn.
  */
 public class Stadt {
 
@@ -32,11 +33,20 @@ public class Stadt {
         return this.nachbarn;
     }
 
+    /**
+     * diese methode fuegt der stadt ein neues haus hinzu
+     *
+     * @param haus das haus das gebaut werden soll.
+     */
     public void hausBauen(Haus haus){
         this.haeuser.add(haus);
 
     }
 
+    /**
+     * je nach name der stadt besitzt die stadte andere staedte als nachbarn. diese werden in dieser methode
+     * definiert.
+     */
     public void nachbarnHinzufuegen(){
         switch (this.name){
             case MANNHEIM:

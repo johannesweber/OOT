@@ -10,7 +10,7 @@ class eineStadtProLand implements Wertverfahren {
 
     //ich glaub das integriert man besser direkt in Swing
     @Override
-    public void werten(Spieler spieler, int platznummer) {
+    public void werten(Spieler spieler) {
 
     }
 }

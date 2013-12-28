@@ -1,7 +1,7 @@
 package thurntaxis.spiel;
 
 /**
- * Created by Johannes on 21.12.13.
+ * Klasse um ein Bonusmarker zu erstellen. Ein Bonusmarker besitzt nur eine Punktzahl.
  */
 public class Bonusmarker {
 
@@ -11,6 +11,10 @@ public class Bonusmarker {
         this.punkte = punkte;
     }
 
+    /**
+     *
+     * @return die anzahl der punkte
+     */
     public int getPunkte() {
         return punkte;
     }

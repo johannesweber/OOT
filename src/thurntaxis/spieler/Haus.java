@@ -2,7 +2,8 @@ package thurntaxis.spieler;
 
 
 /**
- * Created by Johannes on 21.12.13.
+ * Klasse zum erstellen eines hauses. jede haus besitzt eine Spielerfarbe und jedes haus gibt oder nimmt ein
+ * punkt.
  */
 public class Haus {
 

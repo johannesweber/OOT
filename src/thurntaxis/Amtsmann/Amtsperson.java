@@ -3,7 +3,8 @@ package thurntaxis.Amtsmann;
 import thurntaxis.spieler.Spieler;
 
 /**
- * Created by Johannes on 22.12.13.
+ * Interface fuer die Amtspersonen. Die Amtspersonen haben alle die Methode ausspielen,
+ * nur dass die Implementierung jeweils anderst ist.
  */
 public interface Amtsperson {
 

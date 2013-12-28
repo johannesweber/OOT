@@ -8,6 +8,6 @@ import thurntaxis.spieler.Spieler;
 class innerhalbEinemLand implements Wertverfahren {
 
     @Override
-    public void werten(Spieler spieler, int platznummer){
+    public void werten(Spieler spieler){
     }
 }

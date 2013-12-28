@@ -1,7 +1,9 @@
 package thurntaxis.spiel;
 
 /**
- * Created by Johannes on 21.12.13.
+ * Eine Klasse fuer eine Stadt bzw. eine Stadtkarte. jede Stadt in thurn und taxis gehoert zu einem bestimmten
+ * land. in dieser klasse werden nicht nur die staedte festgelegt sondern zusaetzlich werden auch noch
+ * den saedten laender zugeordnet.
  */
 enum StadtEnum {
 

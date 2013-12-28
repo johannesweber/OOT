@@ -3,7 +3,8 @@ package thurntaxis.spiel;
 import java.util.LinkedList;
 
 /**
- * Created by Johannes on 21.12.13.
+ * Eine Klasse fuer ein Land. Ein Land besitzt einen Namen und eine bestimmte Anzahl an Staedte.
+ * Die Klasse und der Konstrukor haben default-Sichtbarkeit.
  */
 class Land {
 
@@ -16,6 +17,12 @@ class Land {
         this.staedteHinzufuegen(name);
     }
 
+    /**
+     * Diese Methode fuegt jedem Land, seine Staedte hinzu. Je nach dem welches Land gerade uebergeben wird
+     * sind es andere Staedte. Diese Methode wird sofort ausgefuehrt wenn ein Land Objekt erstellt wird.
+     *
+     * @param name der name des Landes welchem die staedte hinzugefuegt werden.
+     */
     private void staedteHinzufuegen(LandEnum name) {
         switch (name) {
             case BADEN:

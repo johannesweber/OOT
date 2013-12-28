@@ -1,7 +1,7 @@
 package thurntaxis.spieler;
 
 /**
- * Created by Johannes on 21.12.13.
+ * Enum fuer die vier farben der Spieler.
  */
 public enum Spielerfarbe {
 

@@ -3,7 +3,7 @@ package thurntaxis.Amtsmann;
 import thurntaxis.spieler.Spieler;
 
 /**
- * Created by Johannes on 22.12.13.
+ * Klasse fuer einen Amtmann, wenn er ausgespielt wird, wird der Auslagestapel einmal komplett ausgetauscht.
  */
 public class Amtmann implements Amtsperson {
 

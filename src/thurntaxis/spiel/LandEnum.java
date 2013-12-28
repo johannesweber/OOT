@@ -1,7 +1,7 @@
 package thurntaxis.spiel;
 
 /**
- * Created by Johannes on 21.12.13.
+ * Eine Enumeratons Klasse fuer die 9 Laender.
  */
 enum LandEnum {
 
