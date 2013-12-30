@@ -14,7 +14,7 @@ import java.util.Stack;
  * er besitzt zwanzig Hauser. Er kann eine Route auslegen und hat eine Hand in welcher er seine Karten haelt.
  * zusaetzlich kann er noch eine beliebige Anzahl an Boni besitzen. Um zu kontrollieren ob der Spieler seine
  * Runde auch wirklich abschliessen darf gibt es noch zaehler fuer das Ablegen und Ziehen von Karten und fuer
- * das Ablegen von Amtspersonen. Mit dem Boolean ichBinDran signalisiert der Spieler wann er seine Runde beendet
+ * das Ablegen von Amtspersonen. Mit dem Boolean anDerReihe signalisiert der Spieler wann er seine Runde beendet
  * bzw er bekommt signalisiert wann er an der Reihe ist.
  */
 public class Spieler {
@@ -28,7 +28,7 @@ public class Spieler {
     private int zaehlerKartenZiehen;
     private int zaehlerKarteAblegen;
     private int zaehlerAmtsperson;
-    private boolean ichBinDran;
+    private boolean anDerReihe;
 
     public Spieler(Spielerfarbe farbe) {
         this.farbe = farbe;
@@ -39,12 +39,12 @@ public class Spieler {
         this.zaehlerKartenZiehen = 0;
         this.zaehlerKarteAblegen = 0;
         this.zaehlerAmtsperson = 0;
-        this.ichBinDran = false;
+        this.anDerReihe = false;
         this.haeuserNehmen();
     }
 
-    public void setIchBinDran(boolean ichBinDran) {
-        this.ichBinDran = ichBinDran;
+    public void setAnDerReihe(boolean anDerReihe) {
+        this.anDerReihe = anDerReihe;
     }
 
     public void setZaehlerKartenZiehen(int zaehlerKartenZiehen) {
@@ -55,8 +55,8 @@ public class Spieler {
         this.zaehlerKarteAblegen += zaehlerKarteAblegen;
     }
 
-    public boolean isIchBinDran() {
-        return ichBinDran;
+    public boolean isAnDerReihe() {
+        return anDerReihe;
     }
 
     public Spielbrett getSpielbrett() {
@@ -176,7 +176,7 @@ public class Spieler {
 
     //hmmm...ob das so geht...
     public void rundeStarten() {
-        this.ichBinDran = true;
+        this.anDerReihe = true;
         this.zaehlerAmtsperson = 1;
         this.zaehlerKarteAblegen = 1;
         this.zaehlerKartenZiehen = 1;
@@ -186,14 +186,11 @@ public class Spieler {
     public void rundeBeenden() {
         if (this.zaehlerKartenZiehen == 1) {
             System.out.println("Du musst noch eine Karte ziehen");
-        } else {
-            this.ichBinDran = false;
         }
         if (this.zaehlerKarteAblegen == 1) {
             System.out.println("Du musst noch eine Karte ablegen");
-        } else {
-            this.ichBinDran = false;
         }
+        this.anDerReihe = false;
     }
 
 }

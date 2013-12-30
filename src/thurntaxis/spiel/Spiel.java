@@ -66,7 +66,7 @@ public class Spiel {
     public void naechsteRunde() {
         ListIterator<Spieler> it = spielerAnzahl.listIterator();
         Spieler naechster = it.next();
-        if (!naechster.isIchBinDran()) {
+        if (!naechster.isAnDerReihe()) {
             naechster = it.next();
             naechster.rundeStarten();  //naechste Runde starten aber wie
         }
