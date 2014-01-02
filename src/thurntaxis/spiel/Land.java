@@ -26,44 +26,44 @@ class Land {
     private void staedteHinzufuegen(LandEnum name) {
         switch (name) {
             case BADEN:
-                this.staedte.add(new Stadt(StadtEnum.MANNHEIM));
-                this.staedte.add(new Stadt(StadtEnum.CARLSRUHE));
-                this.staedte.add(new Stadt(StadtEnum.FREIBURG));
+                this.staedte.add(new Stadt(Spielkarte.MANNHEIM));
+                this.staedte.add(new Stadt(Spielkarte.CARLSRUHE));
+                this.staedte.add(new Stadt(Spielkarte.FREIBURG));
                 break;
             case HOHENZOLLERN:
-                this.staedte.add(new Stadt(StadtEnum.SIGMARINGEN));
+                this.staedte.add(new Stadt(Spielkarte.SIGMARINGEN));
                 break;
             case WUERTTEMBERG:
-                this.staedte.add(new Stadt(StadtEnum.STUTTGART));
-                this.staedte.add(new Stadt(StadtEnum.ULM));
+                this.staedte.add(new Stadt(Spielkarte.STUTTGART));
+                this.staedte.add(new Stadt(Spielkarte.ULM));
                 break;
             case BAIERN:
-                this.staedte.add(new Stadt(StadtEnum.WUERZBURG));
-                this.staedte.add(new Stadt(StadtEnum.NUERNBERG));
-                this.staedte.add(new Stadt(StadtEnum.REGENSBURG));
-                this.staedte.add(new Stadt(StadtEnum.INGOLSTADT));
-                this.staedte.add(new Stadt(StadtEnum.AUGSBURG));
-                this.staedte.add(new Stadt(StadtEnum.KEMPTEN));
-                this.staedte.add(new Stadt(StadtEnum.MUENCHEN));
-                this.staedte.add(new Stadt(StadtEnum.PASSAU));
+                this.staedte.add(new Stadt(Spielkarte.WUERZBURG));
+                this.staedte.add(new Stadt(Spielkarte.NUERNBERG));
+                this.staedte.add(new Stadt(Spielkarte.REGENSBURG));
+                this.staedte.add(new Stadt(Spielkarte.INGOLSTADT));
+                this.staedte.add(new Stadt(Spielkarte.AUGSBURG));
+                this.staedte.add(new Stadt(Spielkarte.KEMPTEN));
+                this.staedte.add(new Stadt(Spielkarte.MUENCHEN));
+                this.staedte.add(new Stadt(Spielkarte.PASSAU));
                 break;
             case POLEN:
-                this.staedte.add(new Stadt(StadtEnum.LODS));
+                this.staedte.add(new Stadt(Spielkarte.LODS));
                 break;
             case BOEHMEN:
-                this.staedte.add(new Stadt(StadtEnum.PILSEN));
-                this.staedte.add(new Stadt(StadtEnum.BUDWEIS));
+                this.staedte.add(new Stadt(Spielkarte.PILSEN));
+                this.staedte.add(new Stadt(Spielkarte.BUDWEIS));
                 break;
             case SALZBURG:
-                this.staedte.add(new Stadt(StadtEnum.SALZBURG));
-                this.staedte.add(new Stadt(StadtEnum.LINZ));
+                this.staedte.add(new Stadt(Spielkarte.SALZBURG));
+                this.staedte.add(new Stadt(Spielkarte.LINZ));
                 break;
             case TYROL:
-                this.staedte.add(new Stadt(StadtEnum.INNSBRUCK));
+                this.staedte.add(new Stadt(Spielkarte.INNSBRUCK));
                 break;
             case SCHWEIZ:
-                this.staedte.add(new Stadt(StadtEnum.BASEL));
-                this.staedte.add(new Stadt(StadtEnum.ZUERICH));
+                this.staedte.add(new Stadt(Spielkarte.BASEL));
+                this.staedte.add(new Stadt(Spielkarte.ZUERICH));
                 break;
         }
     }

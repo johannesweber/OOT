@@ -89,8 +89,6 @@ public class Spielbrett {
         punkte3.addAll(punkte2);
         punkte3.add(new Bonusmarker(5));
         this.vollstaendigBesetzteLaenderBoni.put(LandEnum.BAIERN, punkte3);
-
-
     }
 
     private void alleLaenderBesetztBoniFuellen() {

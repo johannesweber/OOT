@@ -4,6 +4,7 @@ import thurntaxis.Amtsmann.Amtsperson;
 import thurntaxis.Wertverfahren.Wertverfahren;
 import thurntaxis.spiel.Bonusmarker;
 import thurntaxis.spiel.Spielbrett;
+import thurntaxis.spiel.Spielkarte;
 import thurntaxis.spiel.Stadt;
 
 import java.util.LinkedList;
@@ -24,47 +25,55 @@ public class Spieler {
     private Stack<Haus> haeuser;
     private LinkedList<Stadt> route;
     private LinkedList<Stadt> hand;
+    private LinkedList<Stadt> gelegteRoute;
     private LinkedList<Bonusmarker> boni;
     private int zaehlerKartenZiehen;
     private int zaehlerKarteAblegen;
     private int zaehlerAmtsperson;
-    private boolean anDerReihe;
+
+    public LinkedList<Stadt> getRoute() {
+        return this.route;
+    }
 
     public Spieler(Spielerfarbe farbe) {
         this.farbe = farbe;
         this.hand = new LinkedList<Stadt>();
         this.route = new LinkedList<Stadt>();
         this.boni = new LinkedList<Bonusmarker>();
+        this.gelegteRoute = new LinkedList<Stadt>();
         this.haeuser = new Stack<Haus>();
         this.zaehlerKartenZiehen = 0;
         this.zaehlerKarteAblegen = 0;
         this.zaehlerAmtsperson = 0;
-        this.anDerReihe = false;
         this.haeuserNehmen();
     }
 
-    public void setAnDerReihe(boolean anDerReihe) {
-        this.anDerReihe = anDerReihe;
+    public void setZaehlerKartenZiehen() {
+        this.zaehlerKartenZiehen++;
     }
 
-    public void setZaehlerKartenZiehen(int zaehlerKartenZiehen) {
-        this.zaehlerKartenZiehen += zaehlerKartenZiehen;
-    }
-
-    public void setZaehlerKarteAblegen(int zaehlerKarteAblegen) {
-        this.zaehlerKarteAblegen += zaehlerKarteAblegen;
-    }
-
-    public boolean isAnDerReihe() {
-        return anDerReihe;
-    }
-
-    public Spielbrett getSpielbrett() {
-        return this.spielbrett;
+    public void setZaehlerKarteAblegen() {
+        this.zaehlerKarteAblegen++;
     }
 
     public void setSpielbrett(Spielbrett spielbrett) {
         this.spielbrett = spielbrett;
+    }
+
+    public Stack<Haus> getHaeuser() {
+        return this.haeuser;
+    }
+
+    public Spielerfarbe getFarbe() {
+        return this.farbe;
+    }
+
+    public LinkedList<Stadt> getGelegteRoute() {
+        return this.gelegteRoute;
+    }
+
+    public Spielbrett getSpielbrett() {
+        return this.spielbrett;
     }
 
     /**
@@ -152,14 +161,12 @@ public class Spieler {
     /**
      * In dieser Methode wird, mit Hilfe einer externen Klasse, die Route gewertet, aber nur wenn der Spieler
      * schon eine Route mit der Laenge 3 oder groesser besitzt.
-     *
-     * @param verfahren mit welchem werteverfahren will der spieler seine route wreten lassen.
      */
     public void routeWerten(Wertverfahren verfahren) {
-        if (this.route.size() >= 3) {
-            verfahren.werten(this);
-        } else {
+        if (this.route.size() < 3) {
             System.out.println("Deine Route muss eine Mindestlange von drei Karten aufweissen");
+        } else {
+            verfahren.werten(this, this.route);
         }
     }
 
@@ -174,15 +181,12 @@ public class Spieler {
         }
     }
 
-    //hmmm...ob das so geht...
     public void rundeStarten() {
-        this.anDerReihe = true;
         this.zaehlerAmtsperson = 1;
         this.zaehlerKarteAblegen = 1;
         this.zaehlerKartenZiehen = 1;
     }
 
-    // ich glaub so koennte es gehen
     public void rundeBeenden() {
         if (this.zaehlerKartenZiehen == 1) {
             System.out.println("Du musst noch eine Karte ziehen");
@@ -190,7 +194,6 @@ public class Spieler {
         if (this.zaehlerKarteAblegen == 1) {
             System.out.println("Du musst noch eine Karte ablegen");
         }
-        this.anDerReihe = false;
     }
 
 }

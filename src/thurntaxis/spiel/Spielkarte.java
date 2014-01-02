@@ -5,7 +5,7 @@ package thurntaxis.spiel;
  * land. in dieser klasse werden nicht nur die staedte festgelegt sondern zusaetzlich werden auch noch
  * den saedten laender zugeordnet.
  */
-enum StadtEnum {
+public enum Spielkarte {
 
     MANNHEIM(LandEnum.BADEN), CARLSRUHE(LandEnum.BADEN), FREIBURG(LandEnum.BADEN),
 
@@ -29,7 +29,7 @@ enum StadtEnum {
 
     private LandEnum land;
 
-    StadtEnum(LandEnum land) {
+    Spielkarte(LandEnum land) {
         this.land = land;
     }
 

@@ -22,7 +22,7 @@ public class Auslagestapel {
     private void deckFuellen() {
         int anzahlGleicherKarten = 0;
         while (anzahlGleicherKarten < 3) {
-            for (StadtEnum it : StadtEnum.values()) {
+            for (Spielkarte it : Spielkarte.values()) {
                 this.deck.add(new Stadt(it));
             }
             anzahlGleicherKarten++;
