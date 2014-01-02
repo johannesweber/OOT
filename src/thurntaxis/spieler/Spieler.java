@@ -1,10 +1,9 @@
 package thurntaxis.spieler;
 
-import thurntaxis.Amtsmann.Amtsperson;
+import thurntaxis.Amtsperson.Amtsperson;
 import thurntaxis.Wertverfahren.Wertverfahren;
 import thurntaxis.spiel.Bonusmarker;
 import thurntaxis.spiel.Spielbrett;
-import thurntaxis.spiel.Spielkarte;
 import thurntaxis.spiel.Stadt;
 
 import java.util.LinkedList;

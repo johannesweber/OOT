@@ -8,11 +8,11 @@ import java.util.LinkedList;
  */
 class Land {
 
-    private String name;
+    private LandEnum name;
     private LinkedList<Stadt> staedte;
 
     Land(LandEnum name) {
-        this.name = name.toString();
+        this.name = name;
         this.staedte = new LinkedList<Stadt>();
         this.staedteHinzufuegen(name);
     }
@@ -71,7 +71,7 @@ class Land {
     @Override
     public String toString() {
         return "Land{" +
-                "name='" + name + '\'' +
+                "name='" + name.toString() + '\'' +
                 ", staedte=" + staedte +
                 '}';
     }

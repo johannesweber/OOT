@@ -1,4 +1,4 @@
-package thurntaxis.Amtsmann;
+package thurntaxis.Amtsperson;
 
 import thurntaxis.spieler.Spieler;
 
