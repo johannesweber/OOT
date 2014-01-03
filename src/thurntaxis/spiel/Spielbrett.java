@@ -39,8 +39,8 @@ public class Spielbrett {
      * Mit dieser privaten methoden werden die laender zu dem spielbrett hinzugefuegt.
      */
     private void laenderFuellen() {
-        for (LandEnum it : LandEnum.values()) {
-            this.laender.add(new Land(it));
+            for (LandEnum it : LandEnum.values()) {
+                this.laender.add(new Land(it));
         }
     }
 

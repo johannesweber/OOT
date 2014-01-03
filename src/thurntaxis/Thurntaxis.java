@@ -1,5 +1,6 @@
 package thurntaxis;
 
+import thurntaxis.spiel.Auslagestapel;
 import thurntaxis.spiel.Spiel;
 import thurntaxis.spieler.Spieler;
 import thurntaxis.spieler.Spielerfarbe;
@@ -19,10 +20,10 @@ public class Thurntaxis {
 
         Spiel spiel = new Spiel(spieler);
 
-        System.out.println(spiel.getSpielbrett());
-
+        spiel.getSpielbrett();
         spiel.spielStarten();
 
-
+        Auslagestapel stapel = new Auslagestapel();
+        System.out.println("Deck" + stapel.deck);
     }
 }

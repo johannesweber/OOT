@@ -12,6 +12,7 @@ public class thurntaxisGUI {
     private JButton spielStarten;
     private JPanel startbildschirm;
     private JList list1;
+    private JButton button1;
 
     public thurntaxisGUI() {
         spielStarten.addActionListener(new ActionListener() {
