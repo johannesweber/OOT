@@ -3,7 +3,6 @@ package thurntaxis.spiel;
 import thurntaxis.spieler.Spieler;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -17,9 +16,9 @@ public class Spiel {
     private Spieler[] spielerAnzahl;
     private Spielbrett spielbrett;
 
-    public Spiel(Spieler[] spieler) {
+    public Spiel(Spieler[] spieleranzahl) {
         this.name = "Thurn & Taxis: Das Brettspiel";
-        this.spielerAnzahl = spieler;
+        this.spielerAnzahl = spieleranzahl;
         this.spielbrett = new Spielbrett();
         this.spielerZuordnen();
     }
@@ -55,7 +54,9 @@ public class Spiel {
      */
     private void spielerZuordnen() {
         for (Spieler it : spielerAnzahl) {
-            it.setSpielbrett(this.spielbrett);
+            if(it != null){
+                it.setSpielbrett(this.spielbrett);
+            }
         }
     }
 

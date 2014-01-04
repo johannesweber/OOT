@@ -195,4 +195,17 @@ public class Spieler {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Spieler{" +
+                ", farbe=" + farbe +
+                ", route=" + route +
+                ", hand=" + hand +
+                ", gelegteRoute=" + gelegteRoute +
+                ", boni=" + boni +
+                ", zaehlerKartenZiehen=" + zaehlerKartenZiehen +
+                ", zaehlerKarteAblegen=" + zaehlerKarteAblegen +
+                ", zaehlerAmtsperson=" + zaehlerAmtsperson +
+                '}';
+    }
 }
