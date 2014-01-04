@@ -188,9 +188,6 @@ public class Stadt {
 
     @Override
     public String toString() {
-        return "Stadt{" +
-                "name=" + name +
-                ", nachbarn=" + nachbarn +
-                '}';
+        return this.name.toString();
     }
 }

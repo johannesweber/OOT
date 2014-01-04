@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * Eine Klasse fuer ein Land. Ein Land besitzt einen Namen und eine bestimmte Anzahl an Staedte.
  * Die Klasse und der Konstrukor haben default-Sichtbarkeit.
  */
-class Land {
+public class Land {
 
     private LandEnum name;
     private LinkedList<Stadt> staedte;
@@ -15,6 +15,14 @@ class Land {
         this.name = name;
         this.staedte = new LinkedList<Stadt>();
         this.staedteHinzufuegen(name);
+    }
+
+    public String getName() {
+        return name.toString();
+    }
+
+    public LinkedList<Stadt> getStaedte() {
+        return staedte;
     }
 
     /**
@@ -70,9 +78,6 @@ class Land {
 
     @Override
     public String toString() {
-        return "Land{" +
-                "name='" + name.toString() + '\'' +
-                ", staedte=" + staedte +
-                '}';
+        return name.toString();
     }
 }

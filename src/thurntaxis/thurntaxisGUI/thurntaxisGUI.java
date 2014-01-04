@@ -1,6 +1,5 @@
 package thurntaxis.thurntaxisGUI;
 
-import thurntaxis.spiel.Spiel;
 import thurntaxis.spieler.Spieler;
 
 import javax.swing.*;
@@ -27,18 +26,7 @@ public class ThurnTaxisGUI extends JFrame{
         startbildschirm.setLocationRelativeTo(null);
 
         start.setEnabled(false);
-        start.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                if (spieler[0] != null) {
-                    startbildschirm.setVisible(false);
-                    Spiel thurntaxis = new Spiel(spieler);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Bevor das Spiel beginnen kann," +
-                            "müssen zuerst Spieler ausgewählt werden");
-                }
-            }
-        });
+        start.addActionListener(new Spielbrett());
         spielerauswahl.addActionListener(new Spielerauswahl(startbildschirm));
         beenden.addActionListener(new ActionListener() {
             @Override

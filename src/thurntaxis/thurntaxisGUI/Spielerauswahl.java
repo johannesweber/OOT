@@ -13,8 +13,9 @@ import java.awt.event.ActionListener;
  */
 public class Spielerauswahl implements ActionListener {
 
-    int index = 0;
-    public int ausgewaehlt = 0;
+
+    private int index = 0;
+    private int ausgewaehlt = 0;
     private JFrame parent;
 
     public Spielerauswahl(JFrame parent) {
