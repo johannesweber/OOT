@@ -36,9 +36,4 @@ public enum Spielkarte {
     public LandEnum getLand() {
         return land;
     }
-
-    @Override
-    public String toString() {
-        return this.name();
-    }
 }

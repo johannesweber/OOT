@@ -38,7 +38,7 @@ public class Stadt {
      *
      * @param haus das haus das gebaut werden soll.
      */
-    public void hausBauen(Haus haus){
+    public void hausBauen(Haus haus) {
         this.haeuser.add(haus);
 
     }
@@ -47,8 +47,8 @@ public class Stadt {
      * je nach name der stadt besitzt die stadte andere staedte als nachbarn. diese werden in dieser methode
      * definiert.
      */
-    public void nachbarnHinzufuegen(){
-        switch (this.name){
+    public void nachbarnHinzufuegen() {
+        switch (this.name) {
             case MANNHEIM:
                 this.nachbarn.add(Spielkarte.CARLSRUHE);
                 this.nachbarn.add(Spielkarte.STUTTGART);
@@ -188,6 +188,6 @@ public class Stadt {
 
     @Override
     public String toString() {
-        return this.name.toString();
+        return this.name.toString() + " (" + this.getLand().toString() + ")";
     }
 }
