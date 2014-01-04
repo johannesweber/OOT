@@ -9,9 +9,9 @@ import java.util.LinkedList;
  */
 public class Auslagestapel {
 
-    private Stadt auslagestapel[];
-    public LinkedList<Stadt> deck;
-    public LinkedList<Stadt> ersatzdeck;
+    private Stadt[] auslagestapel;
+    private LinkedList<Stadt> deck;
+    private LinkedList<Stadt> ersatzdeck;
 
     public Auslagestapel() {
         this.deck = new LinkedList<Stadt>();
@@ -19,6 +19,10 @@ public class Auslagestapel {
         this.auslagestapel = new Stadt[6];
         this.deckFuellen();
         this.kartenAustauschen();
+    }
+
+    public Stadt[] getAuslagestapel() {
+        return this.auslagestapel;
     }
 
     private void deckFuellen() {

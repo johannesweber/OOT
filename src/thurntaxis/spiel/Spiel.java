@@ -8,16 +8,14 @@ import java.util.ListIterator;
 
 /**
  * Klasse um ein Spiel Thurn und Taxis zu starten. Jedes Spiel hat einen Namen, eine vorger festgelegte Spieleranzahl
- * und natuerlich ein Spielbrett.
+ * und natuerlich ein HauptschirmGUI.
  */
 public class Spiel {
 
-    private String name;
     private Spieler[] spielerAnzahl;
     private Spielbrett spielbrett;
 
     public Spiel(Spieler[] spieleranzahl) {
-        this.name = "Thurn & Taxis: Das Brettspiel";
         this.spielerAnzahl = spieleranzahl;
         this.spielbrett = new Spielbrett();
         this.spielerZuordnen();
@@ -49,8 +47,8 @@ public class Spiel {
     }
 
     /**
-     * In dieser Methode wird jeder Spieler dem aktuellen Spielbrett zugeordnet.
-     * Ein Spieler sollte wissen an welchem Spielbrett er spielt.
+     * In dieser Methode wird jeder Spieler dem aktuellen HauptschirmGUI zugeordnet.
+     * Ein Spieler sollte wissen an welchem HauptschirmGUI er spielt.
      */
     private void spielerZuordnen() {
         for (Spieler it : spielerAnzahl) {

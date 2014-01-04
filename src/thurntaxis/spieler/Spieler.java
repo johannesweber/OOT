@@ -75,6 +75,10 @@ public class Spieler {
         return this.spielbrett;
     }
 
+    public LinkedList<Stadt> getHand() {
+        return hand;
+    }
+
     /**
      * Mit dieser metode ermittelt der Spieler seine Punktzahl.
      *

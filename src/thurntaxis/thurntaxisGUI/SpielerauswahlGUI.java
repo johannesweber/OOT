@@ -11,14 +11,14 @@ import java.awt.event.ActionListener;
 /**
  * Created by Johannes on 03.01.14.
  */
-public class Spielerauswahl implements ActionListener {
+public class SpielerauswahlGUI implements ActionListener {
 
 
     private int index = 0;
     private int ausgewaehlt = 0;
     private JFrame parent;
 
-    public Spielerauswahl(JFrame parent) {
+    public SpielerauswahlGUI(JFrame parent) {
         this.parent = parent;
     }
 
@@ -42,7 +42,7 @@ public class Spielerauswahl implements ActionListener {
             public void actionPerformed(ActionEvent actionEvent) {
                 if (ausgewaehlt >= 2){
                     spielerauswahl.setVisible(false);
-                    ThurnTaxisGUI.start.setEnabled(true);
+                    HauptmenueGUI.start.setEnabled(true);
                     spielerauswahl.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Es müssen noch weitere Spieler ausgewählt werden.");
@@ -53,7 +53,7 @@ public class Spielerauswahl implements ActionListener {
         gruen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    ThurnTaxisGUI.spieler[index] = new Spieler(Spielerfarbe.GRUEN);
+                    HauptmenueGUI.spieler[index] = new Spieler(Spielerfarbe.GRUEN);
                     index++;
                     ausgewaehlt++;
                     gruen.setEnabled(false);
@@ -63,7 +63,7 @@ public class Spielerauswahl implements ActionListener {
         gelb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    ThurnTaxisGUI.spieler[index] = new Spieler(Spielerfarbe.GELB);
+                    HauptmenueGUI.spieler[index] = new Spieler(Spielerfarbe.GELB);
                     index++;
                     ausgewaehlt++;
                     gelb.setEnabled(false);
@@ -73,7 +73,7 @@ public class Spielerauswahl implements ActionListener {
         rot.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    ThurnTaxisGUI.spieler[index] = new Spieler(Spielerfarbe.ROT);
+                    HauptmenueGUI.spieler[index] = new Spieler(Spielerfarbe.ROT);
                     index++;
                     ausgewaehlt++;
                     rot.setEnabled(false);
@@ -83,7 +83,7 @@ public class Spielerauswahl implements ActionListener {
         blau.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    ThurnTaxisGUI.spieler[index] = new Spieler(Spielerfarbe.BLAU);
+                    HauptmenueGUI.spieler[index] = new Spieler(Spielerfarbe.BLAU);
                     index++;
                     ausgewaehlt++;
                     blau.setEnabled(false);

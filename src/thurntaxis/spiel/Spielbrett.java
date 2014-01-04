@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * Eine Klasse um ein Spielbrett zu erstellen. Da spielbrett besteht aus laendern, einem auslagestapel
+ * Eine Klasse um ein HauptschirmGUI zu erstellen. Da spielbrett besteht aus laendern, einem auslagestapel
  * und aus den drei verschiedenen bonusmarkern.
  */
 public class Spielbrett {
@@ -100,7 +100,7 @@ public class Spielbrett {
 
     @Override
     public String toString() {
-        return "Spielbrett{" +
+        return "HauptschirmGUI{" +
                 "laender=" + this.laender +
                 '}';
     }
