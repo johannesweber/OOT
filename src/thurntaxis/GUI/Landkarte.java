@@ -1,7 +1,7 @@
-package thurntaxis.thurntaxisGUI;
+package thurntaxis.GUI;
 
 import thurntaxis.spiel.Land;
-import thurntaxis.spiel.Spiel;
+import thurntaxis.spiel.Spielablauf;
 import thurntaxis.spiel.Spielkarte;
 import thurntaxis.spiel.Stadt;
 
@@ -12,20 +12,18 @@ import java.awt.*;
 /**
  * Created by Johannes on 04.01.14.
  */
-public class SpielbrettGUI extends JInternalFrame {
+public class Landkarte extends JInternalFrame {
 
     JPanel spielbrettPanel = new JPanel();
     JPanel auslagestapelPanel = new JPanel();
     JLabel stapelLabel = new JLabel("Auslagestapel");
-    static Spiel thurntaxis = new Spiel(HauptmenueGUI.spieler);
 
-    public SpielbrettGUI() {
+    public Landkarte(Spielablauf spielablauf) {
         super("Das Spielbrett");
-        thurntaxis.spielStarten();
 
-        DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Die Städte");
+        DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Die St??dte");
 
-        for (Land landIt : thurntaxis.getSpielbrett().getLaender()) {
+        for (Land landIt : spielablauf.getSpielbrett().getLaender()) {
             for (Stadt stadtIt : landIt.getStaedte()) {
                 DefaultMutableTreeNode stadt = new DefaultMutableTreeNode(stadtIt.toString());
                 wurzel.add(stadt);
@@ -37,7 +35,7 @@ public class SpielbrettGUI extends JInternalFrame {
         }
 
         JTree baum = new JTree(wurzel);
-        JComboBox auslagestapel = new JComboBox(thurntaxis.getSpielbrett().getAuslagestapel().getAuslagestapel());
+        JComboBox auslagestapel = new JComboBox(spielablauf.getSpielbrett().getAuslagestapel().getAuslagestapel());
 
         auslagestapelPanel.add(auslagestapel);
         auslagestapelPanel.add(stapelLabel);

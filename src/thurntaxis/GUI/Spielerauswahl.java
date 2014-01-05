@@ -1,7 +1,8 @@
-package thurntaxis.thurntaxisGUI;
+package thurntaxis.GUI;
 
 import thurntaxis.spieler.Spieler;
 import thurntaxis.spieler.Spielerfarbe;
+import thurntaxis.spiel.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,28 +12,30 @@ import java.awt.event.ActionListener;
 /**
  * Created by Johannes on 03.01.14.
  */
-public class SpielerauswahlGUI implements ActionListener {
-
+public class Spielerauswahl implements ActionListener {
+	
 
     private int index = 0;
     private int ausgewaehlt = 0;
     private JFrame parent;
+    private Spielablauf spielablauf;
 
-    public SpielerauswahlGUI(JFrame parent) {
-        this.parent = parent;
+    public Spielerauswahl(Startmenue startmenue) {
+        this.parent = startmenue.startmenue;
+        this.spielablauf = startmenue.spielablauf;
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        final JDialog spielerauswahl = new JDialog(parent, "Bitte zuerst Spieler auswählen", true);
+        final JDialog spielerauswahl = new JDialog(parent, "Bitte zuerst Spieler auswaehlen", true);
         JPanel panel1 = new JPanel();
         JPanel panel2 = new JPanel();
 
-        spielerauswahl.setLocationRelativeTo(parent);
+        spielerauswahl.setLocationRelativeTo((JFrame)parent);
 
         JButton fertig = new JButton("Fertig");
-        final JButton gruen = new JButton("Spieler Grün");
+        final JButton gruen = new JButton("Spieler Gruen");
         final JButton gelb = new JButton("Spieler Gelb");
         final JButton rot = new JButton("Spieler Rot");
         final JButton blau = new JButton("Spieler Blau");
@@ -42,10 +45,10 @@ public class SpielerauswahlGUI implements ActionListener {
             public void actionPerformed(ActionEvent actionEvent) {
                 if (ausgewaehlt >= 2){
                     spielerauswahl.setVisible(false);
-                    HauptmenueGUI.start.setEnabled(true);
+                    Startmenue.start.setEnabled(true);
                     spielerauswahl.dispose();
                 }else{
-                    JOptionPane.showMessageDialog(null, "Es müssen noch weitere Spieler ausgewählt werden.");
+                    JOptionPane.showMessageDialog(null, "Es muessen noch weitere Spieler ausgewaehlt werden.");
                 }
             }
         });
@@ -53,7 +56,7 @@ public class SpielerauswahlGUI implements ActionListener {
         gruen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    HauptmenueGUI.spieler[index] = new Spieler(Spielerfarbe.GRUEN);
+                    spielablauf.spieler[index] = new Spieler(Spielerfarbe.GRUEN);
                     index++;
                     ausgewaehlt++;
                     gruen.setEnabled(false);
@@ -63,7 +66,7 @@ public class SpielerauswahlGUI implements ActionListener {
         gelb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    HauptmenueGUI.spieler[index] = new Spieler(Spielerfarbe.GELB);
+            	spielablauf.spieler[index] = new Spieler(Spielerfarbe.GELB);
                     index++;
                     ausgewaehlt++;
                     gelb.setEnabled(false);
@@ -73,7 +76,7 @@ public class SpielerauswahlGUI implements ActionListener {
         rot.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    HauptmenueGUI.spieler[index] = new Spieler(Spielerfarbe.ROT);
+            	spielablauf.spieler[index] = new Spieler(Spielerfarbe.ROT);
                     index++;
                     ausgewaehlt++;
                     rot.setEnabled(false);
@@ -83,7 +86,7 @@ public class SpielerauswahlGUI implements ActionListener {
         blau.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    HauptmenueGUI.spieler[index] = new Spieler(Spielerfarbe.BLAU);
+            	spielablauf.spieler[index] = new Spieler(Spielerfarbe.BLAU);
                     index++;
                     ausgewaehlt++;
                     blau.setEnabled(false);

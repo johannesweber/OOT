@@ -7,15 +7,15 @@ import thurntaxis.spieler.Spieler;
 import java.util.LinkedList;
 
 /**
- * Created by Johannes on 22.12.13.
+ * Created by Johannes on 05.01.14.
  */
-public class EineStadtProLand implements Wertverfahren {
+public class eineStadtProLand implements Wertverfahren{
 
     @Override
     public void werten(Spieler spieler, LinkedList<Stadt> route) {
         LinkedList<Stadt> gelegteRoute = spieler.getGelegteRoute();
-        for(Stadt it : gelegteRoute){
-            if(!it.getHaeuser().contains(new Haus(spieler.getFarbe())))
+        for (Stadt it : gelegteRoute) {
+            if (!it.getHaeuser().contains(new Haus(spieler.getFarbe())))
                 it.hausBauen(spieler.getHaeuser().pop());
         }
     }
@@ -27,7 +27,7 @@ public class EineStadtProLand implements Wertverfahren {
         } else {
             if (!spieler.getGelegteRoute().contains(karte.getLand())) {
                 spieler.getGelegteRoute().add(karte);
-            }else{
+            } else {
                 System.out.println("Pro Route muessen alle Staedte einem anderen Land zugehoeren.");
             }
         }

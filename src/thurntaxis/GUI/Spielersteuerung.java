@@ -1,27 +1,28 @@
-package thurntaxis.thurntaxisGUI;
+package thurntaxis.GUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import thurntaxis.spiel.*;
 /**
  * Created by Johannes on 04.01.14.
  */
-public class SpielersteuerungGUI extends JInternalFrame {
-
+public class Spielersteuerung extends JInternalFrame {
+	Spielablauf spielablauf = new Spielablauf();
     JButton karteZiehen = new JButton("Karte ziehen");
     JButton karteAblegen = new JButton("Karte ablegen");
     JButton amtspersonAusspielen = new JButton("Amtsperson auspielen");
     JButton routeWerten = new JButton("Route werten");
     JButton rundeBeenden = new JButton("Runde beenden");
-    JList hand = new JList(HauptmenueGUI.spieler[0].getHand().toArray());
-    JList route = new JList(HauptmenueGUI.spieler[0].getRoute().toArray());
+    JList hand = new JList(Spielablauf.spieler[0].getHand().toArray());
+    JList route = new JList(Spielablauf.spieler[0].getRoute().toArray());
     JPanel buttonPanel = new JPanel();
     JPanel handPanel = new JPanel();
 
-    public SpielersteuerungGUI(){
-        super ("Spieler" + HauptmenueGUI.spieler[0].getFarbe().toString());
+    public Spielersteuerung(Spielablauf spielablauf){
+    	super ("Spieler" + Spielablauf.spieler[0].getFarbe().toString());
         buttonPanel.add(karteZiehen);
         buttonPanel.add(karteAblegen);
         buttonPanel.add(amtspersonAusspielen);
@@ -33,7 +34,7 @@ public class SpielersteuerungGUI extends JInternalFrame {
         karteZiehen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                HauptmenueGUI.spieler[0].karteZiehen(2);
+                Spielablauf.spieler[0].karteZiehen(2);
             }
         });
 

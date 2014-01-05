@@ -7,9 +7,9 @@ import thurntaxis.spieler.Spieler;
 import java.util.LinkedList;
 
 /**
- * Created by Johannes on 22.12.13.
+ * Created by Johannes on 06.01.14.
  */
-public class InnerhalbEinemLand implements Wertverfahren {
+public class innerhalbEinemLand implements Wertverfahren{
 
     @Override
     public void werten(Spieler spieler, LinkedList<Stadt> route) {
