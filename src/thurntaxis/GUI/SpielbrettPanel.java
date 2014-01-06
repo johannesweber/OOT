@@ -12,16 +12,15 @@ import java.awt.*;
 /**
  * Created by Johannes on 04.01.14.
  */
-public class Landkarte extends JInternalFrame {
+public class SpielbrettPanel extends JPanel {
 
     JPanel spielbrettPanel = new JPanel();
     JPanel auslagestapelPanel = new JPanel();
     JLabel stapelLabel = new JLabel("Auslagestapel");
 
-    public Landkarte(Spielablauf spielablauf) {
-        super("Das Spielbrett");
+    public SpielbrettPanel(Spielablauf spielablauf) {
 
-        DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Die Staedte");
+        DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Das Spielbrett");
 
         for (Land landIt : spielablauf.getSpielbrett().getLaender()) {
             for (Stadt stadtIt : landIt.getStaedte()) {
@@ -40,8 +39,9 @@ public class Landkarte extends JInternalFrame {
         auslagestapelPanel.add(auslagestapel);
         auslagestapelPanel.add(stapelLabel);
         spielbrettPanel.add(new JScrollPane(baum));
-        this.add(spielbrettPanel, BorderLayout.CENTER);
-        this.add(auslagestapelPanel, BorderLayout.SOUTH);
+        this.setLayout(new GridLayout(2, 1));
+        this.add(spielbrettPanel);
+        this.add(auslagestapelPanel);
 
         this.setVisible(true);
     }

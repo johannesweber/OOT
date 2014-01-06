@@ -10,14 +10,14 @@ import java.awt.event.ActionListener;
 /**
  * Created by Johannes on 03.01.14.
  */
-public class Startmenue extends JFrame{
+public class StartmenueFrame extends JFrame{
 
 	static JButton start = new JButton("Spiel starten");
     private JButton spielerauswahl = new JButton("Spieler auswaehlen");
     private JButton beenden = new JButton("Programm beenden");
 	public Spielablauf spielablauf;
 
-	public Startmenue(Spielablauf spielablauf) {
+	public StartmenueFrame(Spielablauf spielablauf) {
         super("Thurn & Taxis: Das Brettspiel");
 		this.spielablauf = spielablauf;
 
@@ -33,12 +33,12 @@ public class Startmenue extends JFrame{
         		spielStarten();
             }
         });
-        spielerauswahl.addActionListener(new Spielerauswahl(this));
+        spielerauswahl.addActionListener(new SpielerauswahlListener(this));
         beenden.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Startmenue.this.setVisible(false);
-                Startmenue.this.dispose();
+                StartmenueFrame.this.setVisible(false);
+                StartmenueFrame.this.dispose();
             }
         });
 
@@ -53,6 +53,6 @@ public class Startmenue extends JFrame{
 	public void spielStarten(){
         this.spielablauf.spielStarten();
         this.start.setEnabled(false);
-        spielablauf.hauptschirm = new Hauptschirm(spielablauf, true);
+        spielablauf.hauptschirm = new HauptschirmFrame(spielablauf);
 	}
 }

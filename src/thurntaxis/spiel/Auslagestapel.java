@@ -21,6 +21,10 @@ public class Auslagestapel {
         this.kartenAustauschen();
     }
 
+    public LinkedList<Stadt> getDeck() {
+        return this.deck;
+    }
+
     public Stadt[] getAuslagestapel() {
         return this.auslagestapel;
     }

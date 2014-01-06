@@ -47,6 +47,14 @@ public class Spieler {
         this.haeuserNehmen();
     }
 
+    public int getZaehlerKartenZiehen() {
+        return this.zaehlerKartenZiehen;
+    }
+
+    public int getZaehlerKarteAblegen() {
+        return this.zaehlerKarteAblegen;
+    }
+
     public void setZaehlerKartenZiehen() {
         this.zaehlerKartenZiehen++;
     }
@@ -79,16 +87,6 @@ public class Spieler {
         return hand;
     }
 
-    public String[] getHandAsString(){
-        String[] hand = new String[4];
-        int i = 0;
-            for(Stadt it : this.hand){
-                hand[i] = it.getName();
-                i++;
-            }
-        return hand;
-    }
-
     /**
      * Mit dieser metode ermittelt der Spieler seine Punktzahl.
      *
@@ -117,14 +115,16 @@ public class Spieler {
      *                    ziehen will.
      */
     public String karteZiehen(int platzhalter) {
-        String gezogen;
-        if (this.zaehlerKartenZiehen >= 1) {
-            zaehlerKartenZiehen--;
-            gezogen = this.spielbrett.getAuslagestapel().karteZiehen((platzhalter - 1)).getName();
+        Stadt gezogen = null;
+        String meldung = null;
+        if (!(this.zaehlerKartenZiehen < 1)) {
+            gezogen = this.spielbrett.getAuslagestapel().karteZiehen((platzhalter - 1));
+            this.zaehlerKartenZiehen--;
         } else {
-            gezogen = null;
+            meldung = "Du darfst keine Karte mehr ziehen";
         }
-        return gezogen;
+        this.hand.add(gezogen);
+        return meldung;
     }
 
     /**
@@ -135,8 +135,9 @@ public class Spieler {
      *
      * @param karte die karte welcher der spieler ablegen will.
      */
-    public void karteAblegen(Stadt karte) {
-        if (this.zaehlerKarteAblegen >= 1) {
+    public String karteAblegen(Stadt karte) {
+        String meldung = null;
+        if (!(this.zaehlerKarteAblegen < 1)) {
             if (this.route.isEmpty()) {
                 this.route.add(karte);
             } else {
@@ -147,16 +148,19 @@ public class Spieler {
                         if (this.route.getLast().getNachbarn().contains(karte)) {
                             this.route.addLast(karte);
                         } else {
-                            System.out.println("Karte kann nicht gelegt werden. keine direkte Verbindung.");
+                            meldung = "Karte kann nicht gelegt werden. Keine direkte Verbindung.";
                         }
                     }
                 } else {
-                    System.out.println("Diese Karte ist schon in deiner Route enthalten!");
+                    meldung = "Diese Karte ist schon in deiner Route enthalten!";
                 }
             }
         } else {
-            System.out.println("Du darfst keine Karte mehr ablegen.");
+            meldung = "Du darfst keine Karte mehr ablegen.";
         }
+        this.hand.remove(karte);
+        this.zaehlerKarteAblegen--;
+        return meldung;
     }
 
     /**
@@ -165,13 +169,15 @@ public class Spieler {
      *
      * @param person die amtsperson die der spieler ausspielen will.
      */
-    public void amtspersonAusspielen(Amtsperson person) {
+    public String amtspersonAusspielen(Amtsperson person) {
+        String meldung = null;
         if (this.zaehlerAmtsperson == 1) {
             person.ausspielen(this);
-            this.zaehlerAmtsperson = 0;
+            this.zaehlerAmtsperson--;
         } else {
-            System.out.println("Du hast in dieser Runde schon eine amtsperson ausgespielt!");
+            meldung = "Du hast in dieser Runde schon eine Amtsperson ausgespielt!";
         }
+        return meldung;
     }
 
     /**
@@ -197,32 +203,12 @@ public class Spieler {
         }
     }
 
+    /**
+     * Methode um den Spieler auf eine neue Runde vorzubereiten.
+     */
     public void rundeStarten() {
-        this.zaehlerAmtsperson = 1;
-        this.zaehlerKarteAblegen = 1;
-        this.zaehlerKartenZiehen = 1;
-    }
-
-    public void rundeBeenden() {
-        if (this.zaehlerKartenZiehen == 1) {
-            System.out.println("Du musst noch eine Karte ziehen");
-        }
-        if (this.zaehlerKarteAblegen == 1) {
-            System.out.println("Du musst noch eine Karte ablegen");
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "Spieler{" +
-                ", farbe=" + farbe +
-                ", route=" + route +
-                ", hand=" + hand +
-                ", gelegteRoute=" + gelegteRoute +
-                ", boni=" + boni +
-                ", zaehlerKartenZiehen=" + zaehlerKartenZiehen +
-                ", zaehlerKarteAblegen=" + zaehlerKarteAblegen +
-                ", zaehlerAmtsperson=" + zaehlerAmtsperson +
-                '}';
+            this.zaehlerAmtsperson = 1;
+            this.zaehlerKarteAblegen = 1;
+            this.zaehlerKartenZiehen = 1;
     }
 }

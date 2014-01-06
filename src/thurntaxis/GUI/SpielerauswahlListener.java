@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Johannes on 03.01.14.
  */
-public class Spielerauswahl implements ActionListener {
+public class SpielerauswahlListener implements ActionListener {
 	
 
     private int index = 0;
@@ -20,7 +20,7 @@ public class Spielerauswahl implements ActionListener {
     private JFrame parent;
     private Spielablauf spielablauf;
 
-    public Spielerauswahl(Startmenue startmenue) {
+    public SpielerauswahlListener(StartmenueFrame startmenue) {
         this.parent = startmenue;
         this.spielablauf = startmenue.spielablauf;
     }
@@ -45,7 +45,7 @@ public class Spielerauswahl implements ActionListener {
             public void actionPerformed(ActionEvent actionEvent) {
                 if (ausgewaehlt >= 2){
                     spielerauswahl.setVisible(false);
-                    Startmenue.start.setEnabled(true);
+                    StartmenueFrame.start.setEnabled(true);
                     spielerauswahl.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Es muessen noch weitere Spieler ausgewaehlt werden.");

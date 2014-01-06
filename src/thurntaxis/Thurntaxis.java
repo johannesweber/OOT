@@ -8,10 +8,10 @@ import thurntaxis.spiel.Spielablauf;
  */
 public class Thurntaxis {
 
-    static thurntaxis.spiel.Spielablauf spielablauf = new Spielablauf();
+    static Spielablauf spielablauf = new Spielablauf();
 	
 	public static void main(String[] args) {
-		spielablauf.startmenue = new Startmenue(spielablauf);
+		spielablauf.startmenue = new StartmenueFrame(spielablauf);
 
 	}
 }

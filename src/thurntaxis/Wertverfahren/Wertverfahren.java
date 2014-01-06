@@ -10,7 +10,6 @@ import java.util.LinkedList;
  */
 public interface Wertverfahren {
 
-    //ich glaub das integriert man besser direkt in Swing
     public abstract void werten(Spieler spieler, LinkedList<Stadt> route);
     public abstract void kartePruefen(Spieler spieler, Stadt karte);
 }

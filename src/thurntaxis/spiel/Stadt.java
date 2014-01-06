@@ -14,7 +14,7 @@ public class Stadt {
     private LinkedList<Haus> haeuser;
     private LinkedList<Spielkarte> nachbarn;
 
-    Stadt(Spielkarte name) {
+    public Stadt(Spielkarte name) {
         this.haeuser = new LinkedList<Haus>();
         this.nachbarn = new LinkedList<Spielkarte>();
         this.name = name;

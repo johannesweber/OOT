@@ -13,14 +13,19 @@ import java.util.ListIterator;
  */
 public class Spielablauf {
 
-    public static Spieler[] spieler = new Spieler[4];
+    public Spieler[] spieler = new Spieler[4];
     public Spielbrett spielbrett;
-	public Startmenue startmenue;
-	public Hauptschirm hauptschirm;
+    public StartmenueFrame startmenue;
+    public HauptschirmFrame hauptschirm;
     private Spiel spiel;
+    private int istDran = 0;
 
     public Spielbrett getSpielbrett() {
         return this.spielbrett;
+    }
+
+    public int getIstDran() {
+        return this.istDran;
     }
 
     /**
@@ -50,7 +55,7 @@ public class Spielablauf {
      */
     private void spielerZuordnen() {
         for (Spieler it : this.spieler) {
-            if(it != null){
+            if (it != null) {
                 it.setSpielbrett(this.spielbrett);
             }
         }
@@ -62,7 +67,38 @@ public class Spielablauf {
     public void spielStarten() {
         this.spiel = new Spiel(spieler);
         this.spielbrett = spiel.getSpielbrett();
-    	spieler[0].rundeStarten();
-        System.out.println(spieler[0]);
+        spieler[istDran].rundeStarten();
+    }
+
+    public String naechsteRunde() {
+        String meldung;
+        if (this.spielbrett.getAuslagestapel().getDeck().isEmpty()) {
+            meldung = "Alle Karten sind verbraucht.Das Spiel ist jetzt zu Ende. Der Gewinner ist Spieler "
+                    + this.spiel.gewinnerErmitteln().getFarbe().toString();
+        } else {
+            if (this.spieler[this.istDran].getZaehlerKartenZiehen() == 1) {
+                meldung = "Du musst noch eine Karte ziehen";
+            } else {
+                if (this.spieler[this.istDran].getZaehlerKarteAblegen() == 1) {
+                    meldung = "Du musst noch eine Karte ablegen";
+                } else {
+                    this.naechsterSpieler();
+                    meldung = "Jetzt ist Spieler " + this.spieler[this.istDran].getFarbe().toString() + " an der Reihe";
+                }
+                this.spieler[this.istDran].rundeStarten();
+            }
+
+        }
+        return meldung;
+    }
+
+    private void naechsterSpieler(){
+        Spieler tmpSpieler = this.spieler[this.istDran+1];
+        if (tmpSpieler == null) {
+            this.istDran = 0;
+        } else {
+            this.istDran++;
+        }
     }
 }
+
