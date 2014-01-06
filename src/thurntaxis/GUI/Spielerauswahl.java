@@ -21,7 +21,7 @@ public class Spielerauswahl implements ActionListener {
     private Spielablauf spielablauf;
 
     public Spielerauswahl(Startmenue startmenue) {
-        this.parent = startmenue.startmenue;
+        this.parent = startmenue;
         this.spielablauf = startmenue.spielablauf;
     }
 

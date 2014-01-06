@@ -1,6 +1,6 @@
 package thurntaxis.spieler;
 
-import thurntaxis.Amtsperson.Amtsperson;
+import thurntaxis.amtsperson.Amtsperson;
 import thurntaxis.Wertverfahren.Wertverfahren;
 import thurntaxis.spiel.Bonusmarker;
 import thurntaxis.spiel.Spielbrett;
@@ -157,7 +157,7 @@ public class Spieler {
             person.ausspielen(this);
             this.zaehlerAmtsperson = 0;
         } else {
-            System.out.println("Du hast in dieser Runde schon eine Amtsperson ausgespielt!");
+            System.out.println("Du hast in dieser Runde schon eine amtsperson ausgespielt!");
         }
     }
 

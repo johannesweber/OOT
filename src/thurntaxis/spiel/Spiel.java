@@ -12,11 +12,11 @@ import java.util.ListIterator;
  */
 public class Spiel {
 
-    private Spieler[] spielerAnzahl;
+    public Spieler[] spieler;
     private Spielbrett spielbrett;
 
     public Spiel(Spieler[] spieleranzahl) {
-        this.spielerAnzahl = spieleranzahl;
+        this.spieler = spieleranzahl;
         this.spielbrett = new Spielbrett();
         this.spielerZuordnen();
     }
@@ -32,7 +32,7 @@ public class Spiel {
      * @return der gewinner
      */
     public Spieler gewinnerErmitteln() {
-        List<Spieler> spielers = Arrays.asList(this.spielerAnzahl);
+        List<Spieler> spielers = Arrays.asList(this.spieler);
         ListIterator<Spieler> it = spielers.listIterator();
         Spieler gewinner = it.next();
         int max = gewinner.punkteErmitteln();
@@ -51,7 +51,7 @@ public class Spiel {
      * Ein Spieler sollte wissen an welchem HauptschirmGUI er spielt.
      */
     private void spielerZuordnen() {
-        for (Spieler it : spielerAnzahl) {
+        for (Spieler it : spieler) {
             if(it != null){
                 it.setSpielbrett(this.spielbrett);
             }
@@ -62,6 +62,6 @@ public class Spiel {
      * Methode um die allererste Runde zu starten.
      */
     public void spielStarten() {
-        this.spielerAnzahl[0].rundeStarten();
+        this.spieler[0].rundeStarten();
     }
 }

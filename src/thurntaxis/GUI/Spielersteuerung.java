@@ -10,19 +10,26 @@ import thurntaxis.spiel.*;
  * Created by Johannes on 04.01.14.
  */
 public class Spielersteuerung extends JInternalFrame {
-	Spielablauf spielablauf = new Spielablauf();
+    private Spielablauf spielablauf;
+
     JButton karteZiehen = new JButton("Karte ziehen");
     JButton karteAblegen = new JButton("Karte ablegen");
     JButton amtspersonAusspielen = new JButton("Amtsperson auspielen");
     JButton routeWerten = new JButton("Route werten");
     JButton rundeBeenden = new JButton("Runde beenden");
-    JList hand = new JList(Spielablauf.spieler[0].getHand().toArray());
-    JList route = new JList(Spielablauf.spieler[0].getRoute().toArray());
+
     JPanel buttonPanel = new JPanel();
     JPanel handPanel = new JPanel();
 
+    JList hand;
+    JList route;
+
     public Spielersteuerung(Spielablauf spielablauf){
-    	super ("Spieler" + Spielablauf.spieler[0].getFarbe().toString());
+        super ("Spielersteuerung");
+        this.spielablauf = spielablauf;
+        this.hand = new JList(spielablauf.spieler[0].getHand().toArray());
+        this.route = new JList(spielablauf.spieler[0].getHand().toArray());
+
         buttonPanel.add(karteZiehen);
         buttonPanel.add(karteAblegen);
         buttonPanel.add(amtspersonAusspielen);
@@ -34,7 +41,7 @@ public class Spielersteuerung extends JInternalFrame {
         karteZiehen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Spielablauf.spieler[0].karteZiehen(2);
+                Spielersteuerung.this.spielablauf.spieler[0].karteZiehen(2);
             }
         });
 

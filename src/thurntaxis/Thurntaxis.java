@@ -1,16 +1,17 @@
 package thurntaxis;
 
 import thurntaxis.GUI.*;
-import thurntaxis.spiel.*;
+import thurntaxis.spiel.Spielablauf;
 
 /**
  * Created by Johannes on 21.12.13.
  */
 public class Thurntaxis {
-    static thurntaxis.spiel.Spielablauf spielablauf;
+
+    static thurntaxis.spiel.Spielablauf spielablauf = new Spielablauf();
 	
 	public static void main(String[] args) {
-		Spielablauf.startmenue = new Startmenue(spielablauf);
-		Spielablauf.hauptspiel = new Hauptspiel(spielablauf, false);
+		spielablauf.startmenue = new Startmenue(spielablauf);
+
 	}
 }

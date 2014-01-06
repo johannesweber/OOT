@@ -21,7 +21,7 @@ public class Landkarte extends JInternalFrame {
     public Landkarte(Spielablauf spielablauf) {
         super("Das Spielbrett");
 
-        DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Die St??dte");
+        DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Die Staedte");
 
         for (Land landIt : spielablauf.getSpielbrett().getLaender()) {
             for (Stadt stadtIt : landIt.getStaedte()) {

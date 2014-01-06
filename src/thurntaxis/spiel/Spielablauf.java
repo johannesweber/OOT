@@ -13,14 +13,11 @@ import java.util.ListIterator;
  */
 public class Spielablauf {
 
-    public static Spieler[] spieler = new Spieler[4];
+    public Spieler[] spieler = new Spieler[4];
     public Spielbrett spielbrett;
-	public static Startmenue startmenue;
-	public static Hauptspiel hauptspiel;
-	
-	public Spielablauf() {
-
-    }
+	public Startmenue startmenue;
+	public Hauptschirm hauptschirm;
+    private Spiel spiel;
 
     public Spielbrett getSpielbrett() {
         return this.spielbrett;
@@ -52,7 +49,7 @@ public class Spielablauf {
      * Ein Spieler sollte wissen an welchem HauptschirmGUI er spielt.
      */
     private void spielerZuordnen() {
-        for (Spieler it : spieler) {
+        for (Spieler it : this.spieler) {
             if(it != null){
                 it.setSpielbrett(this.spielbrett);
             }
@@ -63,10 +60,9 @@ public class Spielablauf {
      * Methode um die allererste Runde zu starten.
      */
     public void spielStarten() {
-
-    	spielerZuordnen();
+        this.spiel = new Spiel(spieler);
+        this.spielbrett = spiel.getSpielbrett();
     	spieler[0].rundeStarten();
-    	startmenue.startmenue.setVisible(false);
-    	hauptspiel.hauptschirm.setVisible(true);
+        System.out.println(spieler[0]);
     }
 }
