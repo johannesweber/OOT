@@ -79,6 +79,16 @@ public class Spieler {
         return hand;
     }
 
+    public String[] getHandAsString(){
+        String[] hand = new String[4];
+        int i = 0;
+            for(Stadt it : this.hand){
+                hand[i] = it.getName();
+                i++;
+            }
+        return hand;
+    }
+
     /**
      * Mit dieser metode ermittelt der Spieler seine Punktzahl.
      *
@@ -106,12 +116,15 @@ public class Spieler {
      * @param platzhalter der Platz in dem Auslagestapel von welchem der Spieler eine Karte
      *                    ziehen will.
      */
-    public void karteZiehen(int platzhalter) {
+    public String karteZiehen(int platzhalter) {
+        String gezogen;
         if (this.zaehlerKartenZiehen >= 1) {
-            this.hand.add(this.spielbrett.getAuslagestapel().karteZiehen((platzhalter - 1)));
+            zaehlerKartenZiehen--;
+            gezogen = this.spielbrett.getAuslagestapel().karteZiehen((platzhalter - 1)).getName();
         } else {
-            System.out.println("Du darfst keine Karte mehr ziehen");
+            gezogen = null;
         }
+        return gezogen;
     }
 
     /**

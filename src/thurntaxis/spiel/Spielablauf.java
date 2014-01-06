@@ -13,7 +13,7 @@ import java.util.ListIterator;
  */
 public class Spielablauf {
 
-    public Spieler[] spieler = new Spieler[4];
+    public static Spieler[] spieler = new Spieler[4];
     public Spielbrett spielbrett;
 	public Startmenue startmenue;
 	public Hauptschirm hauptschirm;

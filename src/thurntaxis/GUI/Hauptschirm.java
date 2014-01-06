@@ -14,6 +14,7 @@ public class Hauptschirm extends JFrame {
         super("Thurn & Taxis: Das Brettspiel");
 		
 		Spielersteuerung spielersteuerung = new Spielersteuerung(spielablauf);
+        spielersteuerung.setSpielablauf(spielablauf);
 		Landkarte spielbrett = new Landkarte(spielablauf);
 
 		this.add(spielersteuerung, BorderLayout.EAST);

@@ -21,6 +21,10 @@ public class Stadt {
         this.nachbarnHinzufuegen();
     }
 
+    public String getName() {
+        return name.toString();
+    }
+
     public LandEnum getLand() {
         return this.name.getLand();
     }
