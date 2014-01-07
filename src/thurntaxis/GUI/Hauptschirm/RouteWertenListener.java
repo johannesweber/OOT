@@ -16,9 +16,11 @@ import java.awt.event.ActionListener;
 class RouteWertenListener implements ActionListener {
 
     private Spielablauf spielablauf;
+    private SpielersteuerungPanel spielersteuerungPanel;
 
-    RouteWertenListener(Spielablauf spielablauf) {
+    RouteWertenListener(Spielablauf spielablauf, SpielersteuerungPanel spielersteuerungPanel) {
         this.spielablauf = spielablauf;
+        this.spielersteuerungPanel = spielersteuerungPanel;
     }
 
     @Override
@@ -36,6 +38,7 @@ class RouteWertenListener implements ActionListener {
                 if(meldung != null){
                     JOptionPane.showMessageDialog(null, meldung);
                 }
+                RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
                 routeWertenDialog.dispose();
             }
         });
@@ -48,6 +51,7 @@ class RouteWertenListener implements ActionListener {
                 if(meldung != null){
                     JOptionPane.showMessageDialog(null, meldung);
                 }
+                RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
                 routeWertenDialog.dispose();
             }
         });

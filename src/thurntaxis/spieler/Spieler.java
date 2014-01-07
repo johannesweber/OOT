@@ -146,15 +146,18 @@ public class Spieler {
             if (this.route.isEmpty()) {
                 this.route.add(karte);
                 this.hand.remove(karte);
+                this.zaehlerKarteAblegen--;
             } else {
                 if (!this.route.contains(karte)) {
                     if (this.isErsterNachbar(karte)) {
                         this.route.addFirst(karte);
                         this.hand.remove(karte);
+                        this.zaehlerKarteAblegen--;
                     } else {
                         if (this.isLetzterNachbar(karte)) {
                             this.route.addLast(karte);
                             this.hand.remove(karte);
+                            this.zaehlerKarteAblegen--;
                         } else {
                             meldung = "Karte kann nicht gelegt werden. Keine direkte Verbindung.";
                         }
@@ -166,7 +169,6 @@ public class Spieler {
         } else {
             meldung = "Du darfst keine Karte mehr ablegen.";
         }
-        this.zaehlerKarteAblegen--;
         return meldung;
     }
 

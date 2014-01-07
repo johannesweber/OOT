@@ -23,6 +23,7 @@ class SpielersteuerungPanel extends JPanel {
     private JButton amtspersonAusspielenButton = new JButton("Amtsperson auspielen");
     private JButton routeWertenButton = new JButton("Route werten");
     private JButton naechsterSpielerButton = new JButton("naechster Spieler");
+    private JButton gewerteteRouteButton = new JButton("gewertet Route anzeigen");
 
     private JPanel buttonPanel = new JPanel();
     private JPanel handPanel = new JPanel();
@@ -54,6 +55,7 @@ class SpielersteuerungPanel extends JPanel {
         this.buttonPanel.add(karteAblegenButton);
         this.buttonPanel.add(amtspersonAusspielenButton);
         this.buttonPanel.add(routeWertenButton);
+        this.buttonPanel.add(gewerteteRouteButton);
         this.buttonPanel.add(naechsterSpielerButton);
 
         this.handList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -111,7 +113,7 @@ class SpielersteuerungPanel extends JPanel {
 
         this.amtspersonAusspielenButton.addActionListener(new AmtspersonListener(this.spielablauf, this.spielbrettPanel));
 
-        this.routeWertenButton.addActionListener(new RouteWertenListener(this.spielablauf));
+        this.routeWertenButton.addActionListener(new RouteWertenListener(this.spielablauf, this));
 
         this.naechsterSpielerButton.addActionListener(new ActionListener() {
             @Override
@@ -127,6 +129,29 @@ class SpielersteuerungPanel extends JPanel {
             }
         });
 
+        this.gewerteteRouteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JDialog gewerteteKartenDialog = new JDialog();
+                DefaultListModel gewerteteKartenModel = new DefaultListModel();
+                JList gewerteteKartenList = new JList(gewerteteKartenModel);
+
+                gewerteteKartenList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+                for (Stadt it: SpielersteuerungPanel.this.spielablauf.getIstDran().getGewerteteKarten()){
+                    gewerteteKartenModel.addElement(it);
+                }
+                gewerteteKartenDialog.add(gewerteteKartenList);
+
+                gewerteteKartenDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                gewerteteKartenDialog.setVisible(true);
+                gewerteteKartenDialog.pack();
+
+
+
+            }
+        });
+
         this.add(buttonPanel);
         this.add(beides);
 
@@ -138,7 +163,7 @@ class SpielersteuerungPanel extends JPanel {
         this.setVisible(true);
     }
 
-    private void listenAktualisieren(){
+    void listenAktualisieren(){
         this.defaultHandFuellen();
         this.defaultRouteFuellen();
     }
