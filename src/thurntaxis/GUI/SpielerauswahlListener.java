@@ -1,5 +1,6 @@
 package thurntaxis.GUI;
 
+import thurntaxis.GUI.StartmenueFrame;
 import thurntaxis.spieler.Spieler;
 import thurntaxis.spieler.Spielerfarbe;
 import thurntaxis.spiel.*;
@@ -10,99 +11,102 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Johannes on 03.01.14.
+ * Klasse SpielerauswahlListener welche vom Typ ActionListener ist. Dieser ActionListener generiert eineen
+ * neuen JDialog, welcher aus 5 Buttons besteht. Mit diesen Buttons werden die Spieler fuer die naechste Partie
+ * ausgewaehlt. Diese klasse tritt ihn Kraft wenn man den Button Spieler auswaehlen im Startmenue drueckt.
  */
-public class SpielerauswahlListener implements ActionListener {
-	
+class SpielerauswahlListener implements ActionListener {
+
 
     private int index = 0;
     private int ausgewaehlt = 0;
     private JFrame parent;
     private Spielablauf spielablauf;
 
-    public SpielerauswahlListener(StartmenueFrame startmenue) {
+    SpielerauswahlListener(StartmenueFrame startmenue, Spielablauf spielablauf) {
         this.parent = startmenue;
-        this.spielablauf = startmenue.spielablauf;
+        this.spielablauf = spielablauf;
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        final JDialog spielerauswahl = new JDialog(parent, "Bitte zuerst Spieler auswaehlen", true);
-        JPanel panel1 = new JPanel();
-        JPanel panel2 = new JPanel();
+        final JDialog spielerauswahlDialog = new JDialog(parent, "Bitte zuerst Spieler auswaehlen", true);
+        JPanel spielerButtonPanel = new JPanel();
+        JPanel fertigButtonPanel = new JPanel();
+        JButton fertigButton = new JButton("Fertig");
+        final JButton gruenButton = new JButton("Spieler Gruen");
+        final JButton gelbButton = new JButton("Spieler Gelb");
+        final JButton rotButton = new JButton("Spieler Rot");
+        final JButton blauButton = new JButton("Spieler Blau");
 
-        spielerauswahl.setLocationRelativeTo((JFrame)parent);
-
-        JButton fertig = new JButton("Fertig");
-        final JButton gruen = new JButton("Spieler Gruen");
-        final JButton gelb = new JButton("Spieler Gelb");
-        final JButton rot = new JButton("Spieler Rot");
-        final JButton blau = new JButton("Spieler Blau");
-
-        fertig.addActionListener(new ActionListener() {
+        fertigButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (ausgewaehlt >= 2){
-                    spielerauswahl.setVisible(false);
+                if (ausgewaehlt >= 2) {
+                    spielerauswahlDialog.setVisible(false);
                     StartmenueFrame.start.setEnabled(true);
-                    spielerauswahl.dispose();
-                }else{
+                    StartmenueFrame.spielerauswahl.setEnabled(false);
+                    spielerauswahlDialog.dispose();
+                } else {
                     JOptionPane.showMessageDialog(null, "Es muessen noch weitere Spieler ausgewaehlt werden.");
                 }
             }
         });
 
-        gruen.addActionListener(new ActionListener() {
+        gruenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    spielablauf.spieler[index] = new Spieler(Spielerfarbe.GRUEN);
-                    index++;
-                    ausgewaehlt++;
-                    gruen.setEnabled(false);
+                spielablauf.spieler[index] = new Spieler(Spielerfarbe.GRUEN);
+                index++;
+                ausgewaehlt++;
+                gruenButton.setEnabled(false);
             }
         });
 
-        gelb.addActionListener(new ActionListener() {
+        gelbButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-            	spielablauf.spieler[index] = new Spieler(Spielerfarbe.GELB);
-                    index++;
-                    ausgewaehlt++;
-                    gelb.setEnabled(false);
+                spielablauf.spieler[index] = new Spieler(Spielerfarbe.GELB);
+                index++;
+                ausgewaehlt++;
+                gelbButton.setEnabled(false);
             }
         });
 
-        rot.addActionListener(new ActionListener() {
+        rotButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-            	spielablauf.spieler[index] = new Spieler(Spielerfarbe.ROT);
-                    index++;
-                    ausgewaehlt++;
-                    rot.setEnabled(false);
+                spielablauf.spieler[index] = new Spieler(Spielerfarbe.ROT);
+                index++;
+                ausgewaehlt++;
+                rotButton.setEnabled(false);
             }
         });
 
-        blau.addActionListener(new ActionListener() {
+        blauButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-            	spielablauf.spieler[index] = new Spieler(Spielerfarbe.BLAU);
-                    index++;
-                    ausgewaehlt++;
-                    blau.setEnabled(false);
+                spielablauf.spieler[index] = new Spieler(Spielerfarbe.BLAU);
+                index++;
+                ausgewaehlt++;
+                blauButton.setEnabled(false);
             }
         });
 
-        panel1.add(fertig);
-        panel2.add(gruen);
-        panel2.add(gelb);
-        panel2.add(rot);
-        panel2.add(blau);
+        spielerauswahlDialog.setLocationRelativeTo(this.parent);
+        spielerauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-        spielerauswahl.add(panel1, BorderLayout.SOUTH);
-        spielerauswahl.add(panel2, BorderLayout.NORTH);
+        spielerButtonPanel.add(fertigButton);
+        fertigButtonPanel.add(gruenButton);
+        fertigButtonPanel.add(gelbButton);
+        fertigButtonPanel.add(rotButton);
+        fertigButtonPanel.add(blauButton);
 
-        spielerauswahl.pack();
-        spielerauswahl.setVisible(true);
+        spielerauswahlDialog.add(spielerButtonPanel, BorderLayout.SOUTH);
+        spielerauswahlDialog.add(fertigButtonPanel, BorderLayout.NORTH);
+
+        spielerauswahlDialog.pack();
+        spielerauswahlDialog.setVisible(true);
     }
 }

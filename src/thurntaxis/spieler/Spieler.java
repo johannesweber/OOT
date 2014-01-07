@@ -111,14 +111,14 @@ public class Spieler {
      * Gleichzeitig wird noch kontrolliert ob der Spieler schon eine Karte gezogen hat. Ist dies der Fall darf
      * er keine mehr ziehen.
      *
-     * @param platzhalter der Platz in dem Auslagestapel von welchem der Spieler eine Karte
+     * @param ausgewaehlt der Platz in dem Auslagestapel von welchem der Spieler eine Karte
      *                    ziehen will.
      */
-    public String karteZiehen(int platzhalter) {
+    public String karteZiehen(int ausgewaehlt) {
         Stadt gezogen = null;
         String meldung = null;
         if (!(this.zaehlerKartenZiehen < 1)) {
-            gezogen = this.spielbrett.getAuslagestapel().karteZiehen((platzhalter - 1));
+            gezogen = this.spielbrett.getAuslagestapel().karteZiehen((ausgewaehlt));
             this.zaehlerKartenZiehen--;
         } else {
             meldung = "Du darfst keine Karte mehr ziehen";

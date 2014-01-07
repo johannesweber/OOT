@@ -1,6 +1,7 @@
 package thurntaxis.spiel;
 
 import thurntaxis.GUI.*;
+import thurntaxis.GUI.Hauptschirm.HauptschirmFrame;
 import thurntaxis.spieler.Spieler;
 
 import java.util.Arrays;
