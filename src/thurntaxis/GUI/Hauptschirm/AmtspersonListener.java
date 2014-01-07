@@ -1,9 +1,8 @@
-package thurntaxis.GUI.Hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import thurntaxis.amtsperson.Amtmann;
 import thurntaxis.amtsperson.Postillion;
 import thurntaxis.amtsperson.Postmeister;
-import thurntaxis.spiel.Spiel;
 import thurntaxis.spiel.Spielablauf;
 
 import javax.swing.*;

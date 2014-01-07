@@ -1,8 +1,8 @@
 package thurntaxis.spiel;
 
-import thurntaxis.GUI.*;
-import thurntaxis.GUI.Hauptschirm.HauptschirmFrame;
-import thurntaxis.Wertverfahren.Wertverfahren;
+import thurntaxis.gui.*;
+import thurntaxis.gui.hauptschirm.HauptschirmFrame;
+import thurntaxis.wertverfahren.Wertverfahren;
 import thurntaxis.spieler.Spieler;
 
 import java.util.Arrays;

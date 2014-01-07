@@ -1,12 +1,12 @@
 package thurntaxis;
 
-import thurntaxis.GUI.*;
+import thurntaxis.gui.*;
 import thurntaxis.spiel.Spielablauf;
 
 /**
  * Created by Johannes on 21.12.13.
  */
-public class Thurntaxis {
+public class ThurnTaxis {
 
     static Spielablauf spielablauf = new Spielablauf();
 

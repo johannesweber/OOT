@@ -1,4 +1,4 @@
-package thurntaxis.Wertverfahren;
+package thurntaxis.wertverfahren;
 
 import thurntaxis.spiel.Stadt;
 import thurntaxis.spieler.Spieler;
@@ -7,7 +7,7 @@ import thurntaxis.spieler.Spieler;
 /**
  * Created by Johannes on 05.01.14.
  */
-public class eineStadtProLandVerfahren extends Wertverfahren {
+public class EineStadtProLandVerfahren extends Wertverfahren {
 
     void kartePruefen(Spieler spieler, Stadt karte) {
         if (!this.wertbareRoute.isEmpty()) {

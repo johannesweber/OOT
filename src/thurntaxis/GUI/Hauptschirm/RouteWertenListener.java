@@ -1,7 +1,7 @@
-package thurntaxis.GUI.Hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
-import thurntaxis.Wertverfahren.eineStadtProLandVerfahren;
-import thurntaxis.Wertverfahren.innerhalbEinemLandVerfahren;
+import thurntaxis.wertverfahren.EineStadtProLandVerfahren;
+import thurntaxis.wertverfahren.InnerhalbEinemLandVerfahren;
 import thurntaxis.spiel.Spielablauf;
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Klassen um einen Action Listener um die Route werrten lassen zu erstellen.
- * Er wird aktiviert sobald man im Hauptschirm auf den Button Route werten klickt.
+ * Er wird aktiviert sobald man im hauptschirm auf den Button Route werten klickt.
  */
 class RouteWertenListener implements ActionListener {
 
@@ -32,7 +32,7 @@ class RouteWertenListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String meldung = RouteWertenListener.this.spielablauf.routeWerten
-                        (new eineStadtProLandVerfahren());
+                        (new EineStadtProLandVerfahren());
                 if(meldung != null){
                     JOptionPane.showMessageDialog(null, meldung);
                 }
@@ -44,7 +44,7 @@ class RouteWertenListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String meldung = RouteWertenListener.this.spielablauf.routeWerten
-                        (new innerhalbEinemLandVerfahren());
+                        (new InnerhalbEinemLandVerfahren());
                 if(meldung != null){
                     JOptionPane.showMessageDialog(null, meldung);
                 }

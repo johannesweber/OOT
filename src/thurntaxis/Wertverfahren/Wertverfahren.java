@@ -1,4 +1,4 @@
-package thurntaxis.Wertverfahren;
+package thurntaxis.wertverfahren;
 
 import thurntaxis.spiel.Bonusmarker;
 import thurntaxis.spiel.Land;

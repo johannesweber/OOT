@@ -1,14 +1,12 @@
-package thurntaxis.GUI.Hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import javax.swing.*;
 import java.awt.*;
 
-import thurntaxis.GUI.Hauptschirm.SpielbrettPanel;
-import thurntaxis.GUI.Hauptschirm.SpielersteuerungPanel;
 import thurntaxis.spiel.*;
 
 /**
- * Klasse um den Hauptschirm vom Typ JFrame zu erstellen. der Hauptschirm vereint 2 Panels in sich
+ * Klasse um den hauptschirm vom Typ JFrame zu erstellen. der hauptschirm vereint 2 Panels in sich
  * (Spielbrett und Spielersteuerung)
  */
 public class HauptschirmFrame extends JFrame {

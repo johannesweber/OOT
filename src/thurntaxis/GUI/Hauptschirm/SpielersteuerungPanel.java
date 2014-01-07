@@ -1,4 +1,4 @@
-package thurntaxis.GUI.Hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import thurntaxis.spiel.*;
-import thurntaxis.spieler.Spieler;
 
 /**
  * Klasse vom Typ JPanel, welche die verfuegbaren Buttons, die Hand und die Route des Spielers,

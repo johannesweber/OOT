@@ -1,6 +1,6 @@
-package thurntaxis.GUI;
+package thurntaxis.gui;
 
-import thurntaxis.GUI.Hauptschirm.HauptschirmFrame;
+import thurntaxis.gui.hauptschirm.HauptschirmFrame;
 import thurntaxis.spiel.*;
 import thurntaxis.spieler.Spieler;
 
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Klasse um das Startmenue zu realisieren. Das Startmenue besitzt 3 Buttons und wie jede andere Klasse
- * in der GUI auch einen Spielablauf.
+ * in der gui auch einen Spielablauf.
  */
 public class StartmenueFrame extends JFrame {
 
@@ -80,10 +80,11 @@ public class StartmenueFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 JFrame spielregelFrame = new JFrame();
-                ImageIcon bild = new ImageIcon("/Users/Johannes/Dropbox/IntelliJ/OOT/src/thurntaxis/GUI/spielregeln.jpg");
+                ImageIcon bild = new ImageIcon
+                        ("/Users/Johannes/Dropbox/IntelliJ/OOT/src/thurntaxis/gui/spielregeln.jpg");
                 JLabel spielregelLabel = new JLabel(bild);
 
-                spielregelFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                spielregelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 spielregelFrame.setVisible(true);
                 spielregelFrame.add(spielregelLabel);
                 spielregelFrame.pack();

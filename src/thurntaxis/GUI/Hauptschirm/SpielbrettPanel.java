@@ -1,4 +1,4 @@
-package thurntaxis.GUI.Hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import thurntaxis.spiel.Land;
 import thurntaxis.spiel.Spielablauf;
