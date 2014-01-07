@@ -1,6 +1,6 @@
 package thurntaxis;
 
-import thurntaxis.gui.*;
+import thurntaxis.GUI.*;
 import thurntaxis.spiel.Spielablauf;
 
 /**
@@ -12,6 +12,6 @@ public class ThurnTaxis {
 
     public static void main(String[] args) {
 
-        spielablauf.startmenue = new StartmenueFrame(spielablauf);
+        StartmenueFrame startmenue = new StartmenueFrame(spielablauf);
     }
 }

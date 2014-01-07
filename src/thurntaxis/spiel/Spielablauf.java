@@ -1,7 +1,6 @@
 package thurntaxis.spiel;
 
-import thurntaxis.gui.*;
-import thurntaxis.gui.hauptschirm.HauptschirmFrame;
+import thurntaxis.GUI.hauptschirm.HauptschirmFrame;
 import thurntaxis.wertverfahren.Wertverfahren;
 import thurntaxis.spieler.Spieler;
 
@@ -17,7 +16,6 @@ public class Spielablauf {
 
     public Spieler[] spieler = new Spieler[4];
     public Spielbrett spielbrett;
-    public StartmenueFrame startmenue;
     public HauptschirmFrame hauptschirm;
     private Spiel spiel;
     private int istDran = 0;

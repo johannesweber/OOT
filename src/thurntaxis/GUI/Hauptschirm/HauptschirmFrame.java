@@ -1,4 +1,4 @@
-package thurntaxis.gui.hauptschirm;
+package thurntaxis.GUI.hauptschirm;
 
 import javax.swing.*;
 import java.awt.*;

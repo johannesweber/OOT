@@ -1,4 +1,4 @@
-package thurntaxis.gui.hauptschirm;
+package thurntaxis.GUI.hauptschirm;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -23,7 +23,6 @@ class SpielersteuerungPanel extends JPanel {
     private JButton amtspersonAusspielenButton = new JButton("Amtsperson auspielen");
     private JButton routeWertenButton = new JButton("Route werten");
     private JButton naechsterSpielerButton = new JButton("naechster Spieler");
-    private JButton spielBeendenButton = new JButton("Spiel beenden");
 
     private JPanel buttonPanel = new JPanel();
     private JPanel handPanel = new JPanel();

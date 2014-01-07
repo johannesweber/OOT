@@ -1,4 +1,4 @@
-package thurntaxis.gui.hauptschirm;
+package thurntaxis.GUI.hauptschirm;
 
 import thurntaxis.wertverfahren.EineStadtProLandVerfahren;
 import thurntaxis.wertverfahren.InnerhalbEinemLandVerfahren;

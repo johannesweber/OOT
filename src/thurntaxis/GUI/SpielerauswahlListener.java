@@ -1,4 +1,4 @@
-package thurntaxis.gui;
+package thurntaxis.GUI;
 
 import thurntaxis.spieler.Spieler;
 import thurntaxis.spieler.Spielerfarbe;
