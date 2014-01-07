@@ -13,6 +13,7 @@ public class Spielbrett {
 
     private LinkedList<Land> laender;
     private Auslagestapel auslagestapel;
+    private Stack<Bonusmarker> siegplaettchen;
     private Stack<Bonusmarker> alleLaenderBesetztBoni;
     private Map<Integer, Stack> routenlaengeBoni;
     private Map<LandEnum, Stack> vollstaendigBesetzteLaenderBoni;
@@ -20,11 +21,29 @@ public class Spielbrett {
     Spielbrett() {
         this.laender = new LinkedList<Land>();
         this.auslagestapel = new Auslagestapel();
+        this.siegplaettchen = new Stack<Bonusmarker>();
+        siegplaettchen.add(new Bonusmarker(1));
         this.alleLaenderBesetztBoni = new Stack<Bonusmarker>();
         this.vollstaendigBesetzteLaenderBoni = new HashMap<LandEnum, Stack>();
         this.routenlaengeBoni = new HashMap<Integer, Stack>();
         this.laenderFuellen();
         this.boniFuellen();
+    }
+
+    public Stack<Bonusmarker> getAlleLaenderBesetztBoni() {
+        return this.alleLaenderBesetztBoni;
+    }
+
+    public Map<LandEnum, Stack> getVollstaendigBesetzteLaenderBoni() {
+        return this.vollstaendigBesetzteLaenderBoni;
+    }
+
+    public Map<Integer, Stack> getRoutenlaengeBoni() {
+        return this.routenlaengeBoni;
+    }
+
+    public Stack<Bonusmarker> getSiegplaettchen() {
+        return this.siegplaettchen;
     }
 
     public LinkedList<Land> getLaender() {

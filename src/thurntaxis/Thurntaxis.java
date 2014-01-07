@@ -9,9 +9,9 @@ import thurntaxis.spiel.Spielablauf;
 public class Thurntaxis {
 
     static Spielablauf spielablauf = new Spielablauf();
-	
-	public static void main(String[] args) {
-		spielablauf.startmenue = new StartmenueFrame(spielablauf);
 
-	}
+    public static void main(String[] args) {
+
+        spielablauf.startmenue = new StartmenueFrame(spielablauf);
+    }
 }

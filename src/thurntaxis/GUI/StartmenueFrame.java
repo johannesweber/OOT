@@ -1,6 +1,8 @@
 package thurntaxis.GUI;
+
 import thurntaxis.GUI.Hauptschirm.HauptschirmFrame;
 import thurntaxis.spiel.*;
+import thurntaxis.spieler.Spieler;
 
 import javax.swing.*;
 
@@ -12,31 +14,48 @@ import java.awt.event.ActionListener;
  * Klasse um das Startmenue zu realisieren. Das Startmenue besitzt 3 Buttons und wie jede andere Klasse
  * in der GUI auch einen Spielablauf.
  */
-public class StartmenueFrame extends JFrame{
+public class StartmenueFrame extends JFrame {
 
-	public static JButton start = new JButton("Spiel starten");
-    public static JButton spielerauswahl = new JButton("Spieler auswaehlen");
-    private JButton beenden = new JButton("Programm beenden");
-	private Spielablauf spielablauf;
+    private JButton startButton = new JButton("Spiel starten");
+    private JButton fortsetzenButton = new JButton("Spiel fortsetzen");
+    public static JButton spielerauswahlButton = new JButton("Spieler auswaehlen");
+    private JButton spielregelnButton = new JButton("Spielregeln");
+    private JButton beendenButton = new JButton("Programm beenden");
+    private Spielablauf spielablauf;
 
-	public StartmenueFrame(Spielablauf spielablauf) {
+
+    public StartmenueFrame(Spielablauf spielablauf) {
         super("Thurn & Taxis: Das Brettspiel");
-		this.spielablauf = spielablauf;
+        this.spielablauf = spielablauf;
 
-		this.setLayout(new GridLayout(3, 1));
+        this.setLayout(new GridLayout(5, 1));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
 
-		StartmenueFrame.start.setEnabled(false);
-        StartmenueFrame.start.addActionListener(new ActionListener() {
-        	@Override
+        this.startButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent actionEvent) {
-        		spielStarten();
+                int spieleranzahl = 0;
+                for (Spieler it : StartmenueFrame.this.spielablauf.spieler) {
+                    if (it != null) {
+                        spieleranzahl++;
+                    }
+                }
+                if (spieleranzahl != 0) {
+                    StartmenueFrame.this.spielablauf.spielStarten();
+                    StartmenueFrame.this.startButton.setEnabled(false);
+                    StartmenueFrame.this.spielablauf.hauptschirm =
+                            new HauptschirmFrame(StartmenueFrame.this.spielablauf);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Bitte zuerst Spieler auswaehlen");
+                }
             }
         });
-        StartmenueFrame.spielerauswahl.addActionListener(new SpielerauswahlListener(this, this.spielablauf));
-        beenden.addActionListener(new ActionListener() {
+
+        this.spielerauswahlButton.addActionListener(
+                new SpielerauswahlListener(this, this.spielablauf));
+        beendenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 StartmenueFrame.this.setVisible(false);
@@ -44,21 +63,40 @@ public class StartmenueFrame extends JFrame{
             }
         });
 
-        this.add(StartmenueFrame.start);
-        this.add(StartmenueFrame.spielerauswahl);
-        this.add(beenden);
+        this.fortsetzenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (StartmenueFrame.this.spielablauf.hauptschirm != null) {
+                    if (!StartmenueFrame.this.spielablauf.hauptschirm.isVisible()) {
+                        StartmenueFrame.this.spielablauf.hauptschirm.setVisible(true);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Es gibt nichts zum Fortsetzen!");
+                }
+            }
+        });
+
+        this.spielregelnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFrame spielregelFrame = new JFrame();
+                ImageIcon bild = new ImageIcon("/Users/Johannes/Dropbox/IntelliJ/OOT/src/thurntaxis/GUI/spielregeln.jpg");
+                JLabel spielregelLabel = new JLabel(bild);
+
+                spielregelFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                spielregelFrame.setVisible(true);
+                spielregelFrame.add(spielregelLabel);
+                spielregelFrame.pack();
+            }
+        });
+
+        this.add(this.startButton);
+        this.add(this.fortsetzenButton);
+        this.add(StartmenueFrame.this.spielerauswahlButton);
+        this.add(this.beendenButton);
+        this.add(this.spielregelnButton);
 
         this.pack();
 
     }
-
-    /**
-     * Methode um ein Spiel zu starten bzw den Hauptschirm zu oeffnen.
-     * Wird benutzt wenn man den Button Spiel starten drueckt
-     */
-	public void spielStarten(){
-        this.spielablauf.spielStarten();
-        StartmenueFrame.start.setEnabled(false);
-        spielablauf.hauptschirm = new HauptschirmFrame(spielablauf);
-	}
 }

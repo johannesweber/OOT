@@ -18,4 +18,24 @@ public class Haus {
     public int getPunkte(){
         return this.punkte;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Haus)) return false;
+
+        Haus haus = (Haus) o;
+
+        if (punkte != haus.punkte) return false;
+        if (farbe != haus.farbe) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = farbe != null ? farbe.hashCode() : 0;
+        result = 31 * result + punkte;
+        return result;
+    }
 }

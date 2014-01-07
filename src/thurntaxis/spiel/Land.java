@@ -11,14 +11,10 @@ public class Land {
     private LandEnum name;
     private LinkedList<Stadt> staedte;
 
-    Land(LandEnum name) {
+    public Land(LandEnum name) {
         this.name = name;
         this.staedte = new LinkedList<Stadt>();
         this.staedteHinzufuegen(name);
-    }
-
-    public String getName() {
-        return name.toString();
     }
 
     public LinkedList<Stadt> getStaedte() {

@@ -1,6 +1,5 @@
 package thurntaxis.GUI;
 
-import thurntaxis.GUI.StartmenueFrame;
 import thurntaxis.spieler.Spieler;
 import thurntaxis.spieler.Spielerfarbe;
 import thurntaxis.spiel.*;
@@ -31,7 +30,7 @@ class SpielerauswahlListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        final JDialog spielerauswahlDialog = new JDialog(parent, "Bitte zuerst Spieler auswaehlen", true);
+        final JDialog spielerauswahlDialog = new JDialog(parent, "Bitte Spieler waehlen", true);
         JPanel spielerButtonPanel = new JPanel();
         JPanel fertigButtonPanel = new JPanel();
         JButton fertigButton = new JButton("Fertig");
@@ -45,8 +44,7 @@ class SpielerauswahlListener implements ActionListener {
             public void actionPerformed(ActionEvent actionEvent) {
                 if (ausgewaehlt >= 2) {
                     spielerauswahlDialog.setVisible(false);
-                    StartmenueFrame.start.setEnabled(true);
-                    StartmenueFrame.spielerauswahl.setEnabled(false);
+                    StartmenueFrame.spielerauswahlButton.setEnabled(false);
                     spielerauswahlDialog.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Es muessen noch weitere Spieler ausgewaehlt werden.");

@@ -2,6 +2,7 @@ package thurntaxis.spiel;
 
 import thurntaxis.GUI.*;
 import thurntaxis.GUI.Hauptschirm.HauptschirmFrame;
+import thurntaxis.Wertverfahren.Wertverfahren;
 import thurntaxis.spieler.Spieler;
 
 import java.util.Arrays;
@@ -20,13 +21,14 @@ public class Spielablauf {
     public HauptschirmFrame hauptschirm;
     private Spiel spiel;
     private int istDran = 0;
+    private boolean ende = false;
 
     public Spielbrett getSpielbrett() {
         return this.spielbrett;
     }
 
-    public int getIstDran() {
-        return this.istDran;
+    public Spieler getIstDran() {
+        return this.spieler[istDran];
     }
 
     /**
@@ -47,6 +49,8 @@ public class Spielablauf {
                 max = tmpSpieler.punkteErmitteln();
             }
         }
+        if (!this.spielbrett.getSiegplaettchen().isEmpty())
+            gewinner.getBoni().add(this.spielbrett.getSiegplaettchen().pop());
         return gewinner;
     }
 
@@ -71,7 +75,7 @@ public class Spielablauf {
         spieler[istDran].rundeStarten();
     }
 
-    public String naechsteRunde() {
+    public String naechsterSpieler() {
         String meldung;
         if (this.spielbrett.getAuslagestapel().getDeck().isEmpty()) {
             meldung = "Alle Karten sind verbraucht.Das Spiel ist jetzt zu Ende. Der Gewinner ist Spieler "
@@ -83,9 +87,14 @@ public class Spielablauf {
                 if (this.spieler[this.istDran].getZaehlerKarteAblegen() == 1) {
                     meldung = "Du musst noch eine Karte ablegen";
                 } else {
-                    this.naechsterSpieler();
+                    if (ende) {
+                        this.rundeZuEndeSpielen();
+                    } else {
+                        this.naechsterSpielerAuswaehlen();
+                    }
                     meldung = "Jetzt ist Spieler " + this.spieler[this.istDran].getFarbe().toString() + " an der Reihe";
                 }
+
                 this.spieler[this.istDran].rundeStarten();
             }
 
@@ -93,13 +102,40 @@ public class Spielablauf {
         return meldung;
     }
 
-    private void naechsterSpieler(){
-        Spieler tmpSpieler = this.spieler[this.istDran+1];
+    private String rundeZuEndeSpielen() {
+        String meldung = null;
+        Spieler tmpSpieler = this.spieler[this.istDran + 1];
+        if (tmpSpieler == null) {
+            meldung = "Das Spiel ist zu Ende. Herzlichen Glueckwunsch Spieler "
+                    + this.gewinnerErmitteln().getFarbe() + " hat gewonnen";
+        }
+        return meldung;
+    }
+
+    private void naechsterSpielerAuswaehlen() {
+        Spieler tmpSpieler = this.spieler[this.istDran + 1];
         if (tmpSpieler == null) {
             this.istDran = 0;
         } else {
             this.istDran++;
         }
+    }
+
+    /**
+     * In dieser Methode wird, mit Hilfe einer externen Klasse, die Route gewertet, aber nur wenn der Spieler
+     * schon eine Route mit der Laenge 3 oder groesser besitzt.
+     */
+    public String routeWerten(Wertverfahren verfahren) {
+        String meldung = null;
+        if (this.getIstDran().getRoute().size() < 3) {
+            meldung = "Deine Route muss eine Mindestlange von drei Karten aufweissen";
+        } else {
+            this.ende = verfahren.routeWerten(this.getIstDran(), this.getIstDran().getRoute());
+        }
+        if (this.ende) {
+            meldung = "Der erste Spieler hat all seine Streckenposten. Diese Runde wird noch zu Ende gespielt.";
+        }
+        return meldung;
     }
 }
 

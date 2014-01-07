@@ -1,10 +1,7 @@
 package thurntaxis.spieler;
 
 import thurntaxis.amtsperson.Amtsperson;
-import thurntaxis.Wertverfahren.Wertverfahren;
-import thurntaxis.spiel.Bonusmarker;
-import thurntaxis.spiel.Spielbrett;
-import thurntaxis.spiel.Stadt;
+import thurntaxis.spiel.*;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -24,11 +21,19 @@ public class Spieler {
     private Stack<Haus> haeuser;
     private LinkedList<Stadt> route;
     private LinkedList<Stadt> hand;
-    private LinkedList<Stadt> gelegteRoute;
+    private LinkedList<Stadt> gewerteteKarten;
     private LinkedList<Bonusmarker> boni;
     private int zaehlerKartenZiehen;
     private int zaehlerKarteAblegen;
     private int zaehlerAmtsperson;
+
+    public LinkedList<Bonusmarker> getBoni() {
+        return this.boni;
+    }
+
+    public int getZaehlerAmtsperson() {
+        return this.zaehlerAmtsperson;
+    }
 
     public LinkedList<Stadt> getRoute() {
         return this.route;
@@ -39,7 +44,7 @@ public class Spieler {
         this.hand = new LinkedList<Stadt>();
         this.route = new LinkedList<Stadt>();
         this.boni = new LinkedList<Bonusmarker>();
-        this.gelegteRoute = new LinkedList<Stadt>();
+        this.gewerteteKarten = new LinkedList<Stadt>();
         this.haeuser = new Stack<Haus>();
         this.zaehlerKartenZiehen = 0;
         this.zaehlerKarteAblegen = 0;
@@ -75,8 +80,8 @@ public class Spieler {
         return this.farbe;
     }
 
-    public LinkedList<Stadt> getGelegteRoute() {
-        return this.gelegteRoute;
+    public LinkedList<Stadt> getGewerteteKarten() {
+        return this.gewerteteKarten;
     }
 
     public Spielbrett getSpielbrett() {
@@ -140,13 +145,16 @@ public class Spieler {
         if (!(this.zaehlerKarteAblegen < 1)) {
             if (this.route.isEmpty()) {
                 this.route.add(karte);
+                this.hand.remove(karte);
             } else {
                 if (!this.route.contains(karte)) {
-                    if (this.route.getFirst().getNachbarn().contains(karte)) {
+                    if (this.isErsterNachbar(karte)) {
                         this.route.addFirst(karte);
+                        this.hand.remove(karte);
                     } else {
-                        if (this.route.getLast().getNachbarn().contains(karte)) {
+                        if (this.isLetzterNachbar(karte)) {
                             this.route.addLast(karte);
+                            this.hand.remove(karte);
                         } else {
                             meldung = "Karte kann nicht gelegt werden. Keine direkte Verbindung.";
                         }
@@ -158,7 +166,6 @@ public class Spieler {
         } else {
             meldung = "Du darfst keine Karte mehr ablegen.";
         }
-        this.hand.remove(karte);
         this.zaehlerKarteAblegen--;
         return meldung;
     }
@@ -181,18 +188,6 @@ public class Spieler {
     }
 
     /**
-     * In dieser Methode wird, mit Hilfe einer externen Klasse, die Route gewertet, aber nur wenn der Spieler
-     * schon eine Route mit der Laenge 3 oder groesser besitzt.
-     */
-    public void routeWerten(Wertverfahren verfahren) {
-        if (this.route.size() < 3) {
-            System.out.println("Deine Route muss eine Mindestlange von drei Karten aufweissen");
-        } else {
-            verfahren.werten(this, this.route);
-        }
-    }
-
-    /**
      * Private methode um dem Spieler zu Spielbeginn seine Hauser zuzuordnen
      */
     private void haeuserNehmen() {
@@ -210,5 +205,25 @@ public class Spieler {
             this.zaehlerAmtsperson = 1;
             this.zaehlerKarteAblegen = 1;
             this.zaehlerKartenZiehen = 1;
+    }
+
+    private boolean isErsterNachbar(Stadt karte){
+        boolean nachbar = false;
+        for (Spielkarte it : this.route.getFirst().getNachbarn()){
+            if(karte.getName().equals(it)){
+                nachbar = true;
+            }
+        }
+        return nachbar;
+    }
+
+    private boolean isLetzterNachbar(Stadt karte){
+        boolean nachbar = false;
+        for (Spielkarte it : this.route.getLast().getNachbarn()){
+            if(karte.getName().equals(it)){
+                nachbar = true;
+            }
+        }
+        return nachbar;
     }
 }

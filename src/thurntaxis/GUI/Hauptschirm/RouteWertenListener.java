@@ -1,7 +1,7 @@
 package thurntaxis.GUI.Hauptschirm;
 
-import thurntaxis.Wertverfahren.eineStadtProLand;
-import thurntaxis.Wertverfahren.innerhalbEinemLand;
+import thurntaxis.Wertverfahren.eineStadtProLandVerfahren;
+import thurntaxis.Wertverfahren.innerhalbEinemLandVerfahren;
 import thurntaxis.spiel.Spielablauf;
 
 import javax.swing.*;
@@ -31,9 +31,11 @@ class RouteWertenListener implements ActionListener {
         eineStadtProLandButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                RouteWertenListener.this.spielablauf.spieler
-                        [RouteWertenListener.this.spielablauf.getIstDran()].routeWerten
-                        (new eineStadtProLand());
+                String meldung = RouteWertenListener.this.spielablauf.routeWerten
+                        (new eineStadtProLandVerfahren());
+                if(meldung != null){
+                    JOptionPane.showMessageDialog(null, meldung);
+                }
                 routeWertenDialog.dispose();
             }
         });
@@ -41,13 +43,16 @@ class RouteWertenListener implements ActionListener {
         innerhalbEinemLandButon.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                RouteWertenListener.this.spielablauf.spieler
-                        [RouteWertenListener.this.spielablauf.getIstDran()].routeWerten
-                        (new innerhalbEinemLand());
+                String meldung = RouteWertenListener.this.spielablauf.routeWerten
+                        (new innerhalbEinemLandVerfahren());
+                if(meldung != null){
+                    JOptionPane.showMessageDialog(null, meldung);
+                }
                 routeWertenDialog.dispose();
             }
         });
 
+        routeWertenDialog.setLocationRelativeTo(null);
         routeWertenDialog.setTitle("Wie moechtest du deine Route werten lassen?");
         routeWertenDialog.setLayout(new GridLayout(2, 1));
         routeWertenDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

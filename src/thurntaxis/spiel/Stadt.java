@@ -21,8 +21,8 @@ public class Stadt {
         this.nachbarnHinzufuegen();
     }
 
-    public String getName() {
-        return name.toString();
+    public Spielkarte getName() {
+        return this.name;
     }
 
     public LandEnum getLand() {
@@ -193,5 +193,27 @@ public class Stadt {
     @Override
     public String toString() {
         return this.name.toString() + " (" + this.getLand().toString() + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Stadt)) return false;
+
+        Stadt stadt = (Stadt) o;
+
+        if (haeuser != null ? !haeuser.equals(stadt.haeuser) : stadt.haeuser != null) return false;
+        if (nachbarn != null ? !nachbarn.equals(stadt.nachbarn) : stadt.nachbarn != null) return false;
+        if (name != stadt.name) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (haeuser != null ? haeuser.hashCode() : 0);
+        result = 31 * result + (nachbarn != null ? nachbarn.hashCode() : 0);
+        return result;
     }
 }

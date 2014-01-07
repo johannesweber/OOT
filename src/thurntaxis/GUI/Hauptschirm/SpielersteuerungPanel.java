@@ -24,6 +24,7 @@ class SpielersteuerungPanel extends JPanel {
     private JButton amtspersonAusspielenButton = new JButton("Amtsperson auspielen");
     private JButton routeWertenButton = new JButton("Route werten");
     private JButton naechsterSpielerButton = new JButton("naechster Spieler");
+    private JButton spielBeendenButton = new JButton("Spiel beenden");
 
     private JPanel buttonPanel = new JPanel();
     private JPanel handPanel = new JPanel();
@@ -44,66 +45,63 @@ class SpielersteuerungPanel extends JPanel {
         this.spielablauf = spielablauf;
         this.spielbrettPanel = spielbrettPanel;
 
-        spielersteuerungLabel = new JLabel("Spieler " + spielablauf.spieler
-                [spielablauf.getIstDran()].getFarbe().toString());
+        this.spielersteuerungLabel = new JLabel("Spieler " + spielablauf.getIstDran().getFarbe().toString());
 
-        karteAblegenButton.setEnabled(false);
-        buttonPanel.setLayout(new GridLayout(6, 1));
+        this.karteAblegenButton.setEnabled(false);
+        this.buttonPanel.setLayout(new GridLayout(6, 1));
 
-        spielersteuerungLabel.setHorizontalAlignment(JLabel.CENTER);
-        buttonPanel.add(spielersteuerungLabel);
-        buttonPanel.add(karteZiehenButton);
-        buttonPanel.add(karteAblegenButton);
-        buttonPanel.add(amtspersonAusspielenButton);
-        buttonPanel.add(routeWertenButton);
-        buttonPanel.add(naechsterSpielerButton);
+        this.spielersteuerungLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.buttonPanel.add(spielersteuerungLabel);
+        this.buttonPanel.add(karteZiehenButton);
+        this.buttonPanel.add(karteAblegenButton);
+        this.buttonPanel.add(amtspersonAusspielenButton);
+        this.buttonPanel.add(routeWertenButton);
+        this.buttonPanel.add(naechsterSpielerButton);
 
-        handList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        this.handList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        handList.addListSelectionListener(new ListSelectionListener() {
+        this.handList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
                 karteAblegenButton.setEnabled(true);
             }
         });
 
-        handPanel.add(deineHandLabel);
-        handPanel.add(handList);
+        this.handPanel.add(deineHandLabel);
+        this.handPanel.add(handList);
 
-        routenPanel.add(deineRouteLabel);
-        routenPanel.add(routeList);
+        this.routenPanel.add(deineRouteLabel);
+        this.routenPanel.add(routeList);
 
-        beides.setLayout(new GridLayout(2, 1));
-        beides.add(handPanel);
-        beides.add(routenPanel);
+        this.beides.setLayout(new GridLayout(2, 1));
+        this.beides.add(handPanel);
+        this.beides.add(routenPanel);
 
-        karteAblegenButton.addActionListener(new ActionListener() {
+        this.karteAblegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String ausgewaehlteKarte = defaultHandModel.get(handList.getSelectedIndex()).toString();
                 handList.clearSelection();
                 karteAblegenButton.setEnabled(false);
-                String meldung = SpielersteuerungPanel.this.spielablauf.spieler
-                        [SpielersteuerungPanel.this.spielablauf.getIstDran()].karteAblegen
+                String meldung = SpielersteuerungPanel.this.spielablauf.getIstDran().karteAblegen
                         (SpielersteuerungPanel.this.getStadtAnhandString(ausgewaehlteKarte));
                 if (meldung != null) {
                     JOptionPane.showMessageDialog(null, meldung);
+                    SpielersteuerungPanel.this.listenAktualisieren();
+                } else {
+                    SpielersteuerungPanel.this.listenAktualisieren();
                 }
-                SpielersteuerungPanel.this.defaultRouteFuellen();
-                SpielersteuerungPanel.this.defaultHandFuellen();
-
             }
         });
 
-        karteZiehenButton.addActionListener(new ActionListener() {
+        this.karteZiehenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 int karte = SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().
                         getIndexOf(SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().
                                 getSelectedItem());
 
-                String meldung = SpielersteuerungPanel.this.spielablauf.spieler
-                        [SpielersteuerungPanel.this.spielablauf.getIstDran()].karteZiehen(karte);
+                String meldung = SpielersteuerungPanel.this.spielablauf.getIstDran().karteZiehen(karte);
                 if (meldung != null) {
                     JOptionPane.showMessageDialog(null, meldung);
                 } else {
@@ -113,21 +111,20 @@ class SpielersteuerungPanel extends JPanel {
             }
         });
 
-        amtspersonAusspielenButton.addActionListener(new AmtspersonListener(this.spielablauf, this.spielbrettPanel));
+        this.amtspersonAusspielenButton.addActionListener(new AmtspersonListener(this.spielablauf, this.spielbrettPanel));
 
-        routeWertenButton.addActionListener(new RouteWertenListener(this.spielablauf));
+        this.routeWertenButton.addActionListener(new RouteWertenListener(this.spielablauf));
 
-        naechsterSpielerButton.addActionListener(new ActionListener() {
+        this.naechsterSpielerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String meldung = SpielersteuerungPanel.this.spielablauf.naechsteRunde();
+                String meldung = SpielersteuerungPanel.this.spielablauf.naechsterSpieler();
                 JOptionPane.showMessageDialog(null, meldung);
-                spielersteuerungLabel.setText("Spieler " + SpielersteuerungPanel.this.spielablauf.spieler
-                        [SpielersteuerungPanel.this.spielablauf.getIstDran()].getFarbe().toString());
+                spielersteuerungLabel.setText("Spieler " +
+                        SpielersteuerungPanel.this.spielablauf.getIstDran().getFarbe().toString());
                 spielersteuerungLabel.validate();
                 spielersteuerungLabel.repaint();
-                SpielersteuerungPanel.this.defaultHandFuellen();
-                SpielersteuerungPanel.this.defaultRouteFuellen();
+                SpielersteuerungPanel.this.listenAktualisieren();
 
             }
         });
@@ -136,11 +133,16 @@ class SpielersteuerungPanel extends JPanel {
         this.add(beides);
 
         this.setLayout(new GridLayout(1, 2));
-        handPanel.setVisible(true);
-        buttonPanel.setVisible(true);
-        routenPanel.setVisible(true);
-        beides.setVisible(true);
+        this.handPanel.setVisible(true);
+        this.buttonPanel.setVisible(true);
+        this.routenPanel.setVisible(true);
+        this.beides.setVisible(true);
         this.setVisible(true);
+    }
+
+    private void listenAktualisieren(){
+        this.defaultHandFuellen();
+        this.defaultRouteFuellen();
     }
 
     /**
@@ -148,8 +150,8 @@ class SpielersteuerungPanel extends JPanel {
      */
     private void defaultHandFuellen() {
         this.defaultHandModel.clear();
-        if (!spielablauf.spieler[spielablauf.getIstDran()].getHand().isEmpty()) {
-            for (Stadt it : spielablauf.spieler[spielablauf.getIstDran()].getHand()) {
+        if (!spielablauf.getIstDran().getHand().isEmpty()) {
+            for (Stadt it : spielablauf.getIstDran().getHand()) {
                 defaultHandModel.addElement(it.toString());
             }
         }
@@ -160,9 +162,9 @@ class SpielersteuerungPanel extends JPanel {
      */
     private void defaultRouteFuellen() {
         this.defaultRouteModel.clear();
-        if (!spielablauf.spieler[spielablauf.getIstDran()].getRoute().isEmpty()) {
+        if (!spielablauf.getIstDran().getRoute().isEmpty()) {
             this.defaultRouteModel.clear();
-            for (Stadt it : spielablauf.spieler[spielablauf.getIstDran()].getRoute()) {
+            for (Stadt it : spielablauf.getIstDran().getRoute()) {
                 defaultRouteModel.addElement(it.toString());
             }
         }
@@ -176,7 +178,7 @@ class SpielersteuerungPanel extends JPanel {
      */
     private Stadt getStadtAnhandString(String ausgewaehlteKarte) {
         Stadt stadt = null;
-        for (Stadt it : spielablauf.spieler[spielablauf.getIstDran()].getHand()) {
+        for (Stadt it : spielablauf.getIstDran().getHand()) {
             if (ausgewaehlteKarte.equals(it.toString())) {
                 stadt = it;
             }
