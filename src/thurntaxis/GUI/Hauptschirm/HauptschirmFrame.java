@@ -11,12 +11,11 @@ import thurntaxis.spiel.*;
  */
 public class HauptschirmFrame extends JFrame {
 
-    public HauptschirmFrame(Spielleiter spielablauf) {
+    public HauptschirmFrame(Spielleiter spielleiter) {
         super("Thurn & Taxis: Das Brettspiel");
 
-        SpielbrettPanel spielbrettPanel = new SpielbrettPanel(spielablauf);
-        SpielersteuerungPanel spielersteuerung = new SpielersteuerungPanel(spielablauf, spielbrettPanel);
-
+        SpielbrettPanel spielbrettPanel = new SpielbrettPanel(spielleiter);
+        SpielersteuerungPanel spielersteuerung = new SpielersteuerungPanel(spielleiter, spielbrettPanel);
 
         this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(1, 2));
@@ -26,7 +25,7 @@ public class HauptschirmFrame extends JFrame {
         this.add(spielbrettPanel);
 
 
-        this.pack();
+        this.setSize(800,600);
         this.setVisible(true);
     }
 

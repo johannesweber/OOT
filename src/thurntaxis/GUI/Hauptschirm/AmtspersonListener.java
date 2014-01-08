@@ -15,12 +15,12 @@ import java.awt.event.ActionListener;
  */
 class AmtspersonListener implements ActionListener {
 
-    private Spielleiter spielablauf;
+    private Spielleiter spielleiter;
     private SpielbrettPanel spielbrettPanel;
 
 
-    AmtspersonListener(Spielleiter spielablauf,SpielbrettPanel spielbrettPanel) {
-        this.spielablauf = spielablauf;
+    AmtspersonListener(Spielleiter spielleiter,SpielbrettPanel spielbrettPanel) {
+        this.spielleiter = spielleiter;
         this.spielbrettPanel = spielbrettPanel;
     }
 
@@ -43,7 +43,7 @@ class AmtspersonListener implements ActionListener {
         postillionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String meldung = spielablauf.getIstDran().amtspersonAusspielen(new Postillion());
+                String meldung = spielleiter.getIstDran().amtspersonAusspielen(new Postillion());
                 if (meldung != null) {
                     JOptionPane.showMessageDialog(null, meldung);
                 }
@@ -55,7 +55,7 @@ class AmtspersonListener implements ActionListener {
         amtmannButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String meldung = spielablauf.getIstDran().amtspersonAusspielen(new Amtmann());
+                String meldung = spielleiter.getIstDran().amtspersonAusspielen(new Amtmann());
                 AmtspersonListener.this.spielbrettPanel.defaultAuslagestapelModelFuellen();
                 if (meldung != null) {
                     JOptionPane.showMessageDialog(null, meldung);
@@ -67,7 +67,7 @@ class AmtspersonListener implements ActionListener {
         postmeisterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String meldung = spielablauf.getIstDran().amtspersonAusspielen(new Postmeister());
+                String meldung = spielleiter.getIstDran().amtspersonAusspielen(new Postmeister());
                 if (meldung != null) {
                     JOptionPane.showMessageDialog(null, meldung);
                 }

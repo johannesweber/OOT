@@ -15,11 +15,17 @@ import java.util.ListIterator;
 public class Spielleiter {
 
     public Spieler[] spieler;
-    public Spielbrett spielbrett;
+    private Spielbrett spielbrett;
     public HauptschirmFrame hauptschirm;
     private Spiel spiel;
-    private int istDran = 0;
-    private boolean ende = false;
+    private int istDran;
+    private boolean ende;
+
+    public Spielleiter() {
+        this.spieler = new Spieler[4];
+        this.istDran = 0;
+        this.ende = false;
+    }
 
     public Spielbrett getSpielbrett() {
         return this.spielbrett;
@@ -47,8 +53,9 @@ public class Spielleiter {
                 max = tmpSpieler.punkteErmitteln();
             }
         }
-        if (!this.spielbrett.getSiegplaettchen().isEmpty())
+        if (!this.spielbrett.getSiegplaettchen().isEmpty()) {
             gewinner.getBoni().add(this.spielbrett.getSiegplaettchen().pop());
+        }
         return gewinner;
     }
 
@@ -124,11 +131,12 @@ public class Spielleiter {
      * schon eine Route mit der Laenge 3 oder groesser besitzt.
      */
     public String routeWerten(Wertverfahren verfahren) {
-        String meldung = null;
+        String meldung;
         if (this.getIstDran().getRoute().size() < 3) {
             meldung = "Deine Route muss eine Mindestlange von drei Karten aufweissen";
         } else {
             this.ende = verfahren.routeWerten(this.getIstDran(), this.getIstDran().getRoute());
+            meldung = "Deine Route wurde erfolgreich gewertet.";
         }
         if (this.ende) {
             meldung = "Der erste Spieler hat all seine Streckenposten. Diese Runde wird noch zu Ende gespielt.";

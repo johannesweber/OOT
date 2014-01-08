@@ -1,24 +1,25 @@
 package thurntaxis.wertverfahren;
 
+import thurntaxis.spiel.LandEnum;
 import thurntaxis.spiel.Stadt;
 import thurntaxis.spieler.Spieler;
+
+import java.util.ListIterator;
 
 /**
  * Created by Johannes on 06.01.14.
  */
 public class InnerhalbEinemLandVerfahren extends Wertverfahren {
 
+    private LandEnum land;
+
+    public InnerhalbEinemLandVerfahren(LandEnum land) {
+        this.land = land;
+    }
+
     void kartePruefen(Spieler spieler, Stadt karte) {
-        if (spieler.getGewerteteKarten() == null) {
+        if (karte.getLand().equals(this.land)) {
             this.wertbareRoute.add(karte);
-            spieler.getRoute().remove(karte);
-        } else {
-            for (Stadt stadtIt : spieler.getGewerteteKarten()) {
-                if (karte.getLand().equals(stadtIt.getLand())) {
-                    this.wertbareRoute.add(karte);
-                    spieler.getRoute().remove(karte);
-                }
-            }
         }
     }
 }

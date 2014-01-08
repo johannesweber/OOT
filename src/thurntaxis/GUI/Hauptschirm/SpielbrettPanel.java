@@ -15,9 +15,11 @@ import java.awt.*;
  */
 class SpielbrettPanel extends JPanel {
 
-    private Spielleiter spielablauf;
+    private Spielleiter spielleiter;
+
     private DefaultComboBoxModel defaultAuslagestapelComboBoxModel = new DefaultComboBoxModel();
     private JComboBox auslagestapelComboBox = new JComboBox(defaultAuslagestapelComboBoxModel);
+
     private JPanel spielbrettPanel = new JPanel();
     private JPanel auslagestapelPanel = new JPanel();
     private JLabel stapelLabel = new JLabel("Auslagestapel");
@@ -26,12 +28,12 @@ class SpielbrettPanel extends JPanel {
         return this.defaultAuslagestapelComboBoxModel;
     }
 
-    SpielbrettPanel(Spielleiter spielablauf) {
-        this.spielablauf = spielablauf;
+    SpielbrettPanel(Spielleiter spielleiter) {
+        this.spielleiter = spielleiter;
 
         DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Das Spielbrett");
 
-        for (Land landIt : spielablauf.getSpielbrett().getLaender()) {
+        for (Land landIt : spielleiter.getSpielbrett().getLaender()) {
             for (Stadt stadtIt : landIt.getStaedte()) {
                 DefaultMutableTreeNode stadt = new DefaultMutableTreeNode(stadtIt.toString());
                 wurzel.add(stadt);
@@ -57,7 +59,7 @@ class SpielbrettPanel extends JPanel {
 
     public void defaultAuslagestapelModelFuellen() {
         this.defaultAuslagestapelComboBoxModel.removeAllElements();
-        for (Stadt it : this.spielablauf.getSpielbrett().getAuslagestapel().getAuslagestapel()) {
+        for (Stadt it : this.spielleiter.getSpielbrett().getAuslagestapel().getAuslagestapel()) {
             this.defaultAuslagestapelComboBoxModel.addElement(it);
         }
 

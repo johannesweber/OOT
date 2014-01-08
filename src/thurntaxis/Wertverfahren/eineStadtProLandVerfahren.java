@@ -10,14 +10,12 @@ import thurntaxis.spieler.Spieler;
 public class EineStadtProLandVerfahren extends Wertverfahren {
 
     void kartePruefen(Spieler spieler, Stadt karte) {
-        if (!this.wertbareRoute.isEmpty()) {
+        if (this.wertbareRoute.isEmpty()) {
             this.wertbareRoute.add(karte);
-            spieler.getRoute().remove(karte);
         } else {
             for (Stadt stadtIt : this.wertbareRoute) {
                 if (!(karte.getLand().equals(stadtIt.getLand()))) {
-                    this.wertbareRoute.add(karte);
-                    spieler.getRoute().remove(karte);
+                    this.zwischenspeicher.add(karte);
                 }
             }
         }

@@ -17,6 +17,10 @@ public class Land {
         this.staedteHinzufuegen(name);
     }
 
+    public LandEnum getName() {
+        return this.name;
+    }
+
     public LinkedList<Stadt> getStaedte() {
         return staedte;
     }

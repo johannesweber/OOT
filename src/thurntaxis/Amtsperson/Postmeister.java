@@ -10,6 +10,6 @@ public class Postmeister implements Amtsperson {
 
     @Override
     public void ausspielen(Spieler spieler) {
-        spieler.ZaehlerKartenZiehenErhoehen();
+        spieler.zaehlerKartenZiehenErhoehen();
     }
 }

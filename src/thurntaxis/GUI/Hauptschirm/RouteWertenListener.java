@@ -1,6 +1,8 @@
 package thurntaxis.GUI.hauptschirm;
 
+import thurntaxis.spiel.LandEnum;
 import thurntaxis.spiel.Spielleiter;
+import thurntaxis.spiel.Stadt;
 import thurntaxis.wertverfahren.EineStadtProLandVerfahren;
 import thurntaxis.wertverfahren.InnerhalbEinemLandVerfahren;
 
@@ -8,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 
 /**
  * Klassen um einen Action Listener um die Route werrten lassen zu erstellen.
@@ -15,11 +18,11 @@ import java.awt.event.ActionListener;
  */
 class RouteWertenListener implements ActionListener {
 
-    private Spielleiter spielablauf;
+    private Spielleiter spielleiter;
     private SpielersteuerungPanel spielersteuerungPanel;
 
-    RouteWertenListener(Spielleiter spielablauf, SpielersteuerungPanel spielersteuerungPanel) {
-        this.spielablauf = spielablauf;
+    RouteWertenListener(Spielleiter spielleiter, SpielersteuerungPanel spielersteuerungPanel) {
+        this.spielleiter = spielleiter;
         this.spielersteuerungPanel = spielersteuerungPanel;
     }
 
@@ -33,7 +36,8 @@ class RouteWertenListener implements ActionListener {
         eineStadtProLandButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String meldung = RouteWertenListener.this.spielablauf.routeWerten
+
+                String meldung = RouteWertenListener.this.spielleiter.routeWerten
                         (new EineStadtProLandVerfahren());
                 if(meldung != null){
                     JOptionPane.showMessageDialog(null, meldung);
@@ -46,13 +50,46 @@ class RouteWertenListener implements ActionListener {
         innerhalbEinemLandButon.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String meldung = RouteWertenListener.this.spielablauf.routeWerten
-                        (new InnerhalbEinemLandVerfahren());
-                if(meldung != null){
-                    JOptionPane.showMessageDialog(null, meldung);
+
+                JDialog landauswahlDialog = new JDialog();
+                JLabel label = new JLabel("Bitte waehlen sie aus in welchem Land sie die Route werten" +
+                        "lassen wollen");
+                JButton bestaetigenButton = new JButton("Bestaetigen");
+
+                DefaultComboBoxModel defaultlandModel = new DefaultComboBoxModel();
+                final JComboBox landBox = new JComboBox(defaultlandModel);
+
+                LinkedList<LandEnum> laender = new LinkedList<LandEnum>();
+                laender.add(spielleiter.getIstDran().getRoute().getFirst().getLand());
+
+                for (Stadt it : spielleiter.getIstDran().getRoute()){
+
+                    if(!laender.contains(it.getLand())){
+                        defaultlandModel.addElement(it.getLand());
+                    }
                 }
-                RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
-                routeWertenDialog.dispose();
+                bestaetigenButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        LandEnum ausgewaehlt = (LandEnum) landBox.getSelectedItem();
+
+                        String meldung = RouteWertenListener.this.spielleiter.routeWerten
+                                (new InnerhalbEinemLandVerfahren(ausgewaehlt));
+
+                        JOptionPane.showMessageDialog(null, meldung);
+
+                        RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
+                        routeWertenDialog.dispose();
+                    }
+                });
+
+                landauswahlDialog.setVisible(true);
+                landauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                landauswahlDialog.pack();
+
+                landauswahlDialog.add(label);
+                landauswahlDialog.add(landBox);
+                landauswahlDialog.add(bestaetigenButton);
             }
         });
 

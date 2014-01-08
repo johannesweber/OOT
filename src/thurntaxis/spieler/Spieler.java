@@ -31,10 +31,6 @@ public class Spieler {
         return this.boni;
     }
 
-    public int getZaehlerAmtsperson() {
-        return this.zaehlerAmtsperson;
-    }
-
     public LinkedList<Stadt> getRoute() {
         return this.route;
     }
@@ -60,11 +56,15 @@ public class Spieler {
         return this.zaehlerKarteAblegen;
     }
 
-    public void ZaehlerKartenZiehenErhoehen() {
+    public void zaehlerKartenAblegenVerringern() {
+        this.zaehlerKarteAblegen--;
+    }
+
+    public void zaehlerKartenZiehenErhoehen() {
         this.zaehlerKartenZiehen++;
     }
 
-    public void ZaehlerKarteAblegenErhoehen() {
+    public void zaehlerKarteAblegenErhoehen() {
         this.zaehlerKarteAblegen++;
     }
 
@@ -140,8 +140,8 @@ public class Spieler {
      *
      * @param karte die karte welcher der spieler ablegen will.
      */
-    public String karteAblegen(Stadt karte) {
-        String meldung = null;
+    public int karteAblegen(Stadt karte) {
+        int meldung = 0;
         if (!(this.zaehlerKarteAblegen < 1)) {
             if (this.route.isEmpty()) {
                 this.route.add(karte);
@@ -159,15 +159,15 @@ public class Spieler {
                             this.hand.remove(karte);
                             this.zaehlerKarteAblegen--;
                         } else {
-                            meldung = "Karte kann nicht gelegt werden. Keine direkte Verbindung.";
+                            meldung = 1;//"Karte kann nicht gelegt werden. Keine direkte Verbindung.";
                         }
                     }
                 } else {
-                    meldung = "Diese Karte ist schon in deiner Route enthalten!";
+                    meldung = 2;//"Diese Karte ist schon in deiner Route enthalten!";
                 }
             }
         } else {
-            meldung = "Du darfst keine Karte mehr ablegen.";
+            meldung = 3;//"Du darfst keine Karte mehr ablegen.";
         }
         return meldung;
     }

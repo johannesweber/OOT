@@ -10,6 +10,6 @@ public class Postillion implements Amtsperson{
 
     @Override
     public void ausspielen(Spieler spieler) {
-        spieler.ZaehlerKarteAblegenErhoehen();
+        spieler.zaehlerKarteAblegenErhoehen();
     }
 }

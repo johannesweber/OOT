@@ -8,10 +8,10 @@ import thurntaxis.spiel.Spielleiter;
  */
 public class ThurnTaxis {
 
-    static Spielleiter spielablauf = new Spielleiter();
+    static Spielleiter spielleiter = new Spielleiter();
 
     public static void main(String[] args) {
 
-        StartmenueFrame startmenue = new StartmenueFrame(spielablauf);
+        StartmenueFrame startmenue = new StartmenueFrame(spielleiter);
     }
 }

@@ -16,17 +16,18 @@ import java.awt.event.ActionListener;
  */
 public class StartmenueFrame extends JFrame {
 
+    private Spielleiter spielleiter;
+
     private JButton startButton = new JButton("Spiel starten");
     private JButton fortsetzenButton = new JButton("Spiel fortsetzen");
     public static JButton spielerauswahlButton = new JButton("Spieler auswaehlen");
     private JButton spielregelnButton = new JButton("Spielregeln");
     private JButton beendenButton = new JButton("Programm beenden");
-    private Spielleiter spielablauf;
 
 
     public StartmenueFrame(Spielleiter spielablauf) {
         super("Thurn & Taxis: Das Brettspiel");
-        this.spielablauf = spielablauf;
+        this.spielleiter = spielablauf;
 
         this.setLayout(new GridLayout(5, 1));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,16 +38,16 @@ public class StartmenueFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 int spieleranzahl = 0;
-                for (Spieler it : StartmenueFrame.this.spielablauf.spieler) {
+                for (Spieler it : StartmenueFrame.this.spielleiter.spieler) {
                     if (it != null) {
                         spieleranzahl++;
                     }
                 }
-                if (spieleranzahl != 0) {
-                    StartmenueFrame.this.spielablauf.spielStarten();
+                if (spieleranzahl >= 2) {
+                    StartmenueFrame.this.spielleiter.spielStarten();
                     StartmenueFrame.this.startButton.setEnabled(false);
-                    StartmenueFrame.this.spielablauf.hauptschirm =
-                            new HauptschirmFrame(StartmenueFrame.this.spielablauf);
+                    StartmenueFrame.this.spielleiter.hauptschirm =
+                            new HauptschirmFrame(StartmenueFrame.this.spielleiter);
                 } else {
                     JOptionPane.showMessageDialog(null, "Bitte zuerst Spieler auswaehlen");
                 }
@@ -54,7 +55,8 @@ public class StartmenueFrame extends JFrame {
         });
 
         this.spielerauswahlButton.addActionListener(
-                new SpielerauswahlListener(this, this.spielablauf));
+                new SpielerauswahlListener(this, this.spielleiter));
+
         beendenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -66,9 +68,9 @@ public class StartmenueFrame extends JFrame {
         this.fortsetzenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (StartmenueFrame.this.spielablauf.hauptschirm != null) {
-                    if (!StartmenueFrame.this.spielablauf.hauptschirm.isVisible()) {
-                        StartmenueFrame.this.spielablauf.hauptschirm.setVisible(true);
+                if (StartmenueFrame.this.spielleiter.hauptschirm != null) {
+                    if (!StartmenueFrame.this.spielleiter.hauptschirm.isVisible()) {
+                        StartmenueFrame.this.spielleiter.hauptschirm.setVisible(true);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Es gibt nichts zum Fortsetzen!");
