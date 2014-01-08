@@ -1,14 +1,14 @@
 package thurntaxis;
 
 import thurntaxis.GUI.*;
-import thurntaxis.spiel.Spielablauf;
+import thurntaxis.spiel.Spielleiter;
 
 /**
  * Created by Johannes on 21.12.13.
  */
 public class ThurnTaxis {
 
-    static Spielablauf spielablauf = new Spielablauf();
+    static Spielleiter spielablauf = new Spielleiter();
 
     public static void main(String[] args) {
 

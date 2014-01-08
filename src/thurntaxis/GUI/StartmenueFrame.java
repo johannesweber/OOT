@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Klasse um das Startmenue zu realisieren. Das Startmenue besitzt 3 Buttons und wie jede andere Klasse
- * in der GUI auch einen Spielablauf.
+ * in der GUI auch einen Spielleiter.
  */
 public class StartmenueFrame extends JFrame {
 
@@ -21,10 +21,10 @@ public class StartmenueFrame extends JFrame {
     public static JButton spielerauswahlButton = new JButton("Spieler auswaehlen");
     private JButton spielregelnButton = new JButton("Spielregeln");
     private JButton beendenButton = new JButton("Programm beenden");
-    private Spielablauf spielablauf;
+    private Spielleiter spielablauf;
 
 
-    public StartmenueFrame(Spielablauf spielablauf) {
+    public StartmenueFrame(Spielleiter spielablauf) {
         super("Thurn & Taxis: Das Brettspiel");
         this.spielablauf = spielablauf;
 

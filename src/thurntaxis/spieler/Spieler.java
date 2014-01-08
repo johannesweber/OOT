@@ -60,11 +60,11 @@ public class Spieler {
         return this.zaehlerKarteAblegen;
     }
 
-    public void setZaehlerKartenZiehen() {
+    public void ZaehlerKartenZiehenErhoehen() {
         this.zaehlerKartenZiehen++;
     }
 
-    public void setZaehlerKarteAblegen() {
+    public void ZaehlerKarteAblegenErhoehen() {
         this.zaehlerKarteAblegen++;
     }
 

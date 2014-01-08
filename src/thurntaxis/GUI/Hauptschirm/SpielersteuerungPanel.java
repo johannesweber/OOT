@@ -15,7 +15,7 @@ import thurntaxis.spiel.*;
  */
 class SpielersteuerungPanel extends JPanel {
 
-    private Spielablauf spielablauf;
+    private Spielleiter spielablauf;
     private SpielbrettPanel spielbrettPanel;
 
     private JButton karteZiehenButton = new JButton("Karte ziehen");
@@ -40,7 +40,7 @@ class SpielersteuerungPanel extends JPanel {
     private DefaultListModel defaultHandModel = new DefaultListModel();
     private JList handList = new JList(defaultHandModel);
 
-    SpielersteuerungPanel(Spielablauf spielablauf, SpielbrettPanel spielbrettPanel) {
+    SpielersteuerungPanel(Spielleiter spielablauf, SpielbrettPanel spielbrettPanel) {
         this.spielablauf = spielablauf;
         this.spielbrettPanel = spielbrettPanel;
 

@@ -26,27 +26,6 @@ public class Spiel {
     }
 
     /**
-     * Diese Methode ermittelt den Spieler mit der hoechsten Punktzahl. Die Punktzahl der einzelnen Spieler
-     * wird in der Klasse Spieler errechnet.
-     *
-     * @return der gewinner
-     */
-    public Spieler gewinnerErmitteln() {
-        List<Spieler> spielers = Arrays.asList(this.spieler);
-        ListIterator<Spieler> it = spielers.listIterator();
-        Spieler gewinner = it.next();
-        int max = gewinner.punkteErmitteln();
-        while (it.hasNext()) {
-            Spieler tmpSpieler = it.next();
-            if (tmpSpieler.punkteErmitteln() > max) {
-                gewinner = tmpSpieler;
-                max = tmpSpieler.punkteErmitteln();
-            }
-        }
-        return gewinner;
-    }
-
-    /**
      * In dieser Methode wird jeder Spieler dem aktuellen HauptschirmGUI zugeordnet.
      * Ein Spieler sollte wissen an welchem HauptschirmGUI er spielt.
      */
@@ -56,12 +35,5 @@ public class Spiel {
                 it.setSpielbrett(this.spielbrett);
             }
         }
-    }
-
-    /**
-     * Methode um die allererste Runde zu starten.
-     */
-    public void spielStarten() {
-        this.spieler[0].rundeStarten();
     }
 }

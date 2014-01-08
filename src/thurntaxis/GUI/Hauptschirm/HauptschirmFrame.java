@@ -11,7 +11,7 @@ import thurntaxis.spiel.*;
  */
 public class HauptschirmFrame extends JFrame {
 
-    public HauptschirmFrame(Spielablauf spielablauf) {
+    public HauptschirmFrame(Spielleiter spielablauf) {
         super("Thurn & Taxis: Das Brettspiel");
 
         SpielbrettPanel spielbrettPanel = new SpielbrettPanel(spielablauf);

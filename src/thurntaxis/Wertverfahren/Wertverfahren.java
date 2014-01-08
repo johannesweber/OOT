@@ -12,6 +12,9 @@ import java.util.LinkedList;
 
 /**
  * Eine abstrakte Klasse fuer die zwei verschiedenen Werteverfahren einer Route.
+ * Zu dem verfahren der Route werten gehoeren mehrere Schritte: Zuerst wird die Karte ueberpruft ob
+ * sie auch gelegt werden kann, als naechstes werden die Haeuser gesetzt und gleichzeitig geprueft ob
+ * das Spiel zu Ende ist, als letzten werden die Bonusmarker vergeben.
  */
 
 public abstract class Wertverfahren {
@@ -24,14 +27,14 @@ public abstract class Wertverfahren {
         for (Stadt it : route) {
             this.kartePruefen(spieler, it);
         }
-        Boolean ende = this.HaeuserSetzen(spieler);
+        Boolean ende = this.haeuserSetzen(spieler);
         spieler.getGewerteteKarten().addAll(wertbareRoute);
         this.alleLaenderBoniVergeben(spieler);
         this.routenLaengenBoniVergeben(spieler);
         return ende;
     }
 
-    private boolean HaeuserSetzen(Spieler spieler) {
+    private boolean haeuserSetzen(Spieler spieler) {
         Boolean ende = false;
         if (spieler.getHaeuser().isEmpty()) {
             ende = true;

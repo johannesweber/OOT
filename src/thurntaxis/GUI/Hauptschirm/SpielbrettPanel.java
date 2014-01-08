@@ -1,7 +1,7 @@
 package thurntaxis.GUI.hauptschirm;
 
 import thurntaxis.spiel.Land;
-import thurntaxis.spiel.Spielablauf;
+import thurntaxis.spiel.Spielleiter;
 import thurntaxis.spiel.Spielkarte;
 import thurntaxis.spiel.Stadt;
 
@@ -15,7 +15,7 @@ import java.awt.*;
  */
 class SpielbrettPanel extends JPanel {
 
-    private Spielablauf spielablauf;
+    private Spielleiter spielablauf;
     private DefaultComboBoxModel defaultAuslagestapelComboBoxModel = new DefaultComboBoxModel();
     private JComboBox auslagestapelComboBox = new JComboBox(defaultAuslagestapelComboBoxModel);
     private JPanel spielbrettPanel = new JPanel();
@@ -26,7 +26,7 @@ class SpielbrettPanel extends JPanel {
         return this.defaultAuslagestapelComboBoxModel;
     }
 
-    SpielbrettPanel(Spielablauf spielablauf) {
+    SpielbrettPanel(Spielleiter spielablauf) {
         this.spielablauf = spielablauf;
 
         DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Das Spielbrett");

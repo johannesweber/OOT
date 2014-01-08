@@ -12,9 +12,9 @@ import java.util.ListIterator;
  * Klasse um ein Spiel Thurn und Taxis zu starten. Jedes Spiel hat einen Namen, eine vorger festgelegte Spieleranzahl
  * und natuerlich ein HauptschirmGUI.
  */
-public class Spielablauf {
+public class Spielleiter {
 
-    public Spieler[] spieler = new Spieler[4];
+    public Spieler[] spieler;
     public Spielbrett spielbrett;
     public HauptschirmFrame hauptschirm;
     private Spiel spiel;
@@ -77,7 +77,7 @@ public class Spielablauf {
         String meldung;
         if (this.spielbrett.getAuslagestapel().getDeck().isEmpty()) {
             meldung = "Alle Karten sind verbraucht.Das Spiel ist jetzt zu Ende. Der Gewinner ist Spieler "
-                    + this.spiel.gewinnerErmitteln().getFarbe().toString();
+                    + this.gewinnerErmitteln().getFarbe().toString();
         } else {
             if (this.spieler[this.istDran].getZaehlerKartenZiehen() == 1) {
                 meldung = "Du musst noch eine Karte ziehen";

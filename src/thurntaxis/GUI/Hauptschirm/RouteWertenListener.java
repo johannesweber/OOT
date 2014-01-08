@@ -1,8 +1,8 @@
 package thurntaxis.GUI.hauptschirm;
 
+import thurntaxis.spiel.Spielleiter;
 import thurntaxis.wertverfahren.EineStadtProLandVerfahren;
 import thurntaxis.wertverfahren.InnerhalbEinemLandVerfahren;
-import thurntaxis.spiel.Spielablauf;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,10 +15,10 @@ import java.awt.event.ActionListener;
  */
 class RouteWertenListener implements ActionListener {
 
-    private Spielablauf spielablauf;
+    private Spielleiter spielablauf;
     private SpielersteuerungPanel spielersteuerungPanel;
 
-    RouteWertenListener(Spielablauf spielablauf, SpielersteuerungPanel spielersteuerungPanel) {
+    RouteWertenListener(Spielleiter spielablauf, SpielersteuerungPanel spielersteuerungPanel) {
         this.spielablauf = spielablauf;
         this.spielersteuerungPanel = spielersteuerungPanel;
     }

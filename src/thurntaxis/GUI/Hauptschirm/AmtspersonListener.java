@@ -3,7 +3,7 @@ package thurntaxis.GUI.hauptschirm;
 import thurntaxis.amtsperson.Amtmann;
 import thurntaxis.amtsperson.Postillion;
 import thurntaxis.amtsperson.Postmeister;
-import thurntaxis.spiel.Spielablauf;
+import thurntaxis.spiel.Spielleiter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,11 +15,11 @@ import java.awt.event.ActionListener;
  */
 class AmtspersonListener implements ActionListener {
 
-    private Spielablauf spielablauf;
+    private Spielleiter spielablauf;
     private SpielbrettPanel spielbrettPanel;
 
 
-    AmtspersonListener(Spielablauf spielablauf,SpielbrettPanel spielbrettPanel) {
+    AmtspersonListener(Spielleiter spielablauf,SpielbrettPanel spielbrettPanel) {
         this.spielablauf = spielablauf;
         this.spielbrettPanel = spielbrettPanel;
     }

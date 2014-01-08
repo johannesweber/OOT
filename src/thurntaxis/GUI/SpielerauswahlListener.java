@@ -20,9 +20,9 @@ class SpielerauswahlListener implements ActionListener {
     private int index = 0;
     private int ausgewaehlt = 0;
     private JFrame parent;
-    private Spielablauf spielablauf;
+    private Spielleiter spielablauf;
 
-    SpielerauswahlListener(StartmenueFrame startmenue, Spielablauf spielablauf) {
+    SpielerauswahlListener(StartmenueFrame startmenue, Spielleiter spielablauf) {
         this.parent = startmenue;
         this.spielablauf = spielablauf;
     }
