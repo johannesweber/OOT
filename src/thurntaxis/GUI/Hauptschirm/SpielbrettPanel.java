@@ -20,9 +20,9 @@ class SpielbrettPanel extends JPanel {
     private DefaultComboBoxModel defaultAuslagestapelComboBoxModel = new DefaultComboBoxModel();
     private JComboBox auslagestapelComboBox = new JComboBox(defaultAuslagestapelComboBoxModel);
 
-    private JPanel spielbrettPanel = new JPanel();
     private JPanel auslagestapelPanel = new JPanel();
     private JLabel stapelLabel = new JLabel("Auslagestapel");
+    JSeparator seperator = new JSeparator(SwingConstants.HORIZONTAL);
 
     public DefaultComboBoxModel getDefaultAuslagestapelComboBoxModel() {
         return this.defaultAuslagestapelComboBoxModel;
@@ -56,12 +56,12 @@ class SpielbrettPanel extends JPanel {
 
         this.auslagestapelPanel.add(auslagestapelComboBox);
         this.auslagestapelPanel.add(stapelLabel);
-        this.spielbrettPanel.add(new JScrollPane(spielTree));
-
+        this.add(new JScrollPane(spielTree));
+        seperator.setPreferredSize(new Dimension(1,1));
+        this.add(seperator);
         this.add(auslagestapelPanel);
-        this.add(spielbrettPanel);
 
-        this.setLayout (new BoxLayout (this, BoxLayout.Y_AXIS));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setVisible(true);
     }
 }

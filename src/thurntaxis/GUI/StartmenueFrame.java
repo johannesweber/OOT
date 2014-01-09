@@ -35,7 +35,7 @@ public class StartmenueFrame extends JFrame {
         ImageIcon wappen = new ImageIcon(getClass().getResource("startbild.jpg"));
         JLabel wappenLabel = new JLabel(wappen);
 
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
 
@@ -66,7 +66,7 @@ public class StartmenueFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 StartmenueFrame.this.setVisible(false);
-                StartmenueFrame.this.dispose();
+                System.exit(0);
             }
         });
 
