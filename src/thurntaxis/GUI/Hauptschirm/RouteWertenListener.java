@@ -51,9 +51,8 @@ class RouteWertenListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                JDialog landauswahlDialog = new JDialog();
-                JLabel label = new JLabel("Bitte waehlen sie aus in welchem Land sie die Route werten" +
-                        "lassen wollen");
+                final JDialog landauswahlDialog = new JDialog();
+                JLabel label = new JLabel("In welchem Land wollen sie werten?");
                 JButton bestaetigenButton = new JButton("Bestaetigen");
 
                 DefaultComboBoxModel defaultLandComboBoxModel = new DefaultComboBoxModel();
@@ -80,20 +79,20 @@ class RouteWertenListener implements ActionListener {
                         JOptionPane.showMessageDialog(null, meldung);
 
                         RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
+                        landauswahlDialog.dispose();
                         routeWertenDialog.dispose();
                     }
                 });
-
 
                 landauswahlDialog.add(label);
                 landauswahlDialog.add(landComboBox);
                 landauswahlDialog.add(bestaetigenButton);
 
-                landauswahlDialog.setLayout(new BoxLayout(landauswahlDialog, BoxLayout.PAGE_AXIS));
+                landauswahlDialog.setLayout(new GridLayout(3,1));
                 landauswahlDialog.setVisible(true);
                 landauswahlDialog.setLocationRelativeTo(null);
                 landauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                landauswahlDialog.pack();
+                landauswahlDialog.setSize(410, 100);
             }
         });
 
@@ -104,7 +103,7 @@ class RouteWertenListener implements ActionListener {
 
         routeWertenDialog.add(eineStadtProLandButton);
         routeWertenDialog.add(innerhalbEinemLandButon);
-        routeWertenDialog.pack();
+        routeWertenDialog.setSize(410, 100);
         routeWertenDialog.setVisible(true);
     }
 }

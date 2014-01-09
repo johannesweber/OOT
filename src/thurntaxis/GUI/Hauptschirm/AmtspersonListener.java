@@ -79,7 +79,7 @@ class AmtspersonListener implements ActionListener {
         amtsPanel.add(postmeisterButton);
         amtsPanel.add(amtmannButton);
         personAusspielenDialog.add(amtsPanel, BorderLayout.CENTER);
-        personAusspielenDialog.pack();
+        personAusspielenDialog.setSize(410,100);
         personAusspielenDialog.setVisible(true);
 
     }

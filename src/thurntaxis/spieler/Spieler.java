@@ -26,14 +26,7 @@ public class Spieler {
     private int zaehlerKartenZiehen;
     private int zaehlerKarteAblegen;
     private int zaehlerAmtsperson;
-
-    public LinkedList<Bonusmarker> getBoni() {
-        return this.boni;
-    }
-
-    public LinkedList<Stadt> getRoute() {
-        return this.route;
-    }
+    private int punktstand;
 
     public Spieler(Spielerfarbe farbe) {
         this.farbe = farbe;
@@ -46,6 +39,18 @@ public class Spieler {
         this.zaehlerKarteAblegen = 0;
         this.zaehlerAmtsperson = 0;
         this.haeuserNehmen();
+    }
+
+    public int getPunktstand() {
+        return this.punktstand;
+    }
+
+    public LinkedList<Bonusmarker> getBoni() {
+        return this.boni;
+    }
+
+    public LinkedList<Stadt> getRoute() {
+        return this.route;
     }
 
     public int getZaehlerKartenZiehen() {
@@ -97,16 +102,16 @@ public class Spieler {
      *
      * @return sie punktzahl des spielers.
      */
-    public int punkteErmitteln() {
+    public void punkteErmitteln() {
         int punkteBoni = 0;
         int punkteHaeuser = 0;
         for (Bonusmarker it : this.boni) {
-            punkteBoni *= it.getPunkte();
+            punkteBoni += it.getPunkte();
         }
         for (Haus it : this.haeuser) {
             punkteHaeuser += it.getPunkte();
         }
-        return (punkteBoni + punkteHaeuser);
+        this.punktstand = (punkteBoni + (20 - punkteHaeuser));
     }
 
     /**
@@ -227,5 +232,50 @@ public class Spieler {
             }
         }
         return nachbar;
+    }
+
+    @Override
+    public String toString() {
+        return "Spieler{" +
+                "farbe=" + farbe +
+                ", punktstand=" + punktstand +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Spieler)) return false;
+
+        Spieler spieler = (Spieler) o;
+
+        if (zaehlerAmtsperson != spieler.zaehlerAmtsperson) return false;
+        if (zaehlerKarteAblegen != spieler.zaehlerKarteAblegen) return false;
+        if (zaehlerKartenZiehen != spieler.zaehlerKartenZiehen) return false;
+        if (boni != null ? !boni.equals(spieler.boni) : spieler.boni != null) return false;
+        if (farbe != spieler.farbe) return false;
+        if (gewerteteKarten != null ? !gewerteteKarten.equals(spieler.gewerteteKarten) : spieler.gewerteteKarten != null)
+            return false;
+        if (haeuser != null ? !haeuser.equals(spieler.haeuser) : spieler.haeuser != null) return false;
+        if (hand != null ? !hand.equals(spieler.hand) : spieler.hand != null) return false;
+        if (route != null ? !route.equals(spieler.route) : spieler.route != null) return false;
+        if (spielbrett != null ? !spielbrett.equals(spieler.spielbrett) : spieler.spielbrett != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = spielbrett != null ? spielbrett.hashCode() : 0;
+        result = 31 * result + (farbe != null ? farbe.hashCode() : 0);
+        result = 31 * result + (haeuser != null ? haeuser.hashCode() : 0);
+        result = 31 * result + (route != null ? route.hashCode() : 0);
+        result = 31 * result + (hand != null ? hand.hashCode() : 0);
+        result = 31 * result + (gewerteteKarten != null ? gewerteteKarten.hashCode() : 0);
+        result = 31 * result + (boni != null ? boni.hashCode() : 0);
+        result = 31 * result + zaehlerKartenZiehen;
+        result = 31 * result + zaehlerKarteAblegen;
+        result = 31 * result + zaehlerAmtsperson;
+        return result;
     }
 }

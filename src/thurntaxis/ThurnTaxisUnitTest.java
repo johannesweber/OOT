@@ -18,6 +18,7 @@ public class ThurnTaxisUnitTest {
 
     Spielleiter spielleiter;
     Spieler johannes = new Spieler(Spielerfarbe.GELB);
+    Spieler jessica = new Spieler(Spielerfarbe.ROT);
 
     LinkedList<Stadt> innerhalbEinemLandTestListe = new LinkedList<Stadt>();
     LinkedList<Stadt> eineStadtProLandTestListe = new LinkedList<Stadt>();
@@ -29,9 +30,10 @@ public class ThurnTaxisUnitTest {
         this.spielleiter = new Spielleiter();
 
         InnerhalbEinemLandVerfahren innerhalbEinemLandVerfahren = new InnerhalbEinemLandVerfahren(LandEnum.BAIERN);
-        EineStadtProLandVerfahren stadtProLandVerfahren = new EineStadtProLandVerfahren();
+        EineStadtProLandVerfahren eineStadtProLandVerfahren = new EineStadtProLandVerfahren();
 
         spielleiter.spieler[0] = johannes;
+        spielleiter.spieler[1] = jessica;
 
         spielleiter.spielStarten();
 
@@ -55,16 +57,23 @@ public class ThurnTaxisUnitTest {
         bonusmarkerTestListe.add(new Bonusmarker(4));
 
         johannes.getRoute().addAll(innerhalbEinemLandTestListe);
+        jessica.getRoute().addAll(eineStadtProLandTestListe);
 
         assertEquals(innerhalbEinemLandTestListe, johannes.getRoute());
         assertEquals(leereListe, johannes.getBoni());
 
         spielleiter.routeWerten(innerhalbEinemLandVerfahren);
+        spielleiter.naechsterSpieler();
+        spielleiter.routeWerten(eineStadtProLandVerfahren);
 
         assertEquals(12, johannes.getHaeuser().size());
         assertEquals(leereListe, johannes.getRoute());
         assertEquals(Spielerfarbe.GELB, johannes.getHaeuser().peek().getFarbe());
         assertEquals(bonusmarkerTestListe, johannes.getBoni());
-        assertEquals(12, johannes.punkteErmitteln());
+        johannes.punkteErmitteln();
+        assertEquals(12, johannes.getPunktstand());
+
+        assertEquals(johannes, spielleiter.gewinnerErmitteln());
+
     }
 }

@@ -41,10 +41,10 @@ class SpielersteuerungPanel extends JPanel {
     private JList handList = new JList(defaultHandModel);
 
     SpielersteuerungPanel(Spielleiter spielleiter, SpielbrettPanel spielbrettPanel) {
+        this.spielersteuerungLabel = new JLabel("Spieler " +
+                spielleiter.getIstDran().getFarbe().toString());
         this.spielleiter = spielleiter;
         this.spielbrettPanel = spielbrettPanel;
-
-        this.spielersteuerungLabel = new JLabel("Spieler " + spielleiter.getIstDran().getFarbe().toString());
 
         this.karteAblegenButton.setEnabled(false);
         this.buttonPanel.setLayout(new GridLayout(6, 1));
@@ -140,9 +140,12 @@ class SpielersteuerungPanel extends JPanel {
         this.karteZiehenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().getSelectedItem() != null) {
-                    int karte = SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().
-                            getIndexOf(SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().
+                if (SpielersteuerungPanel.this.spielbrettPanel.
+                        getDefaultAuslagestapelComboBoxModel().getSelectedItem() != null) {
+                    int karte = SpielersteuerungPanel.this.spielbrettPanel.
+                            getDefaultAuslagestapelComboBoxModel().
+                            getIndexOf(SpielersteuerungPanel.this.spielbrettPanel.
+                                    getDefaultAuslagestapelComboBoxModel().
                                     getSelectedItem());
 
                     String meldung = SpielersteuerungPanel.this.spielleiter.getIstDran().karteZiehen(karte);
@@ -152,7 +155,7 @@ class SpielersteuerungPanel extends JPanel {
                         SpielersteuerungPanel.this.defaultHandFuellen();
                         SpielersteuerungPanel.this.spielbrettPanel.defaultAuslagestapelModelFuellen();
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Du hast keine Karte ausgewaehlt");
                 }
             }
@@ -180,25 +183,45 @@ class SpielersteuerungPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 JDialog gewerteteKartenDialog = new JDialog();
+                gewerteteKartenDialog.setTitle("Deine gewerteten Karten");
                 DefaultListModel gewerteteKartenModel = new DefaultListModel();
                 JList gewerteteKartenList = new JList(gewerteteKartenModel);
+
+                SpielersteuerungPanel.this.spielleiter.getIstDran().punkteErmitteln();
+                JLabel punktstandLabel = new JLabel();
+                punktstandLabel.setText("Du hast im Moment "
+                        + SpielersteuerungPanel.this.spielleiter.getIstDran().getPunktstand()
+                        + " Punkte");
+
+                gewerteteKartenDialog.add(punktstandLabel);
 
                 gewerteteKartenList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
                 for (Stadt it : SpielersteuerungPanel.this.spielleiter.getIstDran().getGewerteteKarten()) {
                     gewerteteKartenModel.addElement(it);
                 }
+
                 gewerteteKartenDialog.add(gewerteteKartenList);
 
                 gewerteteKartenDialog.setLocationRelativeTo(null);
                 gewerteteKartenDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                 gewerteteKartenDialog.setVisible(true);
-                gewerteteKartenDialog.pack();
+                gewerteteKartenDialog.setSize(410,100);
 
 
             }
         });
 
+        this.karteZiehenButton.setToolTipText("Hiermit ziehst du eine Karte aus dem" +
+                " Auslagestapel");
+        this.karteAblegenButton.setToolTipText("Hiermit legst du eine Karte von deiner Hand in" +
+                " deine Route");
+        this.amtspersonAusspielenButton.setToolTipText("Mit diesem Button ziehst du eine Amtsperson");
+        this.routeWertenButton.setToolTipText("Wertet deine aktuelle Route und verteilt Bonusmarker" +
+                " (falls gewonnen)");
+        this.naechsterSpielerButton.setToolTipText("Zum naechsten Spieler wechseln");
+        this.gewerteteRouteButton.setToolTipText("Zeigt deine bereits gewerteten Karten und" +
+                " dein aktueller Punktestand");
         this.setLayout(new GridLayout(1, 2));
         this.handPanel.setVisible(true);
         this.buttonPanel.setVisible(true);

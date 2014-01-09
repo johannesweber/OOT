@@ -5,6 +5,7 @@ import thurntaxis.wertverfahren.Wertverfahren;
 import thurntaxis.spieler.Spieler;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -42,16 +43,29 @@ public class Spielleiter {
      * @return der gewinner
      */
     public Spieler gewinnerErmitteln() {
-        List<Spieler> spielers = Arrays.asList(spieler);
-        ListIterator<Spieler> it = spielers.listIterator();
-        Spieler gewinner = it.next();
-        int max = gewinner.punkteErmitteln();
-        while (it.hasNext()) {
-            Spieler tmpSpieler = it.next();
-            if (tmpSpieler.punkteErmitteln() > max) {
-                gewinner = tmpSpieler;
-                max = tmpSpieler.punkteErmitteln();
+        List<Spieler> spielerList = Arrays.asList(this.spieler);
+
+        Spieler gewinner;
+        Spieler tmpGewinner;
+        LinkedList<Spieler> moeglicheGewinner = new LinkedList<Spieler>();
+        int max;
+        ListIterator<Spieler> it = spielerList.listIterator();
+
+
+        tmpGewinner = it.next();
+        while ((it.next() != null)) {
+            it.next();
+            max = tmpGewinner.getPunktstand();
+            if (tmpGewinner.getPunktstand() >= max) {
+                max = tmpGewinner.getPunktstand();
+                moeglicheGewinner.add(tmpGewinner);
             }
+        }
+        if (moeglicheGewinner.size() > 1) {
+            int zufall = (int) (Math.random() * (1 - 0) + 0);
+            gewinner = moeglicheGewinner.get(zufall);
+        } else {
+            gewinner = moeglicheGewinner.getFirst();
         }
         if (!this.spielbrett.getSiegplaettchen().isEmpty()) {
             gewinner.getBoni().add(this.spielbrett.getSiegplaettchen().pop());
