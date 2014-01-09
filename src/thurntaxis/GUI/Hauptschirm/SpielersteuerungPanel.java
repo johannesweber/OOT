@@ -50,6 +50,7 @@ class SpielersteuerungPanel extends JPanel {
         this.buttonPanel.setLayout(new GridLayout(6, 1));
 
         this.spielersteuerungLabel.setHorizontalAlignment(JLabel.CENTER);
+
         this.buttonPanel.add(spielersteuerungLabel);
         this.buttonPanel.add(karteZiehenButton);
         this.buttonPanel.add(karteAblegenButton);
@@ -57,15 +58,6 @@ class SpielersteuerungPanel extends JPanel {
         this.buttonPanel.add(routeWertenButton);
         this.buttonPanel.add(gewerteteRouteButton);
         this.buttonPanel.add(naechsterSpielerButton);
-
-        this.handList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        this.handList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent listSelectionEvent) {
-                karteAblegenButton.setEnabled(true);
-            }
-        });
 
         this.handPanel.add(deineHandLabel);
         this.handPanel.add(handList);
@@ -76,6 +68,17 @@ class SpielersteuerungPanel extends JPanel {
         this.beides.setLayout(new GridLayout(2, 1));
         this.beides.add(handPanel);
         this.beides.add(routenPanel);
+        this.add(buttonPanel);
+        this.add(beides);
+
+        this.handList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        this.handList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                karteAblegenButton.setEnabled(true);
+            }
+        });
 
         this.karteAblegenButton.addActionListener(new ActionListener() {
             @Override
@@ -195,9 +198,6 @@ class SpielersteuerungPanel extends JPanel {
 
             }
         });
-
-        this.add(buttonPanel);
-        this.add(beides);
 
         this.setLayout(new GridLayout(1, 2));
         this.handPanel.setVisible(true);

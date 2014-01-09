@@ -89,8 +89,8 @@ class RouteWertenListener implements ActionListener {
                 landauswahlDialog.add(landComboBox);
                 landauswahlDialog.add(bestaetigenButton);
 
+                landauswahlDialog.setLayout(new BoxLayout(landauswahlDialog, BoxLayout.PAGE_AXIS));
                 landauswahlDialog.setVisible(true);
-                landauswahlDialog.setLayout(new GridLayout(1,1));
                 landauswahlDialog.setLocationRelativeTo(null);
                 landauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                 landauswahlDialog.pack();
