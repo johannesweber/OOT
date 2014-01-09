@@ -19,12 +19,11 @@ public class HauptschirmFrame extends JFrame {
         SpielersteuerungPanel spielersteuerung = new SpielersteuerungPanel(spielleiter, spielbrettPanel);
 
         this.setLocationRelativeTo(null);
-        this.setLayout(new GridLayout(1,2));
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         this.add(spielersteuerung);
         this.add(spielbrettPanel);
-
 
         this.pack();
         this.setVisible(true);

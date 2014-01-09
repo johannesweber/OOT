@@ -86,7 +86,6 @@ class SpielersteuerungPanel extends JPanel {
                 Object kartenObject = handList.getSelectedValue();
                 if (kartenObject != null) {
                     Stadt ausgewaehlteKarte = getStadtAnhandString((String) kartenObject);
-                    handList.clearSelection();
                     karteAblegenButton.setEnabled(false);
                     int meldung = SpielersteuerungPanel.this.spielleiter.getIstDran().karteAblegen
                             (ausgewaehlteKarte);
@@ -134,6 +133,7 @@ class SpielersteuerungPanel extends JPanel {
                 } else {
                     JOptionPane.showMessageDialog(null, "Du hast keine Karte ausgewaehlt");
                 }
+                SpielersteuerungPanel.this.handList.clearSelection();
             }
         });
 

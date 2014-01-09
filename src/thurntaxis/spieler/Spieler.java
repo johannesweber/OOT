@@ -125,15 +125,15 @@ public class Spieler {
      *                    ziehen will.
      */
     public String karteZiehen(int ausgewaehlt) {
-        Stadt gezogen = null;
+        Stadt gezogen;
         String meldung = null;
         if (!(this.zaehlerKartenZiehen < 1)) {
             gezogen = this.spielbrett.getAuslagestapel().karteZiehen((ausgewaehlt));
+            this.hand.add(gezogen);
             this.zaehlerKartenZiehen--;
         } else {
             meldung = "Du darfst keine Karte mehr ziehen";
         }
-        this.hand.add(gezogen);
         return meldung;
     }
 

@@ -57,10 +57,11 @@ class SpielbrettPanel extends JPanel {
         this.auslagestapelPanel.add(auslagestapelComboBox);
         this.auslagestapelPanel.add(stapelLabel);
         this.spielbrettPanel.add(new JScrollPane(spielTree));
-        this.add(spielbrettPanel);
-        this.add(auslagestapelPanel);
 
-        this.setLayout(new GridLayout(2, 1));
+        this.add(auslagestapelPanel);
+        this.add(spielbrettPanel);
+
+        this.setLayout (new BoxLayout (this, BoxLayout.Y_AXIS));
         this.setVisible(true);
     }
 }

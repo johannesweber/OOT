@@ -4,11 +4,13 @@ import thurntaxis.gui.hauptschirm.HauptschirmFrame;
 import thurntaxis.spiel.*;
 import thurntaxis.spieler.Spieler;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * Klasse um das Startmenue zu realisieren. Das Startmenue besitzt 3 Buttons und wie jede andere Klasse
@@ -21,9 +23,8 @@ public class StartmenueFrame extends JFrame {
     private JButton startButton = new JButton("Spiel starten");
     private JButton fortsetzenButton = new JButton("Spiel fortsetzen");
     public static JButton spielerauswahlButton = new JButton("Spieler auswaehlen");
-    private JButton spielregelnButton = new JButton("Spielablauf");
+    private JButton spielablaufButton = new JButton("Spielablauf");
     private JButton beendenButton = new JButton("Programm beenden");
-    private Image wappen;
     private JPanel wappenPanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
 
@@ -31,9 +32,8 @@ public class StartmenueFrame extends JFrame {
         super("Thurn & Taxis: Das Brettspiel");
         this.spielleiter = spielablauf;
 
-        String wappenPfad = "startbild.jpg";
-        this.wappen = getToolkit().getImage(wappenPfad);
-        JLabel wappenLabel = new JLabel(new ImageIcon(wappen));
+        ImageIcon wappen = new ImageIcon(getClass().getResource("startbild.jpg"));
+        JLabel wappenLabel = new JLabel(wappen);
 
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setVisible(true);
@@ -83,15 +83,14 @@ public class StartmenueFrame extends JFrame {
             }
         });
 
-        this.spielregelnButton.addActionListener(new ActionListener() {
+        this.spielablaufButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 JFrame spielregelFrame = new JFrame();
-                Image bild;
 
-                String pfad = "spielablauf.jpg";
-                bild = getToolkit().getImage(pfad);
-                JLabel spielablaufLabel = new JLabel(new ImageIcon(bild));
+                ImageIcon spielregeln = new ImageIcon(getClass().getResource("spielablauf.jpg"));
+
+                JLabel spielablaufLabel = new JLabel(spielregeln);
 
                 spielregelFrame.add(spielablaufLabel);
 
@@ -106,7 +105,7 @@ public class StartmenueFrame extends JFrame {
         this.buttonPanel.add(this.fortsetzenButton);
         this.buttonPanel.add(StartmenueFrame.this.spielerauswahlButton);
         this.buttonPanel.add(this.beendenButton);
-        this.buttonPanel.add(this.spielregelnButton);
+        this.buttonPanel.add(this.spielablaufButton);
 
         this.buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         this.add(wappenPanel, BorderLayout.WEST);
