@@ -1,4 +1,4 @@
-package thurntaxis.GUI.hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import thurntaxis.spiel.Land;
 import thurntaxis.spiel.Spielleiter;
@@ -28,6 +28,13 @@ class SpielbrettPanel extends JPanel {
         return this.defaultAuslagestapelComboBoxModel;
     }
 
+    public void defaultAuslagestapelModelFuellen() {
+        this.defaultAuslagestapelComboBoxModel.removeAllElements();
+        for (Stadt it : this.spielleiter.getSpielbrett().getAuslagestapel().getAuslagestapel()) {
+            this.defaultAuslagestapelComboBoxModel.addElement(it);
+        }
+    }
+
     SpielbrettPanel(Spielleiter spielleiter) {
         this.spielleiter = spielleiter;
 
@@ -55,13 +62,5 @@ class SpielbrettPanel extends JPanel {
 
         this.setLayout(new GridLayout(2, 1));
         this.setVisible(true);
-    }
-
-    public void defaultAuslagestapelModelFuellen() {
-        this.defaultAuslagestapelComboBoxModel.removeAllElements();
-        for (Stadt it : this.spielleiter.getSpielbrett().getAuslagestapel().getAuslagestapel()) {
-            this.defaultAuslagestapelComboBoxModel.addElement(it);
-        }
-
     }
 }

@@ -1,4 +1,4 @@
-package thurntaxis.GUI.hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import thurntaxis.spiel.LandEnum;
 import thurntaxis.spiel.Spielleiter;
@@ -39,7 +39,7 @@ class RouteWertenListener implements ActionListener {
 
                 String meldung = RouteWertenListener.this.spielleiter.routeWerten
                         (new EineStadtProLandVerfahren());
-                if(meldung != null){
+                if (meldung != null) {
                     JOptionPane.showMessageDialog(null, meldung);
                 }
                 RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
@@ -56,22 +56,23 @@ class RouteWertenListener implements ActionListener {
                         "lassen wollen");
                 JButton bestaetigenButton = new JButton("Bestaetigen");
 
-                DefaultComboBoxModel defaultlandModel = new DefaultComboBoxModel();
-                final JComboBox landBox = new JComboBox(defaultlandModel);
+                DefaultComboBoxModel defaultLandComboBoxModel = new DefaultComboBoxModel();
+                final JComboBox landComboBox = new JComboBox(defaultLandComboBoxModel);
 
-                LinkedList<LandEnum> laender = new LinkedList<LandEnum>();
-                laender.add(spielleiter.getIstDran().getRoute().getFirst().getLand());
+                LinkedList<LandEnum> laenderListe = new LinkedList<LandEnum>();
 
-                for (Stadt it : spielleiter.getIstDran().getRoute()){
-
-                    if(!laender.contains(it.getLand())){
-                        defaultlandModel.addElement(it.getLand());
+                laenderListe.add(spielleiter.getIstDran().getRoute().getFirst().getLand());
+                defaultLandComboBoxModel.addElement(laenderListe.getFirst());
+                for (Stadt it : spielleiter.getIstDran().getRoute()) {
+                    if (!laenderListe.contains(it.getLand())) {
+                        defaultLandComboBoxModel.addElement(it.getLand());
                     }
                 }
+
                 bestaetigenButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
-                        LandEnum ausgewaehlt = (LandEnum) landBox.getSelectedItem();
+                        LandEnum ausgewaehlt = (LandEnum) landComboBox.getSelectedItem();
 
                         String meldung = RouteWertenListener.this.spielleiter.routeWerten
                                 (new InnerhalbEinemLandVerfahren(ausgewaehlt));
@@ -83,13 +84,16 @@ class RouteWertenListener implements ActionListener {
                     }
                 });
 
-                landauswahlDialog.setVisible(true);
-                landauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                landauswahlDialog.pack();
 
                 landauswahlDialog.add(label);
-                landauswahlDialog.add(landBox);
+                landauswahlDialog.add(landComboBox);
                 landauswahlDialog.add(bestaetigenButton);
+
+                landauswahlDialog.setVisible(true);
+                landauswahlDialog.setLayout(new GridLayout(1,1));
+                landauswahlDialog.setLocationRelativeTo(null);
+                landauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                landauswahlDialog.pack();
             }
         });
 

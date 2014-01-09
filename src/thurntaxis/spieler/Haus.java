@@ -15,6 +15,10 @@ public class Haus {
         this.punkte = 1;
     }
 
+    public Spielerfarbe getFarbe() {
+        return this.farbe;
+    }
+
     public int getPunkte(){
         return this.punkte;
     }

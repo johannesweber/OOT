@@ -1,6 +1,6 @@
 package thurntaxis.spiel;
 
-import thurntaxis.GUI.hauptschirm.HauptschirmFrame;
+import thurntaxis.gui.hauptschirm.HauptschirmFrame;
 import thurntaxis.wertverfahren.Wertverfahren;
 import thurntaxis.spieler.Spieler;
 

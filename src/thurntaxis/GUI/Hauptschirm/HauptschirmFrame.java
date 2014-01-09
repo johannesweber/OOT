@@ -1,8 +1,9 @@
-package thurntaxis.GUI.hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import javax.swing.*;
 import java.awt.*;
 
+import com.sun.codemodel.internal.JFieldRef;
 import thurntaxis.spiel.*;
 
 /**
@@ -18,14 +19,14 @@ public class HauptschirmFrame extends JFrame {
         SpielersteuerungPanel spielersteuerung = new SpielersteuerungPanel(spielleiter, spielbrettPanel);
 
         this.setLocationRelativeTo(null);
-        this.setLayout(new GridLayout(1, 2));
+        this.setLayout(new GridLayout(2,1));
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         this.add(spielersteuerung);
         this.add(spielbrettPanel);
 
 
-        this.setSize(800,600);
+        this.setSize(1024,768);
         this.setVisible(true);
     }
 

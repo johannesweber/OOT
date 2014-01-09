@@ -1,6 +1,6 @@
-package thurntaxis.GUI;
+package thurntaxis.gui;
 
-import thurntaxis.GUI.hauptschirm.HauptschirmFrame;
+import thurntaxis.gui.hauptschirm.HauptschirmFrame;
 import thurntaxis.spiel.*;
 import thurntaxis.spieler.Spieler;
 
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Klasse um das Startmenue zu realisieren. Das Startmenue besitzt 3 Buttons und wie jede andere Klasse
- * in der GUI auch einen Spielleiter.
+ * in der gui auch einen Spielleiter.
  */
 public class StartmenueFrame extends JFrame {
 
@@ -21,16 +21,21 @@ public class StartmenueFrame extends JFrame {
     private JButton startButton = new JButton("Spiel starten");
     private JButton fortsetzenButton = new JButton("Spiel fortsetzen");
     public static JButton spielerauswahlButton = new JButton("Spieler auswaehlen");
-    private JButton spielregelnButton = new JButton("Spielregeln");
+    private JButton spielregelnButton = new JButton("Spielablauf");
     private JButton beendenButton = new JButton("Programm beenden");
-
+    private Image wappen;
+    private JPanel wappenPanel = new JPanel();
+    private JPanel buttonPanel = new JPanel();
 
     public StartmenueFrame(Spielleiter spielablauf) {
         super("Thurn & Taxis: Das Brettspiel");
         this.spielleiter = spielablauf;
 
-        this.setLayout(new GridLayout(5, 1));
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        String wappenPfad = "startbild.jpg";
+        this.wappen = getToolkit().getImage(wappenPfad);
+        JLabel wappenLabel = new JLabel(new ImageIcon(wappen));
+
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
 
@@ -82,10 +87,13 @@ public class StartmenueFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 JFrame spielregelFrame = new JFrame();
-                ImageIcon bild = new ImageIcon("/Users/Johannes/Dropbox/IntelliJ/OOT/src/thurntaxis/GUI/spielregeln.jpg");
-                JLabel spielregelLabel = new JLabel(bild);
+                Image bild;
 
-                spielregelFrame.add(spielregelLabel);
+                String pfad = "spielablauf.jpg";
+                bild = getToolkit().getImage(pfad);
+                JLabel spielablaufLabel = new JLabel(new ImageIcon(bild));
+
+                spielregelFrame.add(spielablaufLabel);
 
                 spielregelFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 spielregelFrame.setVisible(true);
@@ -93,11 +101,16 @@ public class StartmenueFrame extends JFrame {
             }
         });
 
-        this.add(this.startButton);
-        this.add(this.fortsetzenButton);
-        this.add(StartmenueFrame.this.spielerauswahlButton);
-        this.add(this.beendenButton);
-        this.add(this.spielregelnButton);
+        this.wappenPanel.add(wappenLabel);
+        this.buttonPanel.add(this.startButton);
+        this.buttonPanel.add(this.fortsetzenButton);
+        this.buttonPanel.add(StartmenueFrame.this.spielerauswahlButton);
+        this.buttonPanel.add(this.beendenButton);
+        this.buttonPanel.add(this.spielregelnButton);
+
+        this.buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        this.add(wappenPanel, BorderLayout.WEST);
+        this.add(buttonPanel, BorderLayout.CENTER);
 
         this.pack();
 

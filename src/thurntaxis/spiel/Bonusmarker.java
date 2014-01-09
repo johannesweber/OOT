@@ -7,7 +7,7 @@ public class Bonusmarker {
 
     private int punkte;
 
-    Bonusmarker(int punkte) {
+    public Bonusmarker(int punkte) {
         this.punkte = punkte;
     }
 
@@ -24,5 +24,22 @@ public class Bonusmarker {
         return "Bonusmarker{" +
                 "punkte=" + punkte +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bonusmarker)) return false;
+
+        Bonusmarker that = (Bonusmarker) o;
+
+        if (punkte != that.punkte) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return punkte;
     }
 }

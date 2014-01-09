@@ -106,7 +106,7 @@ public class Spieler {
         for (Haus it : this.haeuser) {
             punkteHaeuser += it.getPunkte();
         }
-        return (punkteBoni - punkteHaeuser);
+        return (punkteBoni + punkteHaeuser);
     }
 
     /**

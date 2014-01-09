@@ -1,4 +1,4 @@
-package thurntaxis.GUI.hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -80,8 +80,9 @@ class SpielersteuerungPanel extends JPanel {
         this.karteAblegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (handList.getSelectedValue() != null) {
-                    Stadt ausgewaehlteKarte = getStadtAnhandString((String) handList.getSelectedValue());
+                Object kartenObject = handList.getSelectedValue();
+                if (kartenObject != null) {
+                    Stadt ausgewaehlteKarte = getStadtAnhandString((String) kartenObject);
                     handList.clearSelection();
                     karteAblegenButton.setEnabled(false);
                     int meldung = SpielersteuerungPanel.this.spielleiter.getIstDran().karteAblegen
@@ -136,16 +137,20 @@ class SpielersteuerungPanel extends JPanel {
         this.karteZiehenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                int karte = SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().
-                        getIndexOf(SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().
-                                getSelectedItem());
+                if (SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().getSelectedItem() != null) {
+                    int karte = SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().
+                            getIndexOf(SpielersteuerungPanel.this.spielbrettPanel.getDefaultAuslagestapelComboBoxModel().
+                                    getSelectedItem());
 
-                String meldung = SpielersteuerungPanel.this.spielleiter.getIstDran().karteZiehen(karte);
-                if (meldung != null) {
-                    JOptionPane.showMessageDialog(null, meldung);
-                } else {
-                    SpielersteuerungPanel.this.defaultHandFuellen();
-                    SpielersteuerungPanel.this.spielbrettPanel.defaultAuslagestapelModelFuellen();
+                    String meldung = SpielersteuerungPanel.this.spielleiter.getIstDran().karteZiehen(karte);
+                    if (meldung != null) {
+                        JOptionPane.showMessageDialog(null, meldung);
+                    } else {
+                        SpielersteuerungPanel.this.defaultHandFuellen();
+                        SpielersteuerungPanel.this.spielbrettPanel.defaultAuslagestapelModelFuellen();
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Du hast keine Karte ausgewaehlt");
                 }
             }
         });
@@ -182,6 +187,7 @@ class SpielersteuerungPanel extends JPanel {
                 }
                 gewerteteKartenDialog.add(gewerteteKartenList);
 
+                gewerteteKartenDialog.setLocationRelativeTo(null);
                 gewerteteKartenDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                 gewerteteKartenDialog.setVisible(true);
                 gewerteteKartenDialog.pack();

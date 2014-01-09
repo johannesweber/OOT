@@ -72,7 +72,7 @@ public abstract class Wertverfahren {
 
     private void routenLaengenBoniVergeben(Spieler spieler) {
         if (!spieler.getSpielbrett().getRoutenlaengeBoni().isEmpty()) {
-            if (this.wertbareRoute.size() == 7) {
+            if (this.wertbareRoute.size() >= 7) {
                 spieler.getBoni().add((Bonusmarker) spieler.getSpielbrett().getRoutenlaengeBoni().get(7).pop());
             }
             if (this.wertbareRoute.size() == 6) {

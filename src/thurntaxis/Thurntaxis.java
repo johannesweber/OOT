@@ -1,6 +1,6 @@
 package thurntaxis;
 
-import thurntaxis.GUI.*;
+import thurntaxis.gui.*;
 import thurntaxis.spiel.Spielleiter;
 
 /**

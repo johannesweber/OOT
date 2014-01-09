@@ -1,4 +1,4 @@
-package thurntaxis.GUI.hauptschirm;
+package thurntaxis.gui.hauptschirm;
 
 import thurntaxis.amtsperson.Amtmann;
 import thurntaxis.amtsperson.Postillion;

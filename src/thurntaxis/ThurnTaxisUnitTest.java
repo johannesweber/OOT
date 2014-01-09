@@ -1,10 +1,7 @@
 package thurntaxis;
 
 import org.junit.Test;
-import thurntaxis.spiel.LandEnum;
-import thurntaxis.spiel.Spielkarte;
-import thurntaxis.spiel.Spielleiter;
-import thurntaxis.spiel.Stadt;
+import thurntaxis.spiel.*;
 import thurntaxis.spieler.Spieler;
 import thurntaxis.spieler.Spielerfarbe;
 import thurntaxis.wertverfahren.EineStadtProLandVerfahren;
@@ -31,28 +28,43 @@ public class ThurnTaxisUnitTest {
 
         this.spielleiter = new Spielleiter();
 
-        InnerhalbEinemLandVerfahren verfahren = new InnerhalbEinemLandVerfahren(LandEnum.BADEN);
-        EineStadtProLandVerfahren verfahren1 = new EineStadtProLandVerfahren();
+        InnerhalbEinemLandVerfahren innerhalbEinemLandVerfahren = new InnerhalbEinemLandVerfahren(LandEnum.BAIERN);
+        EineStadtProLandVerfahren stadtProLandVerfahren = new EineStadtProLandVerfahren();
 
         spielleiter.spieler[0] = johannes;
 
         spielleiter.spielStarten();
 
-        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.MANNHEIM));
-        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.CARLSRUHE));
-        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.PILSEN));
+        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.WUERZBURG));
+        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.NUERNBERG));
+        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.REGENSBURG));
+        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.INGOLSTADT));
+        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.NUERNBERG));
+        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.AUGSBURG));
+        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.MUENCHEN));
+        innerhalbEinemLandTestListe.add(new Stadt(Spielkarte.PASSAU));
 
-        eineStadtProLandTestListe.add(new Stadt(Spielkarte.MANNHEIM));
-        eineStadtProLandTestListe.add(new Stadt(Spielkarte.WUERZBURG));
-        eineStadtProLandTestListe.add(new Stadt(Spielkarte.PILSEN));
+        eineStadtProLandTestListe.add(new Stadt(Spielkarte.FREIBURG));
+        eineStadtProLandTestListe.add(new Stadt(Spielkarte.SIGMARINGEN));
+        eineStadtProLandTestListe.add(new Stadt(Spielkarte.ZUERICH));
+        eineStadtProLandTestListe.add(new Stadt(Spielkarte.KEMPTEN));
+        eineStadtProLandTestListe.add(new Stadt(Spielkarte.INNSBRUCK));
+        eineStadtProLandTestListe.add(new Stadt(Spielkarte.SALZBURG));
 
-        johannes.getRoute().addAll(eineStadtProLandTestListe);
+        LinkedList<Bonusmarker> bonusmarkerTestListe = new LinkedList<Bonusmarker>();
+        bonusmarkerTestListe.add(new Bonusmarker(4));
 
-        assertEquals(eineStadtProLandTestListe, johannes.getRoute());
+        johannes.getRoute().addAll(innerhalbEinemLandTestListe);
 
-        spielleiter.routeWerten(verfahren1);
+        assertEquals(innerhalbEinemLandTestListe, johannes.getRoute());
+        assertEquals(leereListe, johannes.getBoni());
 
-        assertEquals(17, johannes.getHaeuser().size());
+        spielleiter.routeWerten(innerhalbEinemLandVerfahren);
+
+        assertEquals(12, johannes.getHaeuser().size());
         assertEquals(leereListe, johannes.getRoute());
+        assertEquals(Spielerfarbe.GELB, johannes.getHaeuser().peek().getFarbe());
+        assertEquals(bonusmarkerTestListe, johannes.getBoni());
+        assertEquals(12, johannes.punkteErmitteln());
     }
 }
