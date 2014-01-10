@@ -55,7 +55,7 @@ class RouteWertenListener implements ActionListener {
 
                     final JDialog landauswahlDialog = new JDialog();
                     JLabel label = new JLabel("In welchem Land wollen sie werten?");
-                    JButton bestaetigenButton = new JButton("Bestaetigen");
+                    final JButton bestaetigenButton = new JButton("Bestaetigen");
 
                     DefaultComboBoxModel defaultLandComboBoxModel = new DefaultComboBoxModel();
                     final JComboBox landComboBox = new JComboBox(defaultLandComboBoxModel);
@@ -83,6 +83,8 @@ class RouteWertenListener implements ActionListener {
                             RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
                             landauswahlDialog.dispose();
                             routeWertenDialog.dispose();
+
+                           bestaetigenButton.setToolTipText("Auswahl bestaetigen");
                         }
                     });
 
@@ -101,6 +103,9 @@ class RouteWertenListener implements ActionListener {
                     landauswahlDialog.setSize(410, 100);
                 }
             });
+
+            innerhalbEinemLandButon.setToolTipText("Damit wertest du deine Route innerhalb einem Land");
+            eineStadtProLandButton.setToolTipText("Damit wertest du pro Land eine Stadt");
 
             routeWertenDialog.setLocationRelativeTo(null);
             routeWertenDialog.setTitle("Wie moechtest du deine Route werten lassen?");

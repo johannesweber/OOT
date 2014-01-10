@@ -92,6 +92,11 @@ class SpielerauswahlListener implements ActionListener {
             }
         });
 
+        fertigButton.setToolTipText("Jetzt kann es losgehen");
+        gruenButton.setToolTipText("Spieler Gruen");
+        gelbButton.setToolTipText("Spieler Gelb");
+        rotButton.setToolTipText("Spieler Rot");
+        blauButton.setToolTipText("Spieler Blau");
         spielerauswahlDialog.setLocationRelativeTo(this.parent);
         spielerauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 

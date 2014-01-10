@@ -86,19 +86,26 @@ public class StartmenueFrame extends JFrame {
         this.spielablaufButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                JDialog spielregelDialog = new JDialog();
+                JDialog spielablaufDialog = new JDialog();
 
-                ImageIcon spielregeln = new ImageIcon(getClass().getResource("spielablauf.jpg"));
+                ImageIcon spielablauf = new ImageIcon(getClass().getResource("spielablauf.jpg"));
 
-                JLabel spielablaufLabel = new JLabel(spielregeln);
+                JLabel spielablaufLabel = new JLabel(spielablauf);
 
-                spielregelDialog.add(spielablaufLabel);
+                spielablaufDialog.add(spielablaufLabel);
 
-                spielregelDialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                spielregelDialog.setVisible(true);
-                spielregelDialog.pack();
+                spielablaufDialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                spielablaufDialog.setVisible(true);
+                spielablaufDialog.pack();
             }
         });
+
+
+        this.startButton.setToolTipText("Spiel starten");
+        this.fortsetzenButton.setToolTipText("Spiel fortsetzen");
+        this.spielablaufButton.setToolTipText("Ein kleiner Ueberblick des Spielablaufs");
+        this.beendenButton.setToolTipText("Willst du das wirklich?");
+        this.spielerauswahlButton.setToolTipText("Spieler auswaehlen");
 
         this.wappenPanel.add(wappenLabel);
         this.buttonPanel.add(this.startButton);

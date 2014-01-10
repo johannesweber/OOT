@@ -23,9 +23,9 @@ class SpielersteuerungPanel extends JPanel {
     private JButton amtspersonAusspielenButton = new JButton("Amtsperson auspielen");
     private JButton routeWertenButton = new JButton("Route werten");
     private JButton naechsterSpielerButton = new JButton("naechster Spieler");
-    private JButton gewerteteRouteButton = new JButton("gewertet Route anzeigen");
+    private JButton gewerteteRouteButton = new JButton("gewertete Route");
     private JButton punktestandButton = new JButton("Punktestand");
-    private JButton landkarteButton = new JButton("Landkarte anzeigen");
+    private JButton landkarteButton = new JButton("Landkarte");
 
     private JPanel buttonPanel = new JPanel();
     private JPanel handPanel = new JPanel();
@@ -263,12 +263,14 @@ class SpielersteuerungPanel extends JPanel {
                 " Auslagestapel");
         this.karteAblegenButton.setToolTipText("Hiermit legst du eine Karte von deiner Hand in" +
                 " deine Route");
-        this.amtspersonAusspielenButton.setToolTipText("Mit diesem Button ziehst du eine Amtsperson");
+        this.amtspersonAusspielenButton.setToolTipText("Mit diesem Button spielst du eine Amtsperson aus");
         this.routeWertenButton.setToolTipText("Wertet deine aktuelle Route und verteilt Bonusmarker" +
                 " (falls gewonnen)");
         this.naechsterSpielerButton.setToolTipText("Zum naechsten Spieler wechseln");
-        this.gewerteteRouteButton.setToolTipText("Zeigt deine bereits gewerteten Karten und" +
-                " dein aktueller Punktestand");
+        this.gewerteteRouteButton.setToolTipText("Zeigt deine bereits gewerteten Karten");
+        this.landkarteButton.setToolTipText("Zeigt die Landkarte des heiligen roemischen Reichs" +
+                " deutscher Nation");
+
         this.setLayout(new GridLayout(1, 2));
         this.handPanel.setVisible(true);
         this.buttonPanel.setVisible(true);
