@@ -94,42 +94,35 @@ public class Spielleiter {
         spieler[istDran].rundeStarten();
     }
 
+    /**
+     * Methode welche den naechster Spieler auswaehlt wenn der aktuelle Spieler all seine Zuege getan hat.
+     *
+     * @return eine Meldung welche dann in der GUI ausgegeben wird
+     */
     public String naechsterSpieler() {
-        String meldung;
-        if (this.spielbrett.getAuslagestapel().getDeck().isEmpty()) {
-            meldung = "Alle Karten sind verbraucht.Das Spiel ist jetzt zu Ende. Der Gewinner ist Spieler "
-                    + this.gewinnerErmitteln().getFarbe().toString();
+        Spieler tmpSpieler;
+        String meldung = null;
+        if (this.ende) {
+            tmpSpieler = spieler[this.istDran + 1];
+            if (tmpSpieler == null || istDran == 3)
+                meldung = "Das Spiel ist jetzt zu Ende. Der Gewinner ist Spieler "
+                        + this.gewinnerErmitteln().getFarbe().toString();
         } else {
-            if (this.spieler[this.istDran].getZaehlerKartenZiehen() == 1) {
+            if (this.getIstDran().getZaehlerKartenZiehen() == 1) {
                 meldung = "Du musst noch eine Karte ziehen";
             } else {
-                if (this.spieler[this.istDran].getZaehlerKarteAblegen() == 1) {
+                if (this.getIstDran().getZaehlerKarteAblegen() == 1) {
                     meldung = "Du musst noch eine Karte ablegen";
                 } else {
-                    if (ende) {
-                        this.rundeZuEndeSpielen();
-                    } else {
-                        this.naechsterSpielerAuswaehlen();
-                    }
-                    meldung = "Jetzt ist Spieler " + this.spieler[this.istDran].getFarbe().toString() + " an der Reihe";
+                    this.naechsterSpielerAuswaehlen();
+                    meldung = "Jetzt ist Spieler " + this.getIstDran().getFarbe().toString() + " an der Reihe";
                 }
-
                 this.spieler[this.istDran].rundeStarten();
             }
-
         }
         return meldung;
     }
 
-    private String rundeZuEndeSpielen() {
-        String meldung = null;
-        Spieler tmpSpieler = this.spieler[this.istDran + 1];
-        if (tmpSpieler == null) {
-            meldung = "Das Spiel ist zu Ende. Herzlichen Glueckwunsch Spieler "
-                    + this.gewinnerErmitteln().getFarbe() + " hat gewonnen";
-        }
-        return meldung;
-    }
 
     private void naechsterSpielerAuswaehlen() {
         Spieler tmpSpieler = this.spieler[this.istDran + 1];

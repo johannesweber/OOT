@@ -35,6 +35,8 @@ class SpielersteuerungPanel extends JPanel {
     private JLabel spielersteuerungLabel;
     private JLabel deineRouteLabel = new JLabel("Deine Route");
     private JLabel deineHandLabel = new JLabel("Deine Hand");
+    private JLabel bonuspunkteLabel;
+    private JLabel haeuserpunkteLabel;
 
     private DefaultListModel defaultRouteModel = new DefaultListModel();
     private JList routeList = new JList(defaultRouteModel);
@@ -177,8 +179,10 @@ class SpielersteuerungPanel extends JPanel {
                 JOptionPane.showMessageDialog(null, meldung);
                 spielersteuerungLabel.setText("Spieler " +
                         SpielersteuerungPanel.this.spielleiter.getIstDran().getFarbe().toString());
+
                 spielersteuerungLabel.validate();
                 spielersteuerungLabel.repaint();
+
                 SpielersteuerungPanel.this.listenAktualisieren();
 
             }
@@ -218,10 +222,16 @@ class SpielersteuerungPanel extends JPanel {
                 punktestandDialog.setTitle("Dein aktueller Punktestand");
                 JSeparator seperator = new JSeparator(JSeparator.HORIZONTAL);
                 seperator.setPreferredSize(new Dimension(1, 40));
-                JLabel bonuspunkteLabel = new JLabel("Punkte aller Bonusmarker: " +
+                SpielersteuerungPanel.this.bonuspunkteLabel = new JLabel("Punkte aller Bonusmarker: " +
                         SpielersteuerungPanel.this.spielleiter.getIstDran().getBonuspunkte());
-                JLabel haeuserpunkteLabel = new JLabel("Punkte fuer gebaute Haeuser: " +
+                SpielersteuerungPanel.this.haeuserpunkteLabel = new JLabel("Punkte fuer gebaute Haeuser: " +
                         SpielersteuerungPanel.this.spielleiter.getIstDran().getHaeuserpunkte());
+
+                bonuspunkteLabel.validate();
+                bonuspunkteLabel.repaint();
+
+                haeuserpunkteLabel.validate();
+                haeuserpunkteLabel.repaint();
 
                 punktestandDialog.add(bonuspunkteLabel);
                 punktestandDialog.add(haeuserpunkteLabel);

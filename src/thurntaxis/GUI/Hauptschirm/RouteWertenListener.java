@@ -41,9 +41,7 @@ class RouteWertenListener implements ActionListener {
 
                     String meldung = RouteWertenListener.this.spielleiter.routeWerten
                             (new EineStadtProLandVerfahren());
-                    if (meldung != null) {
-                        JOptionPane.showMessageDialog(null, meldung);
-                    }
+                    JOptionPane.showMessageDialog(null, meldung);
                     RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
                     routeWertenDialog.dispose();
                 }
@@ -84,7 +82,7 @@ class RouteWertenListener implements ActionListener {
                             landauswahlDialog.dispose();
                             routeWertenDialog.dispose();
 
-                           bestaetigenButton.setToolTipText("Auswahl bestaetigen");
+                            bestaetigenButton.setToolTipText("Auswahl bestaetigen");
                         }
                     });
 
