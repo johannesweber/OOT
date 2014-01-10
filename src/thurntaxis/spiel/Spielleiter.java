@@ -146,12 +146,8 @@ public class Spielleiter {
      */
     public String routeWerten(Wertverfahren verfahren) {
         String meldung;
-        if (this.getIstDran().getRoute().size() < 3) {
-            meldung = "Deine Route muss eine Mindestlange von drei Karten aufweissen";
-        } else {
-            this.ende = verfahren.routeWerten(this.getIstDran(), this.getIstDran().getRoute());
-            meldung = "Deine Route wurde erfolgreich gewertet.";
-        }
+        this.ende = verfahren.routeWerten(this.getIstDran(), this.getIstDran().getRoute());
+        meldung = "Deine Route wurde erfolgreich gewertet.";
         if (this.ende) {
             meldung = "Der erste Spieler hat all seine Streckenposten. Diese Runde wird noch zu Ende gespielt.";
         }

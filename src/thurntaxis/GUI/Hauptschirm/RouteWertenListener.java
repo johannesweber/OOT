@@ -29,81 +29,90 @@ class RouteWertenListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        final JDialog routeWertenDialog = new JDialog();
-        JButton eineStadtProLandButton = new JButton("Eine Stadt pro Land legen");
-        JButton innerhalbEinemLandButon = new JButton("Innerhalb einem Land legen");
+        if (this.spielleiter.getIstDran().getRoute().size() >= 3) {
 
-        eineStadtProLandButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            final JDialog routeWertenDialog = new JDialog();
+            JButton eineStadtProLandButton = new JButton("Eine Stadt pro Land legen");
+            JButton innerhalbEinemLandButon = new JButton("Innerhalb einem Land legen");
 
-                String meldung = RouteWertenListener.this.spielleiter.routeWerten
-                        (new EineStadtProLandVerfahren());
-                if (meldung != null) {
-                    JOptionPane.showMessageDialog(null, meldung);
-                }
-                RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
-                routeWertenDialog.dispose();
-            }
-        });
+            eineStadtProLandButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
 
-        innerhalbEinemLandButon.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-
-                final JDialog landauswahlDialog = new JDialog();
-                JLabel label = new JLabel("In welchem Land wollen sie werten?");
-                JButton bestaetigenButton = new JButton("Bestaetigen");
-
-                DefaultComboBoxModel defaultLandComboBoxModel = new DefaultComboBoxModel();
-                final JComboBox landComboBox = new JComboBox(defaultLandComboBoxModel);
-
-                LinkedList<LandEnum> laenderListe = new LinkedList<LandEnum>();
-
-                laenderListe.add(spielleiter.getIstDran().getRoute().getFirst().getLand());
-                defaultLandComboBoxModel.addElement(laenderListe.getFirst());
-                for (Stadt it : spielleiter.getIstDran().getRoute()) {
-                    if (!laenderListe.contains(it.getLand())) {
-                        defaultLandComboBoxModel.addElement(it.getLand());
-                    }
-                }
-
-                bestaetigenButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent actionEvent) {
-                        LandEnum ausgewaehlt = (LandEnum) landComboBox.getSelectedItem();
-
-                        String meldung = RouteWertenListener.this.spielleiter.routeWerten
-                                (new InnerhalbEinemLandVerfahren(ausgewaehlt));
-
+                    String meldung = RouteWertenListener.this.spielleiter.routeWerten
+                            (new EineStadtProLandVerfahren());
+                    if (meldung != null) {
                         JOptionPane.showMessageDialog(null, meldung);
-
-                        RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
-                        landauswahlDialog.dispose();
-                        routeWertenDialog.dispose();
                     }
-                });
+                    RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
+                    routeWertenDialog.dispose();
+                }
+            });
 
-                landauswahlDialog.add(label);
-                landauswahlDialog.add(landComboBox);
-                landauswahlDialog.add(bestaetigenButton);
+            innerhalbEinemLandButon.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
 
-                landauswahlDialog.setLayout(new GridLayout(3,1));
-                landauswahlDialog.setVisible(true);
-                landauswahlDialog.setLocationRelativeTo(null);
-                landauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                landauswahlDialog.setSize(410, 100);
-            }
-        });
+                    final JDialog landauswahlDialog = new JDialog();
+                    JLabel label = new JLabel("In welchem Land wollen sie werten?");
+                    JButton bestaetigenButton = new JButton("Bestaetigen");
 
-        routeWertenDialog.setLocationRelativeTo(null);
-        routeWertenDialog.setTitle("Wie moechtest du deine Route werten lassen?");
-        routeWertenDialog.setLayout(new GridLayout(2, 1));
-        routeWertenDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                    DefaultComboBoxModel defaultLandComboBoxModel = new DefaultComboBoxModel();
+                    final JComboBox landComboBox = new JComboBox(defaultLandComboBoxModel);
 
-        routeWertenDialog.add(eineStadtProLandButton);
-        routeWertenDialog.add(innerhalbEinemLandButon);
-        routeWertenDialog.setSize(410, 100);
-        routeWertenDialog.setVisible(true);
+                    LinkedList<LandEnum> laenderListe = new LinkedList<LandEnum>();
+                    if (!spielleiter.getIstDran().getRoute().isEmpty()) {
+                        laenderListe.add(spielleiter.getIstDran().getRoute().getFirst().getLand());
+                        defaultLandComboBoxModel.addElement(laenderListe.getFirst());
+                        for (Stadt it : spielleiter.getIstDran().getRoute()) {
+                            if (!laenderListe.contains(it.getLand())) {
+                                defaultLandComboBoxModel.addElement(it.getLand());
+                            }
+                        }
+                    }
+                    bestaetigenButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent actionEvent) {
+                            LandEnum ausgewaehlt = (LandEnum) landComboBox.getSelectedItem();
+
+                            String meldung = RouteWertenListener.this.spielleiter.routeWerten
+                                    (new InnerhalbEinemLandVerfahren(ausgewaehlt));
+
+                            JOptionPane.showMessageDialog(null, meldung);
+
+                            RouteWertenListener.this.spielersteuerungPanel.listenAktualisieren();
+                            landauswahlDialog.dispose();
+                            routeWertenDialog.dispose();
+                        }
+                    });
+
+                    label.setHorizontalAlignment(JLabel.CENTER);
+                    landComboBox.setAlignmentY(JComboBox.CENTER_ALIGNMENT);
+                    bestaetigenButton.setAlignmentY(JButton.CENTER);
+
+                    landauswahlDialog.add(label);
+                    landauswahlDialog.add(landComboBox);
+                    landauswahlDialog.add(bestaetigenButton);
+
+                    landauswahlDialog.setLayout(new GridLayout(3, 1));
+                    landauswahlDialog.setVisible(true);
+                    landauswahlDialog.setLocationRelativeTo(null);
+                    landauswahlDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                    landauswahlDialog.setSize(410, 100);
+                }
+            });
+
+            routeWertenDialog.setLocationRelativeTo(null);
+            routeWertenDialog.setTitle("Wie moechtest du deine Route werten lassen?");
+            routeWertenDialog.setLayout(new GridLayout(2, 1));
+            routeWertenDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+            routeWertenDialog.add(eineStadtProLandButton);
+            routeWertenDialog.add(innerhalbEinemLandButon);
+            routeWertenDialog.setSize(410, 100);
+            routeWertenDialog.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Deine Route muss eine Mindestlaenge von 3 Karten haben!");
+        }
     }
 }

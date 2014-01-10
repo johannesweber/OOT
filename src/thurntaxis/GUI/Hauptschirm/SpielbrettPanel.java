@@ -38,6 +38,9 @@ class SpielbrettPanel extends JPanel {
     SpielbrettPanel(Spielleiter spielleiter) {
         this.spielleiter = spielleiter;
 
+        this.auslagestapelPanel.add(auslagestapelComboBox);
+        this.defaultAuslagestapelModelFuellen();
+
         DefaultMutableTreeNode wurzel = new DefaultMutableTreeNode("Das Spielbrett");
 
         for (Land landIt : spielleiter.getSpielbrett().getLaender()) {
@@ -52,9 +55,7 @@ class SpielbrettPanel extends JPanel {
         }
 
         JTree spielTree = new JTree(wurzel);
-        this.defaultAuslagestapelModelFuellen();
 
-        this.auslagestapelPanel.add(auslagestapelComboBox);
         this.auslagestapelPanel.add(stapelLabel);
         this.add(new JScrollPane(spielTree));
         seperator.setPreferredSize(new Dimension(1,1));

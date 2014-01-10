@@ -24,6 +24,7 @@ class SpielersteuerungPanel extends JPanel {
     private JButton routeWertenButton = new JButton("Route werten");
     private JButton naechsterSpielerButton = new JButton("naechster Spieler");
     private JButton gewerteteRouteButton = new JButton("gewertet Route anzeigen");
+    private JButton punktestandButton = new JButton("Punktestand");
 
     private JPanel buttonPanel = new JPanel();
     private JPanel handPanel = new JPanel();
@@ -46,7 +47,6 @@ class SpielersteuerungPanel extends JPanel {
         this.spielleiter = spielleiter;
         this.spielbrettPanel = spielbrettPanel;
 
-        this.karteAblegenButton.setEnabled(false);
         this.buttonPanel.setLayout(new GridLayout(6, 1));
 
         this.spielersteuerungLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -57,7 +57,9 @@ class SpielersteuerungPanel extends JPanel {
         this.buttonPanel.add(amtspersonAusspielenButton);
         this.buttonPanel.add(routeWertenButton);
         this.buttonPanel.add(gewerteteRouteButton);
+        this.buttonPanel.add(punktestandButton);
         this.buttonPanel.add(naechsterSpielerButton);
+
 
         this.handPanel.add(deineHandLabel);
         this.handPanel.add(handList);
@@ -187,30 +189,55 @@ class SpielersteuerungPanel extends JPanel {
                 DefaultListModel gewerteteKartenModel = new DefaultListModel();
                 JList gewerteteKartenList = new JList(gewerteteKartenModel);
 
-                SpielersteuerungPanel.this.spielleiter.getIstDran().punkteErmitteln();
-                JLabel punktstandLabel = new JLabel();
-                punktstandLabel.setText("Du hast im Moment "
-                        + SpielersteuerungPanel.this.spielleiter.getIstDran().getPunktstand()
-                        + " Punkte");
-
-                gewerteteKartenDialog.add(punktstandLabel);
-
                 gewerteteKartenList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
                 for (Stadt it : SpielersteuerungPanel.this.spielleiter.getIstDran().getGewerteteKarten()) {
                     gewerteteKartenModel.addElement(it);
                 }
 
+                gewerteteKartenList.setSize(200, 100);
+                gewerteteKartenList.setAlignmentY(CENTER_ALIGNMENT);
+
                 gewerteteKartenDialog.add(gewerteteKartenList);
 
-                gewerteteKartenDialog.setLocationRelativeTo(null);
+                gewerteteKartenDialog.setLocationRelativeTo(SpielersteuerungPanel.this);
                 gewerteteKartenDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                 gewerteteKartenDialog.setVisible(true);
-                gewerteteKartenDialog.setSize(410,100);
-
+                gewerteteKartenDialog.setSize(410, 100);
 
             }
         });
+
+        this.punktestandButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JDialog punktestandDialog = new JDialog();
+                punktestandDialog.setTitle("Dein aktueller Punktestand");
+                JSeparator seperator = new JSeparator(JSeparator.HORIZONTAL);
+                seperator.setPreferredSize(new Dimension(1, 40));
+                JLabel bonuspunkteLabel = new JLabel("Punkte aller Bonusmarker: " +
+                        SpielersteuerungPanel.this.spielleiter.getIstDran().getBonuspunkte());
+                JLabel haeuserpunkteLabel = new JLabel("Punkte fuer gebaute Haeuser: " +
+                        SpielersteuerungPanel.this.spielleiter.getIstDran().getHaeuserpunkte());
+
+                punktestandDialog.add(bonuspunkteLabel);
+                punktestandDialog.add(haeuserpunkteLabel);
+
+                bonuspunkteLabel.setHorizontalAlignment(JLabel.CENTER);
+                bonuspunkteLabel.setVerticalAlignment(JLabel.CENTER);
+                haeuserpunkteLabel.setHorizontalAlignment(JLabel.CENTER);
+                haeuserpunkteLabel.setVerticalAlignment(JLabel.CENTER);
+
+                punktestandDialog.setLayout(new GridLayout(2, 1));
+                punktestandDialog.setLocationRelativeTo(SpielersteuerungPanel.this);
+                punktestandDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                punktestandDialog.setSize(410, 100);
+                punktestandDialog.setVisible(true);
+
+            }
+        });
+
+        this.punktestandButton.setToolTipText("Zeigt deinen aktuellen Punktestand");
 
         this.karteZiehenButton.setToolTipText("Hiermit ziehst du eine Karte aus dem" +
                 " Auslagestapel");

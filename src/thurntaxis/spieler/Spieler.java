@@ -27,6 +27,8 @@ public class Spieler {
     private int zaehlerKarteAblegen;
     private int zaehlerAmtsperson;
     private int punktstand;
+    private int bonuspunkte;
+    private int haeuserpunkte;
 
     public Spieler(Spielerfarbe farbe) {
         this.farbe = farbe;
@@ -39,6 +41,14 @@ public class Spieler {
         this.zaehlerKarteAblegen = 0;
         this.zaehlerAmtsperson = 0;
         this.haeuserNehmen();
+    }
+
+    public int getBonuspunkte() {
+        return this.bonuspunkte;
+    }
+
+    public int getHaeuserpunkte() {
+        return this.haeuserpunkte;
     }
 
     public int getPunktstand() {
@@ -103,15 +113,15 @@ public class Spieler {
      * @return sie punktzahl des spielers.
      */
     public void punkteErmitteln() {
-        int punkteBoni = 0;
-        int punkteHaeuser = 0;
+
         for (Bonusmarker it : this.boni) {
-            punkteBoni += it.getPunkte();
+            this.bonuspunkte += it.getPunkte();
         }
         for (Haus it : this.haeuser) {
-            punkteHaeuser += it.getPunkte();
+            this.haeuserpunkte += it.getPunkte();
         }
-        this.punktstand = (punkteBoni + (20 - punkteHaeuser));
+        this.haeuserpunkte = 20 - this.haeuserpunkte;
+        this.punktstand = (this.bonuspunkte + this.haeuserpunkte);
     }
 
     /**

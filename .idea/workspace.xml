@@ -70,26 +70,7 @@
     <favorites_list name="OOT" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="StartmenueFrame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/StartmenueFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="31" selection-start="1143" selection-end="1143" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1515">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpielbrettPanel.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/SpielbrettPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="0" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.6959459" vertical-offset="486" max-vertical-offset="960">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -141,14 +122,14 @@
         <option value="$PROJECT_DIR$/src/thurntaxis/GUI/hauptschirm/SpielersteuerungPanel.java" />
         <option value="$PROJECT_DIR$/src/thurntaxis/GUI/hauptschirm/RouteWertenListener.java" />
         <option value="$PROJECT_DIR$/src/thurntaxis/ThurnTaxisUnitTest.java" />
-        <option value="$PROJECT_DIR$/src/thurntaxis/spiel/Spielleiter.java" />
         <option value="$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/AmtspersonListener.java" />
         <option value="$PROJECT_DIR$/src/thurntaxis/gui/SpielerauswahlListener.java" />
-        <option value="$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/RouteWertenListener.java" />
-        <option value="$PROJECT_DIR$/src/thurntaxis/spieler/Spieler.java" />
-        <option value="$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/SpielersteuerungPanel.java" />
-        <option value="$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/HauptschirmFrame.java" />
         <option value="$PROJECT_DIR$/src/thurntaxis/gui/StartmenueFrame.java" />
+        <option value="$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/HauptschirmFrame.java" />
+        <option value="$PROJECT_DIR$/src/thurntaxis/spieler/Spieler.java" />
+        <option value="$PROJECT_DIR$/src/thurntaxis/spiel/Spielleiter.java" />
+        <option value="$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/SpielersteuerungPanel.java" />
+        <option value="$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/RouteWertenListener.java" />
         <option value="$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/SpielbrettPanel.java" />
       </list>
     </option>
@@ -186,6 +167,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -330,8 +313,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -762,12 +743,13 @@
       <workItem from="1389216315822" duration="383000" />
       <workItem from="1389276853685" duration="9507000" />
       <workItem from="1389286426674" duration="16726000" />
-      <workItem from="1389303668361" duration="1154000" />
+      <workItem from="1389303668361" duration="1378000" />
+      <workItem from="1389339613859" duration="5050000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273976000" />
+    <option name="totallyTimeSpent" value="279250000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -790,8 +772,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="774" extended-state="7" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1280" height="774" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -813,7 +795,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32956383" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2888563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2888563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26332796" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32111436" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991204" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -873,8 +855,8 @@
             <node x="" y="">thurntaxis.wertverfahren.InnerhalbEinemLandVerfahren</node>
             <node x="" y="">thurntaxis.spiel.Spielablauf</node>
             <node x="" y="">thurntaxis.spiel.Stadt</node>
-            <node x="" y="">thurntaxis.spiel.Land</node>
             <node x="" y="">thurntaxis.spiel.Bonusmarker</node>
+            <node x="" y="">thurntaxis.spiel.Land</node>
             <node x="" y="">thurntaxis.wertverfahren.EineStadtProLandVerfahren</node>
             <node x="" y="">thurntaxis.GUI.hauptschirm.AmtspersonListener</node>
             <node x="" y="">thurntaxis.amtsperson.Amtsperson</node>
@@ -960,9 +942,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/LandEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="7" selection-start="89" selection-end="89" vertical-scroll-proportion="0.16129032" vertical-offset="0" max-vertical-offset="465">
-          <folding />
-        </state>
+        <state line="5" column="7" selection-start="89" selection-end="89" vertical-scroll-proportion="0.16129032" vertical-offset="0" max-vertical-offset="465" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/wertverfahren/Wertverfahren.java">
@@ -972,9 +952,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/Land.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="236" selection-end="236" vertical-scroll-proportion="0.038709678" vertical-offset="102" max-vertical-offset="1275">
-          <folding />
-        </state>
+        <state line="8" column="13" selection-start="236" selection-end="236" vertical-scroll-proportion="0.038709678" vertical-offset="102" max-vertical-offset="1275" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/Spielbrett.java">
@@ -982,15 +960,6 @@
         <state line="53" column="0" selection-start="1671" selection-end="1671" vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="1785">
           <folding>
             <element signature="e#1710#1711#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/Auslagestapel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="1155">
-          <folding>
-            <element signature="e#741#742#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1007,20 +976,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/Bonusmarker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.3146853" vertical-offset="135" max-vertical-offset="765">
-          <folding>
-            <element signature="e#365#366#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="18" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.3146853" vertical-offset="135" max-vertical-offset="765" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spieler/Haus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="431" selection-end="431" vertical-scroll-proportion="0.3146853" vertical-offset="165" max-vertical-offset="735">
-          <folding>
-            <element signature="e#463#464#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="22" column="0" selection-start="431" selection-end="431" vertical-scroll-proportion="0.3146853" vertical-offset="165" max-vertical-offset="735" />
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/org/junit/Assert.class">
@@ -1032,36 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="59" selection-start="2778" selection-end="2778" vertical-scroll-proportion="0.5743243" vertical-offset="600" max-vertical-offset="1140">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/AmtspersonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="30" selection-start="3293" selection-end="3293" vertical-scroll-proportion="0.6761488" vertical-offset="651" max-vertical-offset="1125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/SpielerauswahlListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="8" selection-start="4008" selection-end="4036" vertical-scroll-proportion="0.7297297" vertical-offset="936" max-vertical-offset="1410">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/RouteWertenListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="52" selection-start="2084" selection-end="2090" vertical-scroll-proportion="0.33178654" vertical-offset="667" max-vertical-offset="1725">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1275#1806#0" expanded="true" />
-            <element signature="e#1795#1796#0" expanded="true" />
-            <element signature="e#1860#4132#0" expanded="true" />
-            <element signature="e#2439#2449#0" expanded="true" />
-            <element signature="e#2927#3627#0" expanded="true" />
-            <element signature="e#3608#3609#0" expanded="true" />
-            <element signature="e#4121#4122#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1112,11 +1043,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/Spielkarte.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.6754808" vertical-offset="259" max-vertical-offset="675">
-          <folding>
-            <element signature="e#1117#1118#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="36" column="0" selection-start="1092" selection-end="1092" vertical-scroll-proportion="0.6754808" vertical-offset="259" max-vertical-offset="675" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/Stadt.java">
@@ -1156,9 +1083,37 @@
         <state line="137" column="17" selection-start="4593" selection-end="4593" vertical-scroll-proportion="0.5319813" vertical-offset="1699" max-vertical-offset="2340" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/StartmenueFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="31" selection-start="1143" selection-end="1143" vertical-scroll-proportion="-0.22865854" vertical-offset="495" max-vertical-offset="1515">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/HauptschirmFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="41" selection-start="672" selection-end="672" vertical-scroll-proportion="0.5251641" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/SpielerauswahlListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="8" selection-start="4008" selection-end="4036" vertical-scroll-proportion="0.8310811" vertical-offset="891" max-vertical-offset="1410">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/AmtspersonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="30" selection-start="3293" selection-end="3293" vertical-scroll-proportion="1.8249453" vertical-offset="126" max-vertical-offset="1125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/Spielleiter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="885" selection-end="885" vertical-scroll-proportion="0.7162162" vertical-offset="72" max-vertical-offset="2370">
+        <state line="149" column="60" selection-start="4926" selection-end="4926" vertical-scroll-proportion="0.6621622" vertical-offset="1806" max-vertical-offset="2310">
           <folding>
             <element signature="e#1358#1367#0" expanded="true" />
           </folding>
@@ -1167,35 +1122,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/spieler/Spieler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="21" selection-start="3927" selection-end="3927" vertical-scroll-proportion="0.41216215" vertical-offset="1332" max-vertical-offset="3915">
+        <state line="123" column="64" selection-start="3511" selection-end="3511" vertical-scroll-proportion="-2.6689188" vertical-offset="2580" max-vertical-offset="4005">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thurntaxis/spiel/Auslagestapel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="711" selection-end="711" vertical-scroll-proportion="-0.048140045" vertical-offset="367" max-vertical-offset="1155">
+          <folding>
+            <element signature="e#741#742#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/SpielersteuerungPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="17" selection-start="7663" selection-end="7663" vertical-scroll-proportion="2.1486487" vertical-offset="1206" max-vertical-offset="3930">
-          <folding />
+        <state line="48" column="0" selection-start="1981" selection-end="1981" vertical-scroll-proportion="-4.7972975" vertical-offset="2745" max-vertical-offset="4470">
+          <folding>
+            <element signature="e#6519#7754#0" expanded="true" />
+            <element signature="e#7743#7744#0" expanded="true" />
+            <element signature="e#8036#8650#0" expanded="true" />
+            <element signature="e#8639#8640#0" expanded="true" />
+            <element signature="e#8706#9896#0" expanded="true" />
+            <element signature="e#9885#9886#0" expanded="true" />
+            <element signature="e#9949#11477#0" expanded="true" />
+            <element signature="e#11466#11467#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/HauptschirmFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/RouteWertenListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="886" selection-end="886" vertical-scroll-proportion="0.5030488" vertical-offset="0" max-vertical-offset="656">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/StartmenueFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="31" selection-start="1143" selection-end="1143" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1515">
-          <folding />
+        <state line="114" column="87" selection-start="5363" selection-end="5363" vertical-scroll-proportion="0.7045952" vertical-offset="1388" max-vertical-offset="1845">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1360#1935#0" expanded="true" />
+            <element signature="e#1920#1921#0" expanded="true" />
+            <element signature="e#1993#4747#0" expanded="true" />
+            <element signature="e#2604#2614#0" expanded="true" />
+            <element signature="e#3246#3990#0" expanded="true" />
+            <element signature="e#3967#3968#0" expanded="true" />
+            <element signature="e#4732#4733#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/thurntaxis/gui/hauptschirm/SpielbrettPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.6959459" vertical-offset="486" max-vertical-offset="960">
+        <state line="41" column="48" selection-start="1473" selection-end="1473" vertical-scroll-proportion="0.30405405" vertical-offset="345" max-vertical-offset="975">
           <folding />
         </state>
       </provider>
