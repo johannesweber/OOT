@@ -25,6 +25,7 @@ class SpielersteuerungPanel extends JPanel {
     private JButton naechsterSpielerButton = new JButton("naechster Spieler");
     private JButton gewerteteRouteButton = new JButton("gewertet Route anzeigen");
     private JButton punktestandButton = new JButton("Punktestand");
+    private JButton landkarteButton = new JButton("Landkarte anzeigen");
 
     private JPanel buttonPanel = new JPanel();
     private JPanel handPanel = new JPanel();
@@ -41,14 +42,16 @@ class SpielersteuerungPanel extends JPanel {
     private DefaultListModel defaultHandModel = new DefaultListModel();
     private JList handList = new JList(defaultHandModel);
 
+    private JDialog landkarteDialog = new JDialog();
+
     SpielersteuerungPanel(Spielleiter spielleiter, SpielbrettPanel spielbrettPanel) {
         this.spielersteuerungLabel = new JLabel("Spieler " +
                 spielleiter.getIstDran().getFarbe().toString());
         this.spielleiter = spielleiter;
         this.spielbrettPanel = spielbrettPanel;
 
+        this.landkarteDialog.setVisible(false);
         this.buttonPanel.setLayout(new GridLayout(6, 1));
-
         this.spielersteuerungLabel.setHorizontalAlignment(JLabel.CENTER);
 
         this.buttonPanel.add(spielersteuerungLabel);
@@ -59,7 +62,7 @@ class SpielersteuerungPanel extends JPanel {
         this.buttonPanel.add(gewerteteRouteButton);
         this.buttonPanel.add(punktestandButton);
         this.buttonPanel.add(naechsterSpielerButton);
-
+        this.buttonPanel.add(landkarteButton);
 
         this.handPanel.add(deineHandLabel);
         this.handPanel.add(handList);
@@ -234,6 +237,23 @@ class SpielersteuerungPanel extends JPanel {
                 punktestandDialog.setSize(410, 100);
                 punktestandDialog.setVisible(true);
 
+            }
+        });
+
+        this.landkarteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                ImageIcon landkarte = new ImageIcon(getClass().getResource("landkarte.jpg"));
+
+                JLabel landkarteLabel = new JLabel(landkarte);
+
+                landkarteDialog.add(landkarteLabel);
+
+                landkarteDialog.setLocationRelativeTo(SpielersteuerungPanel.this);
+                landkarteDialog.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                landkarteDialog.setVisible(true);
+                landkarteDialog.pack();
             }
         });
 

@@ -86,17 +86,17 @@ public class StartmenueFrame extends JFrame {
         this.spielablaufButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                JFrame spielregelFrame = new JFrame();
+                JDialog spielregelDialog = new JDialog();
 
                 ImageIcon spielregeln = new ImageIcon(getClass().getResource("spielablauf.jpg"));
 
                 JLabel spielablaufLabel = new JLabel(spielregeln);
 
-                spielregelFrame.add(spielablaufLabel);
+                spielregelDialog.add(spielablaufLabel);
 
-                spielregelFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                spielregelFrame.setVisible(true);
-                spielregelFrame.pack();
+                spielregelDialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                spielregelDialog.setVisible(true);
+                spielregelDialog.pack();
             }
         });
 
