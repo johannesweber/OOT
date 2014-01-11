@@ -19,7 +19,7 @@ public enum Spielkarte {
 
     BUDWEIS(LandEnum.BOEHMEN), PILSEN(LandEnum.BOEHMEN),
 
-    LODS(LandEnum.POLEN),
+    LODZ(LandEnum.POLEN),
 
     WUERZBURG(LandEnum.BAIERN), NUERNBERG(LandEnum.BAIERN), KEMPTEN(LandEnum.BAIERN),
     MUENCHEN(LandEnum.BAIERN), PASSAU(LandEnum.BAIERN), AUGSBURG(LandEnum.BAIERN),

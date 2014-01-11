@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Eine klasse die einen ActionListener repraesentiert, welcher die Punktzahl des aktuellen Spielers
+ *         angibt wenn man ihn aktiviert.
  */
 class PunktestandListener implements ActionListener {
 
@@ -18,27 +21,30 @@ class PunktestandListener implements ActionListener {
     private JDialog punktestandDialog = new JDialog();
     private JPanel gewerteteKartenPanel = new JPanel();
 
+    JLabel gewertetenKartenLabel = new JLabel("Deine bisher gewerteten Karten");
+
+    JLabel bonuspunkteLabel = new JLabel();
+    JLabel haeuserpunkteLabel = new JLabel();
+
+    DefaultListModel gewerteteKartenModel = new DefaultListModel();
+    JList gewerteteKartenList = new JList(this.gewerteteKartenModel);
+
     PunktestandListener(Spielleiter spielleiter) {
         this.spielleiter = spielleiter;
     }
 
-
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        JLabel gewertetenKartenLabel = new JLabel("Deine bisher gewerteten Karten");
+        this.spielleiter.getIstDran().punkteErmitteln();
 
-        JLabel bonuspunkteLabel = new JLabel("Punkte aller Bonusmarker: " +
+        this.bonuspunkteLabel.setText("Punkte aller Bonusmarker: " +
                 this.spielleiter.getIstDran().getBonuspunkte());
-        JLabel haeuserpunkteLabel = new JLabel("Punkte fuer gebaute Haeuser: " +
+
+        this.haeuserpunkteLabel.setText("Punkte fuer gebaute Haeuser: " +
                 this.spielleiter.getIstDran().getHaeuserpunkte());
 
-        DefaultListModel gewerteteKartenModel = new DefaultListModel();
-        JList gewerteteKartenList = new JList(gewerteteKartenModel);
-
-        for (Stadt it : this.spielleiter.getIstDran().getGewerteteKarten()) {
-            gewerteteKartenModel.addElement(it);
-        }
+        this.listeFuellen();
 
         gewerteteKartenList.revalidate();
         gewerteteKartenList.repaint();
@@ -68,6 +74,12 @@ class PunktestandListener implements ActionListener {
         this.punktestandDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.punktestandDialog.pack();
         this.punktestandDialog.setVisible(true);
+    }
+
+    private void listeFuellen(){
+        for (Stadt it : this.spielleiter.getIstDran().getGewerteteKarten()) {
+            this.gewerteteKartenModel.addElement(it);
+        }
     }
 }
 

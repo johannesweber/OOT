@@ -1,13 +1,12 @@
 package thurntaxis.gui.hauptschirm;
 
-import thurntaxis.spiel.Land;
-import thurntaxis.spiel.Spielleiter;
-import thurntaxis.spiel.Spielkarte;
-import thurntaxis.spiel.Stadt;
+import thurntaxis.spiel.*;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Gruppe 4 Fragezeichen
@@ -19,17 +18,21 @@ import java.awt.*;
 class SpielbrettPanel extends JPanel {
 
     private Spielleiter spielleiter;
+    protected SpielersteuerungPanel spielersteuerungPanel;
 
     private DefaultComboBoxModel defaultAuslagestapelComboBoxModel = new DefaultComboBoxModel();
     private JComboBox auslagestapelComboBox = new JComboBox(defaultAuslagestapelComboBoxModel);
 
     private JPanel auslagestapelPanel = new JPanel();
-    private JLabel stapelLabel = new JLabel("Auslagestapel");
-    private JSeparator seperator = new JSeparator(SwingConstants.HORIZONTAL);
+    private JLabel auslagestapelLabel = new JLabel("Auslagestapel");
+
+    private JButton verdeckterStapelButton = new JButton("verdeckter Stapel");
 
     SpielbrettPanel(Spielleiter spielleiter) {
         this.spielleiter = spielleiter;
 
+        this.auslagestapelPanel.add(verdeckterStapelButton);
+        this.auslagestapelPanel.add(auslagestapelLabel);
         this.auslagestapelPanel.add(auslagestapelComboBox);
         this.defaultAuslagestapelModelFuellen();
 
@@ -48,11 +51,25 @@ class SpielbrettPanel extends JPanel {
 
         JTree spielTree = new JTree(wurzel);
 
-        this.auslagestapelPanel.add(stapelLabel);
+        this.verdeckterStapelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Stadt ausgewaehlt = SpielbrettPanel.this.spielleiter.getSpielbrett().getAuslagestapel().
+                        getDeck().pop();
+
+                SpielbrettPanel.this.spielleiter.getIstDran().getHand().add(ausgewaehlt);
+                SpielbrettPanel.this.spielleiter.getIstDran().zaehlerKartenZiehenVerringern();
+                SpielbrettPanel.this.spielersteuerungPanel.listenAktualisieren();
+
+            }
+        });
+
+        this.verdeckterStapelButton.setToolTipText("Damit ziehst du eine Karte aus dem verdeckten Stapel");
+
         this.add(new JScrollPane(spielTree));
-        this.seperator.setPreferredSize(new Dimension(1, 1));
         this.add(auslagestapelPanel);
 
+        this.auslagestapelPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setVisible(true);
     }

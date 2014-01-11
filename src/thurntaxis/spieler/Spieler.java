@@ -76,6 +76,10 @@ public class Spieler {
         this.zaehlerKarteAblegen--;
     }
 
+    public void zaehlerKartenZiehenVerringern() {
+        this.zaehlerKartenZiehen--;
+    }
+
     public void zaehlerKartenZiehenErhoehen() {
         this.zaehlerKartenZiehen++;
     }

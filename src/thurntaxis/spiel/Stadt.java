@@ -74,11 +74,11 @@ public class Stadt {
                 break;
             case PILSEN:
                 this.nachbarn.add(Spielkarte.NUERNBERG);
-                this.nachbarn.add(Spielkarte.LODS);
+                this.nachbarn.add(Spielkarte.LODZ);
                 this.nachbarn.add(Spielkarte.REGENSBURG);
                 this.nachbarn.add(Spielkarte.BUDWEIS);
                 break;
-            case LODS:
+            case LODZ:
                 this.nachbarn.add(Spielkarte.PILSEN);
                 break;
             case STUTTGART:

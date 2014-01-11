@@ -58,7 +58,7 @@ public class Land {
                 this.staedte.add(new Stadt(Spielkarte.PASSAU));
                 break;
             case POLEN:
-                this.staedte.add(new Stadt(Spielkarte.LODS));
+                this.staedte.add(new Stadt(Spielkarte.LODZ));
                 break;
             case BOEHMEN:
                 this.staedte.add(new Stadt(Spielkarte.PILSEN));
