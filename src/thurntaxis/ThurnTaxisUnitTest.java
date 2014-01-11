@@ -12,7 +12,9 @@ import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by Johannes on 08.01.14.
+ * Unser JUnit Test.
+ *
+ * @author Gruppe 4 Fragezeichen
  */
 public class ThurnTaxisUnitTest {
 

@@ -1,9 +1,11 @@
 package thurntaxis.spiel;
 
 /**
+ * @author Gruppe 4 Fragezeichen
+ *
  * Eine Klasse fuer eine Stadt bzw. eine Stadtkarte. jede Stadt in thurn und taxis gehoert zu einem bestimmten
  * land. in dieser klasse werden nicht nur die staedte festgelegt sondern zusaetzlich werden auch noch
- * den saedten laender zugeordnet.
+ * den staedten laender zugeordnet.
  */
 public enum Spielkarte {
 
@@ -34,6 +36,6 @@ public enum Spielkarte {
     }
 
     public LandEnum getLand() {
-        return land;
+        return this.land;
     }
 }

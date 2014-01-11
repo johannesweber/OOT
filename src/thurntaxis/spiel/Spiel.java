@@ -7,8 +7,12 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * Klasse um ein Spiel Thurn und Taxis zu starten. Jedes Spiel hat einen Namen, eine vorger festgelegte Spieleranzahl
- * und natuerlich ein HauptschirmGUI.
+ * @author Gruppe 4 Fragezeichen
+ *
+ * Klasse um ein Spiel Thurn und Taxis zu starten. Jedes Spiel hat einen Namen und
+ * eine vorher festgelegte Spieleranzahl. Das Spiel teilt auch noch jedem Teilnehmer mit
+ * an welchem Spielbrett er sitzt. In dem Konstruktor von einem Spiel wird sofort
+ * ein neues Spielbrett erstellt und die Spieler festgelegt und dem Spielbrett zugeordnet.
  */
 public class Spiel {
 
@@ -21,13 +25,13 @@ public class Spiel {
         this.spielerZuordnen();
     }
 
-    public Spielbrett getSpielbrett() {
+    protected Spielbrett getSpielbrett() {
         return this.spielbrett;
     }
 
     /**
-     * In dieser Methode wird jeder Spieler dem aktuellen HauptschirmGUI zugeordnet.
-     * Ein Spieler sollte wissen an welchem HauptschirmGUI er spielt.
+     * In dieser Methode wird jedem Spieler das aktuelle Spielbrett zugeordnet.
+     * Ein Spieler sollte wissen an welchem Spielbrett er spielt.
      */
     private void spielerZuordnen() {
         for (Spieler it : spieler) {

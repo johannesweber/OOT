@@ -10,8 +10,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 
 /**
- * Eine Klasse um das Spielbrett in einem Panel zu erstellen.
- * Das Spielbrett wird mit einem JTree erzeugt.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Eine Klasse um das Spielbrett in einem Panel zu erstellen.
+ *         Das Spielbrett wird mit einem JTree erzeugt. Unter dem Spielbrett ist der Auslagestapel
+ *         mit Hilfer einer ComboBox dargestellt.
  */
 class SpielbrettPanel extends JPanel {
 
@@ -22,18 +25,7 @@ class SpielbrettPanel extends JPanel {
 
     private JPanel auslagestapelPanel = new JPanel();
     private JLabel stapelLabel = new JLabel("Auslagestapel");
-    JSeparator seperator = new JSeparator(SwingConstants.HORIZONTAL);
-
-    public DefaultComboBoxModel getDefaultAuslagestapelComboBoxModel() {
-        return this.defaultAuslagestapelComboBoxModel;
-    }
-
-    public void defaultAuslagestapelModelFuellen() {
-        this.defaultAuslagestapelComboBoxModel.removeAllElements();
-        for (Stadt it : this.spielleiter.getSpielbrett().getAuslagestapel().getAuslagestapel()) {
-            this.defaultAuslagestapelComboBoxModel.addElement(it);
-        }
-    }
+    private JSeparator seperator = new JSeparator(SwingConstants.HORIZONTAL);
 
     SpielbrettPanel(Spielleiter spielleiter) {
         this.spielleiter = spielleiter;
@@ -58,11 +50,21 @@ class SpielbrettPanel extends JPanel {
 
         this.auslagestapelPanel.add(stapelLabel);
         this.add(new JScrollPane(spielTree));
-        seperator.setPreferredSize(new Dimension(1,1));
-        this.add(seperator);
+        this.seperator.setPreferredSize(new Dimension(1, 1));
         this.add(auslagestapelPanel);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setVisible(true);
+    }
+
+    public void defaultAuslagestapelModelFuellen() {
+        this.defaultAuslagestapelComboBoxModel.removeAllElements();
+        for (Stadt it : this.spielleiter.getSpielbrett().getAuslagestapel().getAuslagestapel()) {
+            this.defaultAuslagestapelComboBoxModel.addElement(it);
+        }
+    }
+
+    public DefaultComboBoxModel getDefaultAuslagestapelComboBoxModel() {
+        return this.defaultAuslagestapelComboBoxModel;
     }
 }

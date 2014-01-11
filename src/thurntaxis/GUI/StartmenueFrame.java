@@ -4,17 +4,17 @@ import thurntaxis.gui.hauptschirm.HauptschirmFrame;
 import thurntaxis.spiel.*;
 import thurntaxis.spieler.Spieler;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 /**
- * Klasse um das Startmenue zu realisieren. Das Startmenue besitzt 3 Buttons und wie jede andere Klasse
- * in der gui auch einen Spielleiter.
+ * @author 4 Fragezeichen
+ *         <p/>
+ *         Klasse um das Startmenue zu realisieren. Das Startmenue besitzt 3 Buttons und wie jede andere Klasse
+ *         in der GUI auch einen Spielleiter um ueber diesen alles zu steuern.
  */
 public class StartmenueFrame extends JFrame {
 

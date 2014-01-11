@@ -4,14 +4,13 @@ import thurntaxis.gui.hauptschirm.HauptschirmFrame;
 import thurntaxis.wertverfahren.Wertverfahren;
 import thurntaxis.spieler.Spieler;
 
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
 
 /**
- * Klasse um ein Spiel Thurn und Taxis zu starten. Jedes Spiel hat einen Namen, eine vorger festgelegte Spieleranzahl
- * und natuerlich ein HauptschirmGUI.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Klasse um ein Spiel Thurn und Taxis zu starten. Jedes Spiel hat einen Namen, eine vorger festgelegte Spieleranzahl
+ *         und natuerlich ein HauptschirmGUI.
  */
 public class Spielleiter {
 
@@ -43,22 +42,23 @@ public class Spielleiter {
      * @return der gewinner
      */
     public Spieler gewinnerErmitteln() {
-        List<Spieler> spielerList = Arrays.asList(this.spieler);
-
+        int max = this.spieler[0].getPunktstand();
         Spieler gewinner;
         Spieler tmpGewinner;
         LinkedList<Spieler> moeglicheGewinner = new LinkedList<Spieler>();
-        int max;
-        ListIterator<Spieler> it = spielerList.listIterator();
+        moeglicheGewinner.add(this.spieler[0]);
 
-
-        tmpGewinner = it.next();
-        while ((it.next() != null)) {
-            it.next();
-            max = tmpGewinner.getPunktstand();
-            if (tmpGewinner.getPunktstand() >= max) {
-                max = tmpGewinner.getPunktstand();
-                moeglicheGewinner.add(tmpGewinner);
+        for (int i = 1; i < this.spieler.length; i++) {
+            tmpGewinner = this.spieler[i];
+            if (tmpGewinner != null) {
+                if (tmpGewinner.getPunktstand() > max) {
+                    max = tmpGewinner.getPunktstand();
+                    moeglicheGewinner.clear();
+                    moeglicheGewinner.add(tmpGewinner);
+                }
+                if (tmpGewinner.getPunktstand() == max) {
+                    moeglicheGewinner.add(tmpGewinner);
+                }
             }
         }
         if (moeglicheGewinner.size() > 1) {
@@ -71,18 +71,6 @@ public class Spielleiter {
             gewinner.getBoni().add(this.spielbrett.getSiegplaettchen().pop());
         }
         return gewinner;
-    }
-
-    /**
-     * In dieser Methode wird jeder Spieler dem aktuellen HauptschirmGUI zugeordnet.
-     * Ein Spieler sollte wissen an welchem HauptschirmGUI er spielt.
-     */
-    private void spielerZuordnen() {
-        for (Spieler it : this.spieler) {
-            if (it != null) {
-                it.setSpielbrett(this.spielbrett);
-            }
-        }
     }
 
     /**
@@ -116,6 +104,7 @@ public class Spielleiter {
                 } else {
                     this.naechsterSpielerAuswaehlen();
                     meldung = "Jetzt ist Spieler " + this.getIstDran().getFarbe().toString() + " an der Reihe";
+
                 }
                 this.spieler[this.istDran].rundeStarten();
             }
@@ -123,19 +112,10 @@ public class Spielleiter {
         return meldung;
     }
 
-
-    private void naechsterSpielerAuswaehlen() {
-        Spieler tmpSpieler = this.spieler[this.istDran + 1];
-        if (tmpSpieler == null) {
-            this.istDran = 0;
-        } else {
-            this.istDran++;
-        }
-    }
-
     /**
      * In dieser Methode wird, mit Hilfe einer externen Klasse, die Route gewertet, aber nur wenn der Spieler
-     * schon eine Route mit der Laenge 3 oder groesser besitzt.
+     * schon eine Route mit der Laenge 3 oder groesser besitzt. Gleichzeit wird nur geguckt ob das Spiel
+     * zu Ende ist. Wenn ja wird eine entsprechende Meldung ausgegeben.
      */
     public String routeWerten(Wertverfahren verfahren) {
         String meldung;
@@ -145,6 +125,18 @@ public class Spielleiter {
             meldung = "Der erste Spieler hat all seine Streckenposten. Diese Runde wird noch zu Ende gespielt.";
         }
         return meldung;
+    }
+
+    /**
+     * Dieser Methode dient der Methode welche den naechster Spieler auswaehlt.
+     */
+    private void naechsterSpielerAuswaehlen() {
+        Spieler tmpSpieler = this.spieler[this.istDran + 1];
+        if (tmpSpieler == null) {
+            this.istDran = 0;
+        } else {
+            this.istDran++;
+        }
     }
 }
 

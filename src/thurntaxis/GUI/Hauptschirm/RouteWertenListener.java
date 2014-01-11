@@ -13,8 +13,12 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 /**
- * Klassen um einen Action Listener um die Route werrten lassen zu erstellen.
- * Er wird aktiviert sobald man im hauptschirm auf den Button Route werten klickt.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Klassen fuer den Action Listener um die Route werten lassen zu erstellen.
+ *         Er wird aktiviert sobald man im hauptschirm auf den Button Route werten klickt.
+ *         In dem Menue welches sich oeffnet kann man das genaue Wertverfahren mit welchem man
+ *         werten will aussuchen.
  */
 class RouteWertenListener implements ActionListener {
 
@@ -30,7 +34,6 @@ class RouteWertenListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
 
         if (this.spielleiter.getIstDran().getRoute().size() >= 3) {
-
             final JDialog routeWertenDialog = new JDialog();
             JButton eineStadtProLandButton = new JButton("Eine Stadt pro Land legen");
             JButton innerhalbEinemLandButon = new JButton("Innerhalb einem Land legen");

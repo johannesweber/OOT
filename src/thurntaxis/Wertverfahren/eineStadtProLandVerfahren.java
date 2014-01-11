@@ -5,7 +5,7 @@ import thurntaxis.spieler.Spieler;
 
 
 /**
- * Created by Johannes on 05.01.14.
+ * @author Gruppe 4 Fragezeichen
  */
 public class EineStadtProLandVerfahren extends Wertverfahren {
 

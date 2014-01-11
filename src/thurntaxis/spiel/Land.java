@@ -3,8 +3,10 @@ package thurntaxis.spiel;
 import java.util.LinkedList;
 
 /**
- * Eine Klasse fuer ein Land. Ein Land besitzt einen Namen und eine bestimmte Anzahl an Staedte.
- * Die Klasse und der Konstrukor haben default-Sichtbarkeit.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Eine Klasse fuer ein Land. Ein Land besitzt einen Namen und eine bestimmte Anzahl an Staedte.
+ *         Die Klasse und der Konstrukor haben default-Sichtbarkeit.
  */
 public class Land {
 
@@ -22,7 +24,7 @@ public class Land {
     }
 
     public LinkedList<Stadt> getStaedte() {
-        return staedte;
+        return this.staedte;
     }
 
     /**
@@ -78,6 +80,6 @@ public class Land {
 
     @Override
     public String toString() {
-        return name.toString();
+        return this.name.toString();
     }
 }

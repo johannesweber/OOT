@@ -6,8 +6,10 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * Eine Klasse um ein HauptschirmGUI zu erstellen. Da spielbrett besteht aus laendern, einem auslagestapel
- * und aus den drei verschiedenen bonusmarkern.
+ * @author Gruppe 4 Fragezeichen
+ *
+ * Eine Klasse um das Spielbrett zu erstellen. Da Spielbrett besitzt Laender, ein Auslagestapel
+ * und die drei verschiedenen Bonusmarkern.
  */
 public class Spielbrett {
 
@@ -55,7 +57,8 @@ public class Spielbrett {
     }
 
     /**
-     * Mit dieser privaten methoden werden die laender zu dem spielbrett hinzugefuegt.
+     * Mit dieser privaten methoden werden die laender zu dem spielbrett hinzugefuegt. Diese Methode
+     * wird nur im Konstruktor eines Spielbretts aufgerufen.
      */
     private void laenderFuellen() {
             for (LandEnum it : LandEnum.values()) {
@@ -64,7 +67,9 @@ public class Spielbrett {
     }
 
     /**
-     * in dieser methode werden, mit hilfe anderer privater methode, die bonusmarker gefuellt.
+     * In dieser Methode werden, mit Hilfe der Methoden rotenlaengeBoniFuellen(),
+     * vollstaendigBesetzteLaenderBonusFuellen() und routenlaengeBoniFuellen()
+     * die Liste der Bonusmarker gefuellt.
      */
     private void boniFuellen() {
         this.alleLaenderBesetztBoniFuellen();

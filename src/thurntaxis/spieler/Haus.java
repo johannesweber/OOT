@@ -2,6 +2,8 @@ package thurntaxis.spieler;
 
 
 /**
+ * @author Gruppe 4 Fragezeichen
+ *
  * Klasse zum erstellen eines hauses. jede haus besitzt eine Spielerfarbe und jedes haus gibt oder nimmt ein
  * punkt.
  */

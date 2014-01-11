@@ -11,12 +11,14 @@ import thurntaxis.spieler.Spieler;
 import java.util.LinkedList;
 
 /**
- * Eine abstrakte Klasse fuer die zwei verschiedenen Werteverfahren einer Route.
- * Zu dem verfahren der Route werten gehoeren mehrere Schritte: Zuerst wird die Karte ueberpruft ob
- * sie auch gelegt werden kann, als naechstes werden die Haeuser gesetzt und gleichzeitig geprueft ob
- * das Spiel zu Ende ist, als letzten werden die Bonusmarker vergeben.
- * <p/>
- * Der Zwischenspeicher dient dazu eine ConcurrentModificationException zu vermeiden!
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Eine abstrakte Klasse fuer die zwei verschiedenen Werteverfahren einer Route.
+ *         Zu dem verfahren der Route werten gehoeren mehrere Schritte: Zuerst wird die Karte ueberpruft ob
+ *         sie auch gelegt werden kann, als naechstes werden die Haeuser gesetzt und gleichzeitig geprueft ob
+ *         das Spiel zu Ende ist, als letzten werden die Bonusmarker vergeben.
+ *         <p/>
+ *         Der Zwischenspeicher dient dazu eine ConcurrentModificationException zu vermeiden!
  */
 
 public abstract class Wertverfahren {
@@ -55,17 +57,16 @@ public abstract class Wertverfahren {
     private boolean haeuserSetzen(Spieler spieler) {
         this.zwischenspeicher.clear();
         Boolean ende = false;
+        for (Stadt it : this.wertbareRoute) {
+            if (!it.getHaeuser().contains(new Haus(spieler.getFarbe()))) {
+                it.hausBauen(spieler.getHaeuser().pop());
+            } else {
+                this.zwischenspeicher.add(it);
+            }
+        }
+        this.wertbareRoute.removeAll(zwischenspeicher);
         if (spieler.getHaeuser().isEmpty()) {
             ende = true;
-        } else {
-            for (Stadt it : this.wertbareRoute) {
-                if (!it.getHaeuser().contains(new Haus(spieler.getFarbe()))) {
-                    it.hausBauen(spieler.getHaeuser().pop());
-                } else {
-                    this.zwischenspeicher.add(it);
-                }
-            }
-            this.wertbareRoute.removeAll(zwischenspeicher);
         }
         return ende;
     }

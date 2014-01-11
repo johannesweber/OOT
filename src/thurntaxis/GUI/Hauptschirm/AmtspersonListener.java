@@ -11,7 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Klasse fuer einen ActionListener wenn man auf den Button Amtsperson ausspielen drueckt.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Klasse fuer einen ActionListener wenn man auf den Button Amtsperson ausspielen drueckt.
  */
 class AmtspersonListener implements ActionListener {
 
@@ -19,7 +21,7 @@ class AmtspersonListener implements ActionListener {
     private SpielbrettPanel spielbrettPanel;
 
 
-    AmtspersonListener(Spielleiter spielleiter,SpielbrettPanel spielbrettPanel) {
+    AmtspersonListener(Spielleiter spielleiter, SpielbrettPanel spielbrettPanel) {
         this.spielleiter = spielleiter;
         this.spielbrettPanel = spielbrettPanel;
     }
@@ -79,7 +81,7 @@ class AmtspersonListener implements ActionListener {
         amtsPanel.add(postmeisterButton);
         amtsPanel.add(amtmannButton);
         personAusspielenDialog.add(amtsPanel, BorderLayout.CENTER);
-        personAusspielenDialog.setSize(410,100);
+        personAusspielenDialog.setSize(410, 100);
         personAusspielenDialog.setVisible(true);
 
     }

@@ -1,7 +1,9 @@
 package thurntaxis.spiel;
 
 /**
- * Eine Enumeratons Klasse fuer die 9 Laender.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Eine Enumeratons Klasse fuer die 9 Laender.
  */
 public enum LandEnum {
 

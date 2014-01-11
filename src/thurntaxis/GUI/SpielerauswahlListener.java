@@ -10,12 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * @author Gruppe 4 Fragezeichen
+ *
  * Klasse SpielerauswahlListener welche vom Typ ActionListener ist. Dieser ActionListener generiert eineen
  * neuen JDialog, welcher aus 5 Buttons besteht. Mit diesen Buttons werden die Spieler fuer die naechste Partie
- * ausgewaehlt. Diese klasse tritt ihn Kraft wenn man den Button Spieler auswaehlen im Startmenue drueckt.
+ * ausgewaehlt. Diese Klasse tritt ihn Kraft wenn man den Button Spieler auswaehlen im Startmenue drueckt.
  */
 class SpielerauswahlListener implements ActionListener {
-
 
     private int index = 0;
     private int ausgewaehlt = 0;

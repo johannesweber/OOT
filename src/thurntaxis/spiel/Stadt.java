@@ -5,8 +5,10 @@ import thurntaxis.spieler.Haus;
 import java.util.LinkedList;
 
 /**
- * Klasse zum erstellen eines stadt objekts. eine stadt besitzt einen name, sie kann beliebig viele haeuser
- * besitzen und jede stadt hat staedte als nachbarn.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Klasse zum erstellen eines stadt objekts. eine stadt besitzt einen name, sie kann beliebig viele haeuser
+ *         besitzen und jede stadt hat staedte als nachbarn.
  */
 public class Stadt {
 

@@ -7,12 +7,17 @@ import thurntaxis.spieler.Spieler;
 import java.util.ListIterator;
 
 /**
- * Created by Johannes on 06.01.14.
+ * @author Gruppe 4 Fragezeichen
  */
 public class InnerhalbEinemLandVerfahren extends Wertverfahren {
 
     private LandEnum land;
 
+    /**
+     * Diesers verfahren nimmt als Uebergabewert das Land in welchem der Spieler die Route
+     * werten lassen will.
+     * @param land das Land welches gewertet werden soll.
+     */
     public InnerhalbEinemLandVerfahren(LandEnum land) {
         this.land = land;
     }

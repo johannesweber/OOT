@@ -1,5 +1,7 @@
 package thurntaxis.gui.hauptschirm;
 
+import thurntaxis.spiel.*;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -7,11 +9,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import thurntaxis.spiel.*;
-
 /**
- * Klasse vom Typ JPanel, welche die verfuegbaren Buttons, die Hand und die Route des Spielers,
- * sowie das Spielbrett anzeigt.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Klasse vom Typ JPanel, welche die verfuegbaren Buttons, die Hand und die Route des Spielers anzeigt.
+ *         Der Spieler verfuegt insgesamt ueber 9 Buttons. die Buttons sind seperat in einem JPanel untergebracht.
+ *         Die Listen fuer die Hand und die Route befinden sich ebenfalls in einem JPanel. Diese JPanel werden
+ *         widerum in dem Hauptpanel untergebracht.
  */
 class SpielersteuerungPanel extends JPanel {
 
@@ -23,9 +27,8 @@ class SpielersteuerungPanel extends JPanel {
     private JButton amtspersonAusspielenButton = new JButton("Amtsperson auspielen");
     private JButton routeWertenButton = new JButton("Route werten");
     private JButton naechsterSpielerButton = new JButton("naechster Spieler");
-    private JButton gewerteteRouteButton = new JButton("gewertete Route");
-    private JButton punktestandButton = new JButton("Punktestand");
     private JButton landkarteButton = new JButton("Landkarte");
+    private JButton punktestandButton = new JButton("Punktestand");
 
     private JPanel buttonPanel = new JPanel();
     private JPanel handPanel = new JPanel();
@@ -35,50 +38,41 @@ class SpielersteuerungPanel extends JPanel {
     private JLabel spielersteuerungLabel;
     private JLabel deineRouteLabel = new JLabel("Deine Route");
     private JLabel deineHandLabel = new JLabel("Deine Hand");
-    private JLabel bonuspunkteLabel;
-    private JLabel haeuserpunkteLabel;
 
     private DefaultListModel defaultRouteModel = new DefaultListModel();
     private JList routeList = new JList(defaultRouteModel);
-
     private DefaultListModel defaultHandModel = new DefaultListModel();
     private JList handList = new JList(defaultHandModel);
 
     private JDialog landkarteDialog = new JDialog();
 
     SpielersteuerungPanel(Spielleiter spielleiter, SpielbrettPanel spielbrettPanel) {
-        this.spielersteuerungLabel = new JLabel("Spieler " +
-                spielleiter.getIstDran().getFarbe().toString());
         this.spielleiter = spielleiter;
         this.spielbrettPanel = spielbrettPanel;
 
-        this.landkarteDialog.setVisible(false);
-        this.buttonPanel.setLayout(new GridLayout(6, 1));
-        this.spielersteuerungLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.spielersteuerungLabel = new JLabel("Spieler " +
+                spielleiter.getIstDran().getFarbe().toString());
 
         this.buttonPanel.add(spielersteuerungLabel);
         this.buttonPanel.add(karteZiehenButton);
         this.buttonPanel.add(karteAblegenButton);
         this.buttonPanel.add(amtspersonAusspielenButton);
         this.buttonPanel.add(routeWertenButton);
-        this.buttonPanel.add(gewerteteRouteButton);
+        this.buttonPanel.add(landkarteButton);
         this.buttonPanel.add(punktestandButton);
         this.buttonPanel.add(naechsterSpielerButton);
-        this.buttonPanel.add(landkarteButton);
 
-        this.handPanel.add(deineHandLabel);
+        this.handPanel.add(deineHandLabel, BorderLayout.NORTH);
         this.handPanel.add(handList);
 
-        this.routenPanel.add(deineRouteLabel);
+        this.routenPanel.add(deineRouteLabel,BorderLayout.NORTH);
         this.routenPanel.add(routeList);
 
-        this.beides.setLayout(new GridLayout(2, 1));
         this.beides.add(handPanel);
         this.beides.add(routenPanel);
+
         this.add(buttonPanel);
         this.add(beides);
-
-        this.handList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         this.handList.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -188,68 +182,6 @@ class SpielersteuerungPanel extends JPanel {
             }
         });
 
-        this.gewerteteRouteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                JDialog gewerteteKartenDialog = new JDialog();
-                gewerteteKartenDialog.setTitle("Deine gewerteten Karten");
-                DefaultListModel gewerteteKartenModel = new DefaultListModel();
-                JList gewerteteKartenList = new JList(gewerteteKartenModel);
-
-                gewerteteKartenList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-                for (Stadt it : SpielersteuerungPanel.this.spielleiter.getIstDran().getGewerteteKarten()) {
-                    gewerteteKartenModel.addElement(it);
-                }
-
-                gewerteteKartenList.setSize(200, 100);
-                gewerteteKartenList.setAlignmentY(CENTER_ALIGNMENT);
-
-                gewerteteKartenDialog.add(gewerteteKartenList);
-
-                gewerteteKartenDialog.setLocationRelativeTo(SpielersteuerungPanel.this);
-                gewerteteKartenDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                gewerteteKartenDialog.setVisible(true);
-                gewerteteKartenDialog.setSize(410, 100);
-
-            }
-        });
-
-        this.punktestandButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                JDialog punktestandDialog = new JDialog();
-                punktestandDialog.setTitle("Dein aktueller Punktestand");
-                JSeparator seperator = new JSeparator(JSeparator.HORIZONTAL);
-                seperator.setPreferredSize(new Dimension(1, 40));
-                SpielersteuerungPanel.this.bonuspunkteLabel = new JLabel("Punkte aller Bonusmarker: " +
-                        SpielersteuerungPanel.this.spielleiter.getIstDran().getBonuspunkte());
-                SpielersteuerungPanel.this.haeuserpunkteLabel = new JLabel("Punkte fuer gebaute Haeuser: " +
-                        SpielersteuerungPanel.this.spielleiter.getIstDran().getHaeuserpunkte());
-
-                bonuspunkteLabel.validate();
-                bonuspunkteLabel.repaint();
-
-                haeuserpunkteLabel.validate();
-                haeuserpunkteLabel.repaint();
-
-                punktestandDialog.add(bonuspunkteLabel);
-                punktestandDialog.add(haeuserpunkteLabel);
-
-                bonuspunkteLabel.setHorizontalAlignment(JLabel.CENTER);
-                bonuspunkteLabel.setVerticalAlignment(JLabel.CENTER);
-                haeuserpunkteLabel.setHorizontalAlignment(JLabel.CENTER);
-                haeuserpunkteLabel.setVerticalAlignment(JLabel.CENTER);
-
-                punktestandDialog.setLayout(new GridLayout(2, 1));
-                punktestandDialog.setLocationRelativeTo(SpielersteuerungPanel.this);
-                punktestandDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                punktestandDialog.setSize(410, 100);
-                punktestandDialog.setVisible(true);
-
-            }
-        });
-
         this.landkarteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -267,7 +199,7 @@ class SpielersteuerungPanel extends JPanel {
             }
         });
 
-        this.punktestandButton.setToolTipText("Zeigt deinen aktuellen Punktestand");
+        this.punktestandButton.addActionListener(new PunktestandListener(this.spielleiter));
 
         this.karteZiehenButton.setToolTipText("Hiermit ziehst du eine Karte aus dem" +
                 " Auslagestapel");
@@ -277,19 +209,35 @@ class SpielersteuerungPanel extends JPanel {
         this.routeWertenButton.setToolTipText("Wertet deine aktuelle Route und verteilt Bonusmarker" +
                 " (falls gewonnen)");
         this.naechsterSpielerButton.setToolTipText("Zum naechsten Spieler wechseln");
-        this.gewerteteRouteButton.setToolTipText("Zeigt deine bereits gewerteten Karten");
         this.landkarteButton.setToolTipText("Zeigt die Landkarte des heiligen roemischen Reichs" +
                 " deutscher Nation");
+        this.punktestandButton.setToolTipText("Zeigt dir deinen aktuellen Punktestand an");
+
+        this.handList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        this.landkarteDialog.setVisible(false);
+
+        this.spielersteuerungLabel.setHorizontalAlignment(JLabel.CENTER);
+
+        this.buttonPanel.setLayout(new GridLayout(8, 1));
+        this.buttonPanel.setVisible(true);
+
+        this.handPanel.setVisible(true);
+        this.routenPanel.setVisible(true);
+
+        this.beides.setLayout(new GridLayout(2,1));
+        this.beides.setVisible(true);
 
         this.setLayout(new GridLayout(1, 2));
-        this.handPanel.setVisible(true);
-        this.buttonPanel.setVisible(true);
-        this.routenPanel.setVisible(true);
-        this.beides.setVisible(true);
         this.setVisible(true);
     }
 
-    void listenAktualisieren() {
+
+    /**
+     * Methode welche mit Hilfe der privaten Methoden defaultHandFuellen() und defaultRouteFuellen() die Hand
+     * und die Route des Spielers aktualisiert.
+     */
+    protected void listenAktualisieren() {
         this.defaultHandFuellen();
         this.defaultRouteFuellen();
     }
@@ -311,23 +259,23 @@ class SpielersteuerungPanel extends JPanel {
      */
     private void defaultRouteFuellen() {
         this.defaultRouteModel.clear();
-        if (!spielleiter.getIstDran().getRoute().isEmpty()) {
+        if (!this.spielleiter.getIstDran().getRoute().isEmpty()) {
             this.defaultRouteModel.clear();
-            for (Stadt it : spielleiter.getIstDran().getRoute()) {
-                defaultRouteModel.addElement(it.toString());
+            for (Stadt it : this.spielleiter.getIstDran().getRoute()) {
+                this.defaultRouteModel.addElement(it.toString());
             }
         }
     }
 
     /**
-     * Sucht ein Stadt Objekt anhand einer uebergebenen String
+     * Sucht ein Stadt Objekt anhand einem uebergebenen String
      *
      * @param ausgewaehlteKarte die ausgewaehlte Karte als String
      * @return die ausgewaehlte karte als Stadt Objekt
      */
     private Stadt getStadtAnhandString(String ausgewaehlteKarte) {
         Stadt stadt = null;
-        for (Stadt it : spielleiter.getIstDran().getHand()) {
+        for (Stadt it : this.spielleiter.getIstDran().getHand()) {
             if (ausgewaehlteKarte.equals(it.toString())) {
                 stadt = it;
             }

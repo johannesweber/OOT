@@ -1,7 +1,9 @@
 package thurntaxis.spiel;
 
 /**
- * Klasse um ein Bonusmarker zu erstellen. Ein Bonusmarker besitzt nur eine Punktzahl.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Klasse um ein Bonusmarker zu erstellen. Ein Bonusmarker besitzt nur eine Punktzahl.
  */
 public class Bonusmarker {
 
@@ -12,17 +14,16 @@ public class Bonusmarker {
     }
 
     /**
-     *
      * @return die anzahl der punkte
      */
     public int getPunkte() {
-        return punkte;
+        return this.punkte;
     }
 
     @Override
     public String toString() {
         return "Bonusmarker{" +
-                "punkte=" + punkte +
+                "punkte=" + this.punkte +
                 '}';
     }
 

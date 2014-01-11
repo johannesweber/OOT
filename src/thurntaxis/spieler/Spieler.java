@@ -7,12 +7,13 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 /**
- * Klasse fuer einen Spieler. Ein Spieler weiss an welchem Spielbrette er sitzt, er hat eine Farbe,
- * er besitzt zwanzig Hauser. Er kann eine Route auslegen und hat eine Hand in welcher er seine Karten haelt.
- * zusaetzlich kann er noch eine beliebige Anzahl an Boni besitzen. Um zu kontrollieren ob der Spieler seine
- * Runde auch wirklich abschliessen darf gibt es noch zaehler fuer das Ablegen und Ziehen von Karten und fuer
- * das Ablegen von Amtspersonen. Mit dem Boolean anDerReihe signalisiert der Spieler wann er seine Runde beendet
- * bzw er bekommt signalisiert wann er an der Reihe ist.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Klasse fuer einen Spieler. Ein Spieler weiss an welchem Spielbrett er sitzt, er hat eine Farbe,
+ *         er besitzt zwanzig Hauser. Er kann eine Route auslegen und hat eine Hand in welcher er seine Karten haelt.
+ *         zusaetzlich kann er noch eine beliebige Anzahl an Boni besitzen. Um zu kontrollieren ob der Spieler seine
+ *         Runde auch wirklich abschliessen darf gibt es noch zaehler fuer das Ablegen und Ziehen von Karten und fuer
+ *         das Ablegen von Amtspersonen.
  */
 public class Spieler {
 
@@ -125,9 +126,7 @@ public class Spieler {
     }
 
     /**
-     * Mit dieser Methode zieht der Spieler eine Karte vom Auslagestapel. Damit der Spieler auch eine "richtige" zahl
-     * angeben kann und sich nicht an indizes halten muss wird von der uebergebenen nummer eins abgezogen wenn
-     * der spieler ene karte zieht.
+     * Mit dieser Methode zieht der Spieler eine Karte vom Auslagestapel.
      * Gleichzeitig wird noch kontrolliert ob der Spieler schon eine Karte gezogen hat. Ist dies der Fall darf
      * er keine mehr ziehen.
      *
@@ -174,15 +173,15 @@ public class Spieler {
                             this.hand.remove(karte);
                             this.zaehlerKarteAblegen--;
                         } else {
-                            meldung = 1;//"Karte kann nicht gelegt werden. Keine direkte Verbindung.";
+                            meldung = 1; //"Karte kann nicht gelegt werden. Keine direkte Verbindung.";
                         }
                     }
                 } else {
-                    meldung = 2;//"Diese Karte ist schon in deiner Route enthalten!";
+                    meldung = 2; //"Diese Karte ist schon in deiner Route enthalten!";
                 }
             }
         } else {
-            meldung = 3;//"Du darfst keine Karte mehr ablegen.";
+            meldung = 3; //"Du darfst keine Karte mehr ablegen.";
         }
         return meldung;
     }
@@ -219,25 +218,31 @@ public class Spieler {
      * Methode um den Spieler auf eine neue Runde vorzubereiten.
      */
     public void rundeStarten() {
-            this.zaehlerAmtsperson = 1;
-            this.zaehlerKarteAblegen = 1;
-            this.zaehlerKartenZiehen = 1;
+        this.zaehlerAmtsperson = 1;
+        this.zaehlerKarteAblegen = 1;
+        this.zaehlerKartenZiehen = 1;
     }
 
-    private boolean isErsterNachbar(Stadt karte){
+    /**
+     * Die Methode isErsternachbar und isLetzterNachbar dienen beide der Methode karteAblegen()
+     *
+     * @param karte die Karte welche getestet werden soll
+     * @return True oder False je nach dem ob sie der Nachbar ist oder nicht.
+     */
+    private boolean isErsterNachbar(Stadt karte) {
         boolean nachbar = false;
-        for (Spielkarte it : this.route.getFirst().getNachbarn()){
-            if(karte.getName().equals(it)){
+        for (Spielkarte it : this.route.getFirst().getNachbarn()) {
+            if (karte.getName().equals(it)) {
                 nachbar = true;
             }
         }
         return nachbar;
     }
 
-    private boolean isLetzterNachbar(Stadt karte){
+    private boolean isLetzterNachbar(Stadt karte) {
         boolean nachbar = false;
-        for (Spielkarte it : this.route.getLast().getNachbarn()){
-            if(karte.getName().equals(it)){
+        for (Spielkarte it : this.route.getLast().getNachbarn()) {
+            if (karte.getName().equals(it)) {
                 nachbar = true;
             }
         }

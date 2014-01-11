@@ -3,7 +3,9 @@ package thurntaxis.amtsperson;
 import thurntaxis.spieler.Spieler;
 
 /**
- * Klasse fuer einen Amtmann, wenn er ausgespielt wird, wird der Auslagestapel einmal komplett ausgetauscht.
+ * @author Gruppe 4 Fragezeichen
+ *         <p/>
+ *         Klasse fuer einen Amtmann, wenn er ausgespielt wird, wird der Auslagestapel einmal komplett ausgetauscht.
  */
 public class Amtmann implements Amtsperson {
 
