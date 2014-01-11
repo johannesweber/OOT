@@ -102,23 +102,56 @@ public abstract class Wertverfahren {
     }
 
     private void landVollstaendigBesetztBoniVergeben(Spieler spieler) {
-        if (!spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().isEmpty()) {
-            int anzahlStaedte;
-            int kontrollZaehler = 0;
-            Land tmpLand;
-            for (LandEnum landIt : LandEnum.values()) {
-                tmpLand = new Land(landIt);
-                anzahlStaedte = tmpLand.getStaedte().size();
-                for (Stadt stadtIt : spieler.getGewerteteKarten()) {
-                    if (tmpLand.getStaedte().contains(stadtIt)) {
-                        kontrollZaehler++;
+        int anzahlStaedte;
+        int kontrollZaehler = 0;
+        Land tmpLand;
+        Bonusmarker gewonnen = null;
+        for (Stadt stadtIt : spieler.getGewerteteKarten()) {
+            anzahlStaedte = stadtIt.getLand().getStaedte();
+            tmpLand = new Land(stadtIt.getLand());
+            if (tmpLand.getStaedte().contains(stadtIt)) {
+                kontrollZaehler++;
+            }
+            if (kontrollZaehler == anzahlStaedte) {
+                if (!spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().get(tmpLand.getName()).isEmpty()) {
+                    switch (tmpLand.getName()) {
+                        case SCHWEIZ:
+                            gewonnen = (Bonusmarker) spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().
+                                    get(LandEnum.SCHWEIZ).pop();
+                            break;
+                        case TYROL:
+                            gewonnen = (Bonusmarker) spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().
+                                    get(LandEnum.SCHWEIZ).pop();
+                            break;
+                        case BOEHMEN:
+                            gewonnen = (Bonusmarker) spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().
+                                    get(LandEnum.BOEHMEN).pop();
+                            break;
+                        case SALZBURG:
+                            gewonnen = (Bonusmarker) spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().
+                                    get(LandEnum.BOEHMEN).pop();
+                            break;
+                        case BADEN:
+                            gewonnen = (Bonusmarker) spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().
+                                    get(LandEnum.BADEN).pop();
+                            break;
+                        case WUERTTEMBERG:
+                            gewonnen = (Bonusmarker) spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().
+                                    get(LandEnum.WUERTTEMBERG).pop();
+                            break;
+                        case BAIERN:
+                            gewonnen = (Bonusmarker) spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().
+                                    get(LandEnum.BAIERN).pop();
+                            break;
+                        case HOHENZOLLERN:
+                            gewonnen = (Bonusmarker) spieler.getSpielbrett().getVollstaendigBesetzteLaenderBoni().
+                                    get(LandEnum.WUERTTEMBERG).pop();
+                            break;
                     }
-                }
-                if (kontrollZaehler == anzahlStaedte) {
-                    spieler.getBoni().add((Bonusmarker) spieler.getSpielbrett().
-                            getVollstaendigBesetzteLaenderBoni().get(tmpLand.getName()).pop());
                 }
             }
         }
+        if(gewonnen != null)
+            spieler.getBoni().add(gewonnen);
     }
 }

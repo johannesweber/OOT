@@ -7,5 +7,16 @@ package thurntaxis.spiel;
  */
 public enum LandEnum {
 
-    SCHWEIZ, TYROL, SALZBURG, BOEHMEN, POLEN, BADEN, WUERTTEMBERG, BAIERN, HOHENZOLLERN,
+    SCHWEIZ(2), TYROL(1), SALZBURG(2), BOEHMEN(2), POLEN(1), BADEN(3), WUERTTEMBERG(2), BAIERN(8), HOHENZOLLERN(1),;
+
+    private int staedte;
+
+    LandEnum(int staedte){
+        this.staedte = staedte;
+    }
+
+    public int getStaedte() {
+        return staedte;
+    }
 }
+
